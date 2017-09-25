@@ -1,0 +1,56 @@
+1. Ensure to you can securely access your github account from terminal. This may require ssl setup.
+2. Create public repo in your github account.
+3. Copy URL to new repo.
+4. Go to terminal and 'git clone <repo>'
+5. CD to new <repo> directory.
+6. rm -rf .git directory
+
+7. NOTE : C++ NOT REQUIRED FOR CAPSTONE PROJECT
+
+    Open Clion, create new C++ Executable Project NOT from existing sources BUT IN <repo> directory.
+    This will create a CMakeLists.txt and main.cpp "Hello, World!" app that you can build and run to
+    confirm project setup.
+
+8.1. NOTES :
+    * REQUIRES PYTHON 2.7 AND INSTALL REQUIREMENTS.TXT.
+    * DO NOT USE VIRTUALENV OR MINICONDA.
+    * DO NOT USE "sudo apt autoremove". SEE https://carnd.slack.com/archives/C2J6AVC5V/p1506234519000039
+
+    Open Pycharm, create new Python project, adding existing source files just cloned above.
+
+8.2. DON'T DO THIS :
+    File -> Settings -> Project -> Project Interpreter -> Settings 'cog' -> Add local -
+> "/home/andrew/miniconda3/envs/tensorflow/bin/python"
+
+8.3. DO THIS :
+    File -> Settings -> Project -> Project Structure -> + Add Content Root ->
+    check that is cloned home directory, like "/home/andrew/dev/term3/sdc-term3-p2-semantic-segmentation", else
+    add and 'x' to delete previously shown Content Root.
+
+8.4 TEST ROSLAUNCH SERVER
+    * Open terminal in Pycharm IDE.
+    * cd ros
+    * catkin_make
+    * source devel/setup.sh
+    * roslaunch launch/styx.launch
+8.5 RUN SIMULATOR
+    * Open terminal in Ubuntu 16.04
+    * cd ~/Downloads/linux_sys_int
+    * ./system_integration.x86_64 &
+
+9. Copy following file from most recent project into <repo> directory ...
+    how_to_make_movie_and_gif.txt
+    how_to_override_remote_master_github_repo_with_local_origin.txt
+    how_to_run_built_exe_tests_in_terminal_with_params.txt
+    catch.hpp
+    main.cpp
+    test_main.cpp
+10. Do following commands ...
+    git init
+    git status
+    git add <files and directories> e.g. downloaded udacity github repo project files
+    git commit -m "initial commit"
+    git remote add origin git@github.com:wfs/<repo>.git
+    git push -u -f origin master
+11. Subsequent pushes can use just ...
+    git push

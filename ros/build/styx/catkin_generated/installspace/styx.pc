@@ -1,0 +1,8 @@
+prefix=/home/andrew/dev/term3/sdc-term3-p4-capstone-carla/ros/install
+
+Name: styx
+Description: Description of styx
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/andrew/dev/term3/sdc-term3-p4-capstone-carla/ros/install/lib 
+Requires: 

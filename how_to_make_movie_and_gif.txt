@@ -1,0 +1,9 @@
+Steps :
+
+1. use RecordMyDesktop app on ubuntu 16.04 to make *.ogv video recording of desktop.
+
+2. convert from *.ogv to *.mp4 format for upload to Youtube.
+andrew@andrew-Alienware-Aurora-R5:~/dev/term2/sdc-term2-p3-kidnapped-vehicle$ ffmpeg -i ae-1.ogv -crf 18 particle_filter.mp4
+
+3. make short gif from video
+andrew@andrew-Alienware-Aurora-R5:~/Desktop$ ./mkgif.sh 10 640 0:45 10 particle_filter.mp4 particle_filter_10_sec.gif

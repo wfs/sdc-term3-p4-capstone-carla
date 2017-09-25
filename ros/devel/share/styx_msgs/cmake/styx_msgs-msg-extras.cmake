@@ -1,0 +1,2 @@
+set(styx_msgs_MESSAGE_FILES "/home/andrew/dev/term3/sdc-term3-p4-capstone-carla/ros/src/styx_msgs/msg/TrafficLight.msg;/home/andrew/dev/term3/sdc-term3-p4-capstone-carla/ros/src/styx_msgs/msg/TrafficLightArray.msg;/home/andrew/dev/term3/sdc-term3-p4-capstone-carla/ros/src/styx_msgs/msg/Waypoint.msg;/home/andrew/dev/term3/sdc-term3-p4-capstone-carla/ros/src/styx_msgs/msg/Lane.msg")
+set(styx_msgs_SERVICE_FILES "")

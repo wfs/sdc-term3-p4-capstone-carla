@@ -1,0 +1,8 @@
+prefix=/home/andrew/dev/term3/sdc-term3-p4-capstone-carla/ros/devel
+
+Name: twist_controller
+Description: Description of twist_controller
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/andrew/dev/term3/sdc-term3-p4-capstone-carla/ros/devel/lib 
+Requires: 

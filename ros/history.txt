@@ -1,0 +1,1000 @@
+ 1090  ls -ali deviceQuery
+ 1091  ./deviceQuery
+ 1092  cd ~/
+ 1093  ls -ali
+ 1094  ls -ltr
+ 1095  ls -w
+ 1096  ls
+ 1097  sudo updatedb
+ 1098  locate uninstall_cuda*
+ 1099  ls /usr/bin/nvidia-uninstall
+ 1100  sudo apt-get --purge remove cuda
+ 1101  clear
+ 1102  sudo apt-get install linux-headers-$(uname -r)
+ 1103  sudo apt autoremove
+ 1104  cd ~/Downloads/
+ 1105  ls -ltr
+ 1106  chmod +x cuda_8.0.61.2_linux.run 
+ 1107  chmod +x cuda_8.0.61_375.26_linux.run 
+ 1108  sudo sh cuda_8.0.61_375.26_linux.run 
+ 1109  exit
+ 1110  cd ../
+ 1111  ls
+ 1112  rm -rf cuda-samples
+ 1113  exit
+ 1114  cd ~/Downloads/
+ 1115  ls -ltr
+ 1116  sudo sh cuda_8.0.61_375.26_linux.run
+ 1117  ls -ltr | grep -i cuda
+ 1118  sudo rm /tmp/.X*-lock
+ 1119  sudo apt-get purge nvidia-*
+ 1120  sudo reboot
+ 1121  ls
+ 1122  clear
+ 1123  cd Down
+ 1124  pwd
+ 1125  ls
+ 1126  cd Downloads
+ 1127  ls
+ 1128  ls -ltr
+ 1129  sudo service lightdm stop
+ 1130  sudo rmmod nvidia
+ 1131  sudo h
+ 1132  cd Downloads
+ 1133  ls -ltr | grep -i cuda
+ 1134  sudo sh cuda_8.0.61_375.26_linux.run
+ 1135  sudo service lightdm start
+ 1136  sudo reboot
+ 1137  cd ../Downloads/
+ 1138  ls
+ 1139  ls -ltr
+ 1140  locate jetson-inference
+ 1141  locate imagenet_console
+ 1142  locate imagenet-console
+ 1143  sudo updatedb
+ 1144  locate jetson
+ 1145  ls -ltr
+ 1146  cd ~/dev/
+ 1147  mkdir term3
+ 1148  cd term3
+ 1149  git clone https://github.com/wfs/sdc-term-3-l2-search.git
+ 1150  cd sdc-term-3-l2-search/
+ 1151  ls -ali
+ 1152  cp ../../term2/sdc-term2-p5-model-predictive-control/*.txt ./
+ 1153  ls
+ 1154  rm CMakeLists.txt 
+ 1155  rm cmakepatch.txt 
+ 1156  ls -ali
+ 1157  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1158  rm -rf .git
+ 1159  git init
+ 1160  git status
+ 1161  git add .idea/workspace.xml 
+ 1162  rm README.md 
+ 1163  git status
+ 1164  git add *.py
+ 1165  git status
+ 1166  git add how*.txt
+ 1167  git status
+ 1168  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1169  git commit -m "initial commit"
+ 1170  git remote add origin git@github.com:wfs/sdc-term3-l2-search.git
+ 1171  git push -u -f origin master
+ 1172  git remote add origin git@github.com:wfs/sdc-term-3-l2-search.git
+ 1173  git remote remove origin git@github.com:wfs/sdc-term3-l2-search.git
+ 1174  git remote remove git@github.com:wfs/sdc-term-3-l2-search.git
+ 1175  rm -rf .git
+ 1176  git init
+ 1177  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1178  git status
+ 1179  git add .idea/workspace.xml 
+ 1180  git add *.py
+ 1181  git add *.txt
+ 1182  git status
+ 1183  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1184  git commit -m "initial commit"
+ 1185  git remote add origin git@github.com:wfs/sdc-term-3-l2-search.git
+ 1186  git push -u -f origin master
+ 1187  git status
+ 1188  git add .idea/workspace.xml 
+ 1189  git add left_turn_policy.py 
+ 1190  git add optimum_policy.py 
+ 1191  git add value_program.py 
+ 1192  git commit -m "finished lesson"
+ 1193  git push
+ 1194  cd ../
+ 1195  git clone https://github.com/wfs/sdc-term-3-l3-prediction.git
+ 1196  cd sdc-term-3-l3-prediction/
+ 1197  cp ../sdc-term-3-l2-search/*.txt ./
+ 1198  ls
+ 1199  ls -ali
+ 1200  mkdir python
+ 1201  mkdir c_plus_plus
+ 1202  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1203  cp ../../term2/sdc-term2-p5-model-predictive-control/catch.hpp c_plus_plus/
+ 1204  cp ../../term2/sdc-term2-p5-model-predictive-control/main.cpp c_plus_plus/
+ 1205  cp ../../term2/sdc-term2-p5-model-predictive-control/test_main.cpp c_plus_plus/
+ 1206  ls -ali c_plus_plus/
+ 1207  cp ~/Downloads/predicition_solution.py python/
+ 1208  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1209  ls -ail
+ 1210  rm -rf .git
+ 1211  git init
+ 1212  git status
+ 1213  rm README.md 
+ 1214  git add c_plus_plus/
+ 1215  git ad python/
+ 1216  git add python/
+ 1217  git add how_to_*
+ 1218  git status
+ 1219  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1220  git commit -m "initial commit"
+ 1221  git remote add origin git@github.com:wfs/sdc-term-3-l3-prediction.git
+ 1222  git push -u -f origin master
+ 1223  ls -ali
+ 1224  git status
+ 1225  ls -ali c_plus_plus/
+ 1226  mkdir tmp
+ 1227  mv c_plus_plus/* tmp/
+ 1228  ls c_plus_plus/
+ 1229  cp tmp/* c_plus_plus/
+ 1230  ls -ali c_plus_plus/
+ 1231  cd c_plus_plus/
+ 1232  rm *
+ 1233  rm -rf *
+ 1234  ls
+ 1235  ls -ltr
+ 1236  cd ../
+ 1237  ls -ltr
+ 1238  rm -rf c_plus_plus/
+ 1239  cd ../
+ 1240  rm -rf sdc-term-3-l3-prediction
+ 1241  git clone https://github.com/wfs/sdc-term-3-l3-prediction.git
+ 1242  cd sdc-term-3-l3-prediction/
+ 1243  ls -ltr
+ 1244  ls c_plus_plus/
+ 1245  mkdir tmp
+ 1246  cp ../../term2/sdc-term2-p5-model-predictive-control/CMakeLists.txt tmp/
+ 1247  git status
+ 1248  cp ../../term2/sdc-term2-p5-model-predictive-control/catch.hpp tmp/
+ 1249  cp ../../term2/sdc-term2-p5-model-predictive-control/main.cpp tmp/
+ 1250  cp ../../term2/sdc-term2-p5-model-predictive-control/test_main.cpp tmp/
+ 1251  rm -rf tmp
+ 1252  git status
+ 1253  git add c_plus_plus/main.cpp 
+ 1254  git add c_plus_plus/.idea/workspace.xml 
+ 1255  git add c_plus_plus/CMakeLists.txt 
+ 1256  ls -ali c_plus_plus/cmake-build-debug/
+ 1257  git add c_plus_plus/cmake-build-debug/c_plus_plus
+ 1258  git status
+ 1259  ls -ali
+ 1260  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1261  rm -rf .git
+ 1262  git init 
+ 1263  git status
+ 1264  cd c_plus_plus/
+ 1265  git status
+ 1266  cd ../
+ 1267  git add how_to_*
+ 1268  ls python/
+ 1269  git add python
+ 1270  git status
+ 1271  git add c_plus_plus/catch.hpp 
+ 1272  git status
+ 1273  cd c_plus_plus/
+ 1274  git add CMakeLists.txt 
+ 1275  git add main.cpp 
+ 1276  git add test_main.cpp 
+ 1277  git add .idea/workspace.xml 
+ 1278  git add cmake-build-debug/c_plus_plus
+ 1279  git status
+ 1280  cd ../
+ 1281  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1282  git commit -m "simple catch test working"
+ 1283  git remote add origin git@github.com:wfs/sdc-term-3-l3-prediction
+ 1284  git remote add origin git@github.com:wfs/sdc-term-3-l3-prediction.git
+ 1285  rm -rf .git
+ 1286  git init 
+ 1287  git add python/
+ 1288  git add how_to_*
+ 1289  git status
+ 1290  git add c_plus_plus/catch.hpp c_plus_plus/CMakeLists.txt c_plus_plus/cmake-build-debug/c_plus_plus
+ 1291  git add c_plus_plus/.idea/workspace.xml c_plus_plus/main.cpp c_plus_plus/test_main.cpp 
+ 1292  git status
+ 1293  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1294  git commit -m "simple catch test working"
+ 1295  git remote add origin git@github.com:wfs/sdc-term-3-l3-prediction.git
+ 1296  git push -u -f origin master
+ 1297  git status
+ 1298  vim ~/.bashrc
+ 1299  exit
+ 1300  cd ~/
+ 1301  which python
+ 1302  python --version
+ 1303  which virtualenv
+ 1304  which activate
+ 1305  ls -ali miniconda*
+ 1306  cd miniconda3/
+ 1307  ls
+ 1308  cd envs/
+ 1309  ls
+ 1310  which miniconda
+ 1311  which conda
+ 1312  cd ../
+ 1313  ls -ali conda
+ 1314  ls -ali
+ 1315  ls -ali ../miniconda2/bin/conda
+ 1316  ls -ali bin/conda
+ 1317  ./bin/conda --help
+ 1318  ls -ali envs/
+ 1319  ./bin/conda create --name term3_python3
+ 1320  which source
+ 1321  ls -ali envs/
+ 1322  locate source
+ 1323  locate source | grep -i conda
+ 1324  locate source | grep -i conda | grep -i bin
+ 1325  sudo updatedb
+ 1326  locate source
+ 1327  which source
+ 1328  ls -ali envs/
+ 1329  source activate term3_python3
+ 1330  ./bin/conda info --envs
+ 1331  source activate /home/andrew/miniconda3/envs/term3_python3
+ 1332  which pip
+ 1333  source deactivate
+ 1334  source activate ~/.bashrc
+ 1335  source ~/.bashrc
+ 1336  echo $PATH
+ 1337  exit
+ 1338  sudo apt-get update
+ 1339  sudo apt-get upgrade
+ 1340  ls -ltr
+ 1341  cd NVIDIA_CUDA-8.0_Samples/
+ 1342  ls -ali
+ 1343  lsmod | grep nouveau
+ 1344  nvidia-smi 
+ 1345  echo $PATH
+ 1346  ls /usr/local/cuda-8.0/bin/
+ 1347  echo $LD_LIBRARY_PATH
+ 1348  ls /usr/local/cuda-8.0/lib64
+ 1349  ls /usr/local/cuda-8.0/extras/CUPTI/lib64/
+ 1350  ls /usr/local/cuda-8.0/samples/
+ 1351  cat /proc/driver/nvidia/version
+ 1352  nvcc -V
+ 1353  ls
+ 1354  make
+ 1355  ls -ltr
+ 1356  cd bin
+ 1357  ls -ali
+ 1358  cd x86_64/linux/release/
+ 1359  ls -ali deviceQuery
+ 1360  ./deviceQuery
+ 1361  lsmod | grep nvidia
+ 1362  cd ~/Downloads/
+ 1363  ls -ltr
+ 1364  sudo sh cuda_8.0.61.2_linux.run
+ 1365  lsmod | grep nvidia
+ 1366  ./deviceQuery
+ 1367  cd ~/NVIDIA_CUDA-8.0_Samples/bin/x86_64/linux/release/
+ 1368  ./deviceQuery
+ 1369  cd ~/Downloads/
+ 1370  ls -ltr
+ 1371  history > history.txt
+ 1372  cat history.txt | grep -i cudnn
+ 1373  cat ~/.bashrc | grep -i caffe
+ 1374  ls caffe/
+ 1375  cd ../DIGITS/
+ 1376  ls -ali
+ 1377  ./digits-devserver 
+ 1378  ls -ltr ~/dev/term2/
+ 1379  exit
+ 1380  echo $PATH
+ 1381  cd DIGITS/
+ 1382  LS
+ 1383  ls
+ 1384  ls ~/dev/term3/sdc-term-3-l3-prediction/
+ 1385  exit
+ 1386  cd ~/dev/term3/sdc-term-3-l3-prediction/
+ 1387  ls
+ 1388  source activate term3_python3
+ 1389  which pip
+ 1390  source deactivate
+ 1391  source activate term3_python3
+ 1392  which python
+ 1393  git status
+ 1394  git add c_plus_plus/.idea/workspace.xml 
+ 1395  git add python/.idea/workspace.xml 
+ 1396  git add python/gaussian_naive_bayes_classifier_from_scratch.py 
+ 1397  git status
+ 1398  git commit -m "naive bayes in python by chris albon"
+ 1399  git push
+ 1400  git status
+ 1401  git add c_plus_plus/.idea/workspace.xml 
+ 1402  git add c_plus_plus/CMakeLists.txt 
+ 1403  git add c_plus_plus/cmake-build-debug/c_plus_plus
+ 1404  git add c_plus_plus/main.cpp 
+ 1405  git add c_plus_plus/test_labels.txt 
+ 1406  git add c_plus_plus/test_states.txt 
+ 1407  git add c_plus_plus/train_labels.txt 
+ 1408  git add c_plus_plus/train_states.txt 
+ 1409  git add c_plus_plus/classifier.cpp 
+ 1410  git add c_plus_plus/classifier.hpp 
+ 1411  git status
+ 1412  git add c_plus_plus/.idea/workspace.xml 
+ 1413  git commit -m "code boiler-plate code created"
+ 1414  git push
+ 1415  git status
+ 1416  git add c_plus_plus/.idea/workspace.xml 
+ 1417  git add c_plus_plus/classifier.cpp 
+ 1418  git add c_plus_plus/classifier.hpp 
+ 1419  git add c_plus_plus/cmake-build-debug/c_plus_plus
+ 1420  git add c_plus_plus/main.cpp 
+ 1421  git add c_plus_plus/data
+ 1422  git add c_plus_plus/test_labels.txt 
+ 1423  git add c_plus_plus/test_states.txt 
+ 1424  git add c_plus_plus/train_labels.txt 
+ 1425  git add c_plus_plus/train_states.txt 
+ 1426  git status
+ 1427  git commit -m "T3.L3.V16 quiz solved in C++"
+ 1428  git push
+ 1429  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1430  cd ../
+ 1431  git clone https://github.com/wfs/sdc-term-3-l4-behaviour-planning.git
+ 1432  cd sdc-term-3-l4-behaviour-planning/
+ 1433  rm -rf .git
+ 1434  mkdir c_plus_plus
+ 1435  mkdir python
+ 1436  cp ../sdc-term-3-l3-prediction/*.txt ./
+ 1437  ls -ali
+ 1438  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1439  ~/miniconda3/bin/python --version
+ 1440  cd c_plus_plus/ 
+ 1441  cp ../../sdc-term-3-l3-prediction/c_plus_plus/test_main.cpp ./
+ 1442  cp ../../sdc-term-3-l3-prediction/c_plus_plus/catch.hpp ./
+ 1443  cd ../
+ 1444  vim how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1445  git status
+ 1446  git init
+ 1447  git status
+ 1448  git add c_plus_plus
+ 1449  git add python
+ 1450  git add how_to_*
+ 1451  git status
+ 1452  ls -ali
+ 1453  rm README.md 
+ 1454  rm -rf .git
+ 1455  git init
+ 1456  git status
+ 1457  git add c_plus_plus/.idea/workspace.xml 
+ 1458  git add c_plus_plus/catch.hpp c_plus_plus/cmake-build-debug/c_plus_plus
+ 1459  git add c_plus_plus/CMakeLists.txt c_plus_plus/main.cpp c_plus_plus/test_main.cpp 
+ 1460  git status
+ 1461  git add how_to_*
+ 1462  git add python/.idea/workspace.xml 
+ 1463  git add python/cost_functions.py python/road.py python/simulate_behavior.py python/vehicle.py 
+ 1464  git status
+ 1465  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1466  git commit -m "initial commit"
+ 1467  git remote add origin git@github.com:wfs/sdc-term-3-l4-behaviour-planning.git
+ 1468  git push -u -f origin master
+ 1469  git status
+ 1470  gi add c_plus_plus/.idea/workspace.xml 
+ 1471  git add c_plus_plus/.idea/workspace.xml 
+ 1472  git add c_plus_plus/CMakeLists.txt c_plus_plus/cmake-build-debug/c_plus_plus
+ 1473  git add c_plus_plus/main.cpp 
+ 1474  git status
+ 1475  git add c_plus_plus/road.cpp c_plus_plus/road.hpp c_plus_plus/vehicle.hpp c_plus_plus/vehicle.cpp 
+ 1476  git status
+ 1477  git commit -m "c++ working before full solution added"
+ 1478  git push
+ 1479  git status
+ 1480  git add c_plus_plus/.idea/workspace.xml c_plus_plus/CMakeLists.txt c_plus_plus/cmake-build-debug/c_plus_plus c_plus_plus/road.hpp c_plus_plus/road.cpp c_plus_plus/vehicle.hpp c_plus_plus/vehicle.cpp 
+ 1481  git status
+ 1482  git commit -m "got to the goal in 36 seconds, too slow!"
+ 1483  git push
+ 1484  cd ../
+ 1485  clear
+ 1486  git clone https://github.com/wfs/sdc-term-3-l5-trajectory-generation.git
+ 1487  cd sdc-term-3-l5-trajectory-generation/
+ 1488  cp ../sdc-term-3-l4-behaviour-planning/*.txt ./
+ 1489  ls
+ 1490  rm README.md 
+ 1491  rm -rf .git
+ 1492  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1493  cp ../sdc-term-3-l4-behaviour-planning/c_plus_plus/catch.hpp ./
+ 1494  cp ../sdc-term-3-l4-behaviour-planning/c_plus_plus/test_main.cpp ./
+ 1495  git init
+ 1496  git status
+ 1497  git add .idea/workspace.xml 
+ 1498  git add *.txt
+ 1499  git add catch.hpp 
+ 1500  ls -ali cmake-build-debug/
+ 1501  git add cmake-build-debug/sdc_term_3_l5_trajectory_generation
+ 1502  git add hybrid_breadth_first.hpp 
+ 1503  git add hybrid_breadth_first.cpp 
+ 1504  git add main.cpp 
+ 1505  git add test_main.cpp 
+ 1506  git status
+ 1507  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1508  git commit -m "initial commit"
+ 1509  git remote add origin git@github.com:wfs/sdc-term-3-l5-trajectory-generation.git
+ 1510  git push -u -f origin master
+ 1511  git status
+ 1512  git add .idea/workspace.xml 
+ 1513  git add cmake-build-debug/sdc_term_3_l5_trajectory_generation
+ 1514  git add hybrid_breadth_first.*
+ 1515  git status
+ 1516  git commit -m "solution"
+ 1517  git push
+ 1518  cd ../
+ 1519  git clone https://github.com/wfs/sdc-term-3-l5-minimal-jerk.git
+ 1520  source deactivate
+ 1521  cd sdc-term-3-l5-minimal-jerk/
+ 1522  rm -rf .git
+ 1523  cp ../sdc-term-3-l5-trajectory-generation/*.txt ./
+ 1524  mkdir cpp
+ 1525  mkdir python
+ 1526  ls
+ 1527  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1528  cd cpp/
+ 1529  cp ../../sdc-term-3-l5-trajectory-generation/catch.hpp ./
+ 1530  cp ../../sdc-term-3-l5-trajectory-generation/test_main.cpp ./
+ 1531  cd ../../sdc-term-3-l5-trajectory-generation/
+ 1532  git status
+ 1533  git add .idea/workspace.xml 
+ 1534  git add hybrid_breadth_first.*
+ 1535  git add main.cpp 
+ 1536  git commit -m "reformatted code only"
+ 1537  git push
+ 1538  cd ../
+ 1539  clear
+ 1540  git clone https://github.com/wfs/sdc-term-3-l5-trajectory-exercise.git
+ 1541  cd sdc-term-3-l5-trajectory-exercise/
+ 1542  rm -rf .git
+ 1543  cp ../sdc-term-3-l5-minimal-jerk/*.txt ./
+ 1544  ls -ali
+ 1545  rm CMakeLists.txt 
+ 1546  re README.md 
+ 1547  rm README.md 
+ 1548  ls
+ 1549  ls -ali
+ 1550  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1551  ls -ali
+ 1552  git init
+ 1553  git status
+ 1554  git add .idea/workspace.xml 
+ 1555  git add constants.py 
+ 1556  git add cost_functions.py 
+ 1557  git add evaluate_ptg.py 
+ 1558  git add helpers.py 
+ 1559  git add how*
+ 1560  git add ptg.py 
+ 1561  git status
+ 1562  git commit -m "initial commit"
+ 1563  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1564  git remote add origin git@github.com:wfs/sdc-term-3-l5-trajectory-exercise.git
+ 1565  git push -u -f origin master
+ 1566  git status
+ 1567  git add .idea/workspace.xml 
+ 1568  git add ptg.py 
+ 1569  git commit -m "only weights added"
+ 1570  git push
+ 1571  git status
+ 1572  git add .idea/workspace.xml 
+ 1573  git add constants.py 
+ 1574  git add cost_functions.py 
+ 1575  git add evaluate_ptg.py 
+ 1576  git add helpers.py 
+ 1577  git add ptg.py 
+ 1578  git commit -m "only code reformatting"
+ 1579  git push
+ 1580  cd ~/Desktop/
+ 1581  ls -ltr
+ 1582  ffmpeg -i ae-12.ogv -crf 18 path_planning.mp4
+ 1583  which ffmpeg
+ 1584  sudo apt-get install ffmpeg
+ 1585  ffmpeg -i ae-12.ogv -crf 18 path_planning.mp4
+ 1586  ls -ltr
+ 1587  ./mkgif.sh 10 640 0:32 5 path_planning.mp4 behaviour_1_maintain_safe_distance.gif
+ 1588  ls -ltr
+ 1589  ./mkgif.sh 10 640 0:37 5 path_planning.mp4 behaviour_2_safe_overtake_on_left.gif
+ 1590  ./mkgif.sh 10 640 1:05 5 path_planning.mp4 behaviour_3_safe_overtake_on_right.gif
+ 1591  ./mkgif.sh 10 640 1:36 5 path_planning.mp4 behaviour_3_safe_overtake_on_right.gif
+ 1592  ./mkgif.sh 10 640 1:37 5 path_planning.mp4 behaviour_3_safe_overtake_on_right.gif
+ 1593  exit
+ 1594  cd 
+ 1595  cd dev/term3/term3_sim_linux/
+ 1596  ls -ali
+ 1597  chmod +x term3_sim.x86_64 
+ 1598  ls -ali
+ 1599  cd ../
+ 1600  ls -ali
+ 1601  git clone https://github.com/wfs/sdc-term3-p1-path-planning.git
+ 1602  cd sdc-term3-p1-path-planning/
+ 1603  ls -ali
+ 1604  rm -rf .git
+ 1605  ls -ltr ../
+ 1606  ls -ali
+ 1607  mkdir build && cd build
+ 1608  cmake .. && make
+ 1609  ./path_planning 
+ 1610  cd ../
+ 1611  ls -ltr ../
+ 1612  cp ../sdc-term-3-l5-trajectory-exercise/how_to* ./
+ 1613  ls -ali
+ 1614  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1615  git init
+ 1616  git status
+ 1617  git add CMakeLists.txt README.md build/path_planning cmakepatch.txt data how_to_* src/Eigen-3.3/Eigen/Core src/Eigen-3.3/Eigen/Dense 
+ 1618  git status
+ 1619  git add src/json.hpp src/main.cpp 
+ 1620  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1621  git commit -m "1st commit of udacity provided code"
+ 1622  git remote add origin git@github.com:wfs/sdc-term3-p1-path-planning.git
+ 1623  git push -u -f origin master
+ 1624  git status
+ 1625  git add .idea/workspace.xml cmake-build-debug/path_planning 
+ 1626  git commit -m "ide running udacity code"
+ 1627  git push
+ 1628  cd src/
+ 1629  cp ../../sdc-term-3-l5-minimal-jerk/cpp/test_main.cpp ./
+ 1630  cp ../../sdc-term-3-l5-minimal-jerk/cpp/catch.hpp ./
+ 1631  cd ../
+ 1632  git status
+ 1633  git add src/catch.hpp src/test_main.cpp .idea/workspace.xml CMakeLists.txt cmake-build-debug/path_planning src/main.cpp 
+ 1634  git commit -m "Hello world BDD-style test works"
+ 1635  git push
+ 1636  git status
+ 1637  git add .idea/workspace.xml CMakeLists.txt cmake-build-debug/path_planning src/main.cpp 
+ 1638  git commit -m "Ready to start project walk thru video"
+ 1639  git push
+ 1640  cd build/
+ 1641  cmake .. && make
+ 1642  ./path_planning 
+ 1643  cd ../
+ 1644  git status
+ 1645  git add .idea/workspace.xml build/path_planning cmake-build-debug/path_planning src/main.cpp 
+ 1646  git commit -m "car drives in straight line constant velocity"
+ 1647  git push
+ 1648  git status
+ 1649  git add src/spline.hpp 
+ 1650  git add .idea/workspace.xml 
+ 1651  git add CMakeLists.txt src/main.cpp cmake-build-debug/path_planning 
+ 1652  git status
+ 1653  git commit -m "spline trajectory added. missing behaviour lane changing."
+ 1654  git push
+ 1655  mkdir bkp
+ 1656  cp src/main.cpp bkp/main.cpp.bkp
+ 1657  ls -ali src/main.cpp 
+ 1658  ls -ali bkp/main.cpp.bkp 
+ 1659  cp src/main.cpp bkp/main.cpp.priya.bkp
+ 1660  ls -ali bkp/
+ 1661  cp bkp/main.cpp.bkp src/main.cpp 
+ 1662  cp src/spline.hpp bkp/
+ 1663  git status
+ 1664  git add .idea/workspace.xml 
+ 1665  cd build/
+ 1666  history | grep -i cmake
+ 1667  cmake .. && make
+ 1668  cd ../
+ 1669  git status
+ 1670  git add build/path_planning 
+ 1671  git add cmake-build-debug/path_planning 
+ 1672  git add src/main.cpp 
+ 1673  git add src/spline.hpp 
+ 1674  git commit -m "1 lap without violation"
+ 1675  git push
+ 1676  git status
+ 1677  git add .idea/workspace.xml 
+ 1678  git add README.md 
+ 1679  git add cmake-build-debug/path_planning 
+ 1680  git add src/main.cpp 
+ 1681  git add data/one_lap.png 
+ 1682  git commit -m "WIP on README.md"
+ 1683  git push
+ 1684  git status
+ 1685  git add .idea/workspace.xml 
+ 1686  git add CMakeLists.txt 
+ 1687  git add cmake-build-debug/path_planning 
+ 1688  git add src/main.cpp 
+ 1689  git add src/ego_vehicle.cpp 
+ 1690  git add src/ego_vehicle.hpp 
+ 1691  git commit -m "ego_vehicle class added"
+ 1692  git push
+ 1693  cp src/main.cpp bkp/main.bkp
+ 1694  git status
+ 1695  git add .idea/workspace.xml 
+ 1696  git add CMakeLists.txt 
+ 1697  git add cmake-build-debug/path_planning 
+ 1698  git add src/ego_vehicle.cpp 
+ 1699  git add src/ego_vehicle.hpp 
+ 1700  git add src/main.cpp 
+ 1701  git commit -m "documenting working code"
+ 1702  git push
+ 1703  git status
+ 1704  git add .idea/workspace.xml 
+ 1705  git add cmake-build-debug/path_planning 
+ 1706  git add src/ego_vehicle.hpp 
+ 1707  git add src/ego_vehicle.cpp 
+ 1708  git add src/main.cpp 
+ 1709  git commit -m "added updateEgoCarLocalisation()"
+ 1710  git push
+ 1711  cd build/
+ 1712  history | grep cmake
+ 1713  cmake .. && make
+ 1714  git status
+ 1715  cd ../
+ 1716  git status
+ 1717  git add src/traffic.hpp src/traffic.cpp 
+ 1718  git add .idea/workspace.xml 
+ 1719  git add CMakeLists.txt 
+ 1720  git add build/path_planning 
+ 1721  git add cmake-build-debug/path_planning 
+ 1722  git add src/ego_vehicle.cpp 
+ 1723  git add src/ego_vehicle.hpp 
+ 1724  git add src/main.cpp 
+ 1725  git commit -m "added class traffic"
+ 1726  git push
+ 1727  cd build/
+ 1728  cmake .. && make
+ 1729  cd ../
+ 1730  cd build/
+ 1731  cmake .. && make
+ 1732  cd ../
+ 1733  git status
+ 1734  git add .idea/workspace.xml 
+ 1735  git add build/path_planning 
+ 1736  git add cmake-build-debug/path_planning 
+ 1737  git add src/main.cpp 
+ 1738  git commit -m "fine-tuning some params"
+ 1739  git push
+ 1740  git status
+ 1741  git add data/spline_anchors_sketch.png 
+ 1742  git status
+ 1743  git add .idea/workspace.xml 
+ 1744  git add README.md 
+ 1745  git add src/main.cpp 
+ 1746  git commit -m "updated README.md"
+ 1747  git push
+ 1748  git status
+ 1749  git add README.md 
+ 1750  git commit -m "make images show"
+ 1751  git push
+ 1752  cd ~/pycharm-2017.2.1/
+ 1753  ls -ali
+ 1754  cd bin/
+ 1755  ls -ali
+ 1756  ./pycharm.sh 
+ 1757  cd ~/Desktop/
+ 1758  ls -ltr
+ 1759  chmod + x Link\ to\ pycharm.sh 
+ 1760  which rename
+ 1761  rename Link\ to\ pycharm.sh pycharm_20170201.sh
+ 1762  rename "Link\ to\ pycharm.sh" pycharm_20170201.sh
+ 1763  rename /?
+ 1764  rename --help
+ 1765  which ren
+ 1766  chmod +x Link\ to\ pycharm.sh 
+ 1767  ls -ltr
+ 1768  cd ../pycharm-2017.2.1/bin/
+ 1769  ./pycharm.sh &
+ 1770  cd ~/dev/term3/sdc-term3-m2-e1-ann-l9-fcn/
+ 1771  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1772  vim how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1773  clear
+ 1774  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1775  exit
+ 1776  cd ~/dev/term3/
+ 1777  ls -ltr
+ 1778  git clone 
+ 1779  git clone https://github.com/wfs/sdc-term3-m2-e1-ann-l9-fcn.git
+ 1780  ls -ltr
+ 1781  cd sdc-term3-m2-e1-ann-l9-fcn/
+ 1782  ls -ali
+ 1783  rm -rf .git
+ 1784  cp ../sdc-term-3-l5-trajectory-exercise/how_to_* ./
+ 1785  ls -ali
+ 1786  cd ~/
+ 1787  sudo apt-get update
+ 1788  sudo apt-get upgrade
+ 1789  sudo apt-get update
+ 1790  sudo apt-get upgrade
+ 1791  sudo apt autoremove
+ 1792  sudo apt-get update
+ 1793  sudo apt-get upgrade
+ 1794  exit
+ 1795  python -c 'import tensorflow as tf; print(tf.__version__)'
+ 1796  python --version
+ 1797  cd pycharm-2017.2.1/bin/
+ 1798  ./pycharm.sh &
+ 1799  cd ~/dev/term3/sdc-term3-m2-e1-ann-l9-fcn/
+ 1800  ls -ali
+ 1801  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1802  git init
+ 1803  git status
+ 1804  git add .idea/workspace.xml 
+ 1805  git add how_to_*
+ 1806  git add 1_x_1_convolution.py 
+ 1807  git commit -m "1x1 conv quizz"
+ 1808  git push
+ 1809  git status
+ 1810  git remote add origin git@github.com:wfs/sdc-term3-m2-e1-ann-l9-fcn.git
+ 1811  git push -u -f origin master
+ 1812  git status
+ 1813  git add .idea/workspace.xml 
+ 1814  git add transposed_convolution.py 
+ 1815  git commit -m "finished lesson 9"
+ 1816  git push
+ 1817  git status
+ 1818  cd ../
+ 1819  git clone https://github.com/wfs/sdc-term3-m2-e1-ann-l10-scene-understanding.git
+ 1820  cd sdc-term3-m2-e1-ann-l10-scene-understanding/
+ 1821  cp ../sdc-term3-m2-e1-ann-l9-fcn/*.txt ./
+ 1822  ls
+ 1823  ls -ali
+ 1824  rm -rf .git
+ 1825  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1826  which conda
+ 1827  conda --help
+ 1828  ls -ali ~/miniconda/env
+ 1829  ls ~/miniconda/
+ 1830  ls
+ 1831  cd ~/
+ 1832  ls
+ 1833  cd miniconda
+ 1834  ls
+ 1835  ls miniconda3/
+ 1836  ls
+ 1837  which conda
+ 1838  ls miniconda3/envs/
+ 1839  source activate tensorflow
+ 1840  which conda
+ 1841  which python
+ 1842  conda install -c anaconda tensorflow-gpu
+ 1843  conda list
+ 1844  conda install -c anaconda tensorflow-gpu
+ 1845  cd dev/term3/sdc-term3-m2-e1-ann-l10-scene-understanding/
+ 1846  ls -ltr
+ 1847  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1848  git init
+ 1849  git status
+ 1850  ls -ali .idea/
+ 1851  ls -ali .idea/dictionaries/
+ 1852  ls -ali .idea/inspectionProfiles/
+ 1853  git add .idea
+ 1854  git add apply_mean_iou_to_example_prediction.py 
+ 1855  git add how_to_*
+ 1856  git status
+ 1857  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1858  git commit -m "solution"
+ 1859  git remote add origin git@github.com:wfs/sdc-term3-m2-e1-ann-l10-scene-understanding.git
+ 1860  git push -u -f origin master
+ 1861  cd ~/Downloads/
+ 1862  ls -ltr
+ 1863  chmod 400 demo3.pem
+ 1864  ls -ali demo3.pem
+ 1865  which ssh
+ 1866  ssh -i "demo3.pem" root@10.0.51.13
+ 1867  ssh -i "demo3.pem" ubuntu@10.0.51.13
+ 1868  ssh -i "demo3.pem" root@10.0.51.13
+ 1869  ssh -i "demo3.pem" root@13.56.148.241
+ 1870  ls -ali demo.pem
+ 1871  chmod 400 demo.pem
+ 1872  ls -ali demo.pem
+ 1873  ssh -i "demo.pem" root@13.56.183.118
+ 1874  ping eipassoc-a388019f
+ 1875  ping 52.9.226.10
+ 1876  ls -ali ohio.pem
+ 1877  chmod 400 ohio.pem
+ 1878  ls -ali ohio.pem
+ 1879  ssh -i "ohio.pem" root@ec2-18-220-126-178.us-east-2.compute.amazonaws.com
+ 1880  ssh -i "ohio.pem" ubuntu@ec2-18-220-126-178.us-east-2.compute.amazonaws.com
+ 1881  cd Do
+ 1882  cd Downloads/
+ 1883  ls -ltr
+ 1884  ssh -i "ohio.pem" ubuntu@ec2-18-220-126-178.us-east-2.compute.amazonaws.com
+ 1885  conda list
+ 1886  which pip
+ 1887  ls -ali
+ 1888  which python
+ 1889  python ./main.py 
+ 1890  cd ~/pycharm-2017.2.2/
+ 1891  ls
+ 1892  cd bin/
+ 1893  ls -ali
+ 1894  ./pycharm.sh 
+ 1895  ./pycharm.sh &
+ 1896  exit
+ 1897  cd dev/term3/
+ 1898  git clone 
+ 1899  git clone https://github.com/wfs/sdc-term3-p2-semantic-segmentation.git
+ 1900  cd sdc-term3-p2-semantic-segmentation/
+ 1901  ls -ali
+ 1902  rm -rf .git
+ 1903  cd ../sdc-term3-m2-e1-ann-l10-scene-understanding/*.txt ./
+ 1904  cp ../sdc-term3-m2-e1-ann-l10-scene-understanding/*.txt ./
+ 1905  ls -ali
+ 1906  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1907  history | grep -i activate
+ 1908  ls ../
+ 1909  mkdir ../bkp
+ 1910  mv helper.py ../bkp/
+ 1911  mv main.py ../bkp/
+ 1912  mv project_tests.py ../bkp/
+ 1913  ls 
+ 1914  ls -ali
+ 1915  cp ../bkp/*.py ./
+ 1916  ls -ltr
+ 1917  rm *.py
+ 1918  ls
+ 1919  ls -ali
+ 1920  cp *.txt ../bkp/
+ 1921  dp -rf data ../bkp/
+ 1922  cp -rf data ../bkp/
+ 1923  ls ../bkp/
+ 1924  tree ../bkp
+ 1925  ls -ali
+ 1926  rm -rf .idea
+ 1927  cat how_to_override_remote_master_github_repo_with_local_origin.txt 
+ 1928  ls -ltr
+ 1929  ls -ali
+ 1930  git init
+ 1931  git status
+ 1932  git add .idea
+ 1933  git add README.md 
+ 1934  git add helper.py how_to_* main.py project_tests.py 
+ 1935  mkdir images
+ 1936  git status
+ 1937  git add .idea/workspace.xml 
+ 1938  git add images
+ 1939  git status
+ 1940  git add .idea/vcs.xml 
+ 1941  git commit -m "Runs but garbage results. Will try higher epochs."
+ 1942  git remote add origin git@github.com:wfs/sdc-term3-p2-semantic-segmentation.git
+ 1943  git push -u -f origin master
+ 1944  ls -ali images/
+ 1945  git status
+ 1946  git add .idea/workspace.xml README.md main.py 
+ 1947  git add runs/1504347608.95833/uu_000001.png
+ 1948  git add runs/1504353810.2508209/uu_000001.png
+ 1949  git status
+ 1950  git commit -m "project submission"
+ 1951  git push
+ 1952  exit
+ 1953  sudo apt-get upadte
+ 1954  sudo apt-get update
+ 1955  exit
+ 1956  pwd
+ 1957  ls -lah
+ 1958  chown andrew:andrew .Xauthority 
+ 1959  ls -ali .Xauthority 
+ 1960  sudo reboot
+ 1961  la -ali /tmp
+ 1962  ls -ld /tmp
+ 1963  sudo apt-get update
+ 1964  sudo apt-get upgrade
+ 1965  ls -ali .Xauthority 
+ 1966  mv .Xauthority .Xauthority.bkp
+ 1967  exit
+ 1968  sudo apt-get purge lightdm
+ 1969  ping google.com
+ 1970  sudo apt-get purge lightdm
+ 1971  sudo apt-get install lightdm
+ 1972  dpkg-reconfigure lightdm
+ 1973  sudo dpkg-reconfigure lightdm
+ 1974  sudo reboot
+ 1975  grep EE /var/log/Xorg.0.log
+ 1976  apt-cache search nvidia | grep -P '^nvidia-[0-9]+\s'
+ 1977  nvidia-smi
+ 1978  sudo apt-get purge nvidia-*
+ 1979  sudo add-apt-repository ppa:graphics-drivers/ppa
+ 1980  sudo apt-get update
+ 1981  sudo apt-get install nvidia-375
+ 1982  sudo reboot
+ 1983  cd Downloads/
+ 1984  ls -ltr
+ 1985  clear
+ 1986  cd Downloads/
+ 1987  ls -ltr
+ 1988  md5sum virtualbox-5.1_5.1.28-117968-Ubuntu-xenial_amd64.deb 
+ 1989  wget https://s3-us-west-1.amazonaws.com/udacity-selfdrivingcar/Udacity_VM_Base_V1.0.0.zip
+ 1990  ls -ltr
+ 1991  md5sum Udacity_VM_Base_V1.0.0.zip 
+ 1992  unzip DroneControlSystem-master.zip 
+ 1993  ls -ltr
+ 1994  ls -ali DroneControlSystem-master
+ 1995  cd DroneControlSystem-master/
+ 1996  grep -irn constrain\(
+ 1997  cd ../
+ 1998  ls -ali Udacity_VM_Base_V1.0.0.zip 
+ 1999  unzip Udacity_VM_Base_V1.0.0.zip 
+ 2000  exit
+ 2001  cd ~/
+ 2002  sudo apt-get udpate
+ 2003  sudo apt-get update
+ 2004  sudo apt-get upgrade
+ 2005  sudo apt autoremove
+ 2006  source /opt/ros/kinetic/setup.bash
+ 2007  sudo apt-get install python-rosinstall python-rosinstall-generator python-wstool build-essential
+ 2008  printenv | grep ROS
+ 2009  source /opt/ros/kinetic/setup.bash
+ 2010  mkdir -p ~/catkin_ws/src
+ 2011  cd catkin_ws/
+ 2012  catkin_make
+ 2013  echo $ROS_PACKAGE_PATH
+ 2014  ls ~/miniconda3/envs/
+ 2015  source activate tensorflow
+ 2016  catkin_make
+ 2017  which python
+ 2018  python -V
+ 2019  source deactivate
+ 2020  python -V
+ 2021  sudo apt-get install python-catkin-pkg
+ 2022  echo $PYTHONPATH
+ 2023  clear
+ 2024  echo $PYTHONPATH
+ 2025  python -V
+ 2026  python
+ 2027  pip install catkin_pkg
+ 2028  catkin_make
+ 2029  source devel/setup.bash 
+ 2030  echo $ROS_PACKAGE_PATH
+ 2031  ls -ali
+ 2032  bash <(wget -q -O - https://bitbucket.org/DataspeedInc/dbw_mkz_ros/raw/default/dbw_mkz/scripts/sdk_install.bash)
+ 2033  cd ~/dev/term3/sdc-term3-p4-capstone-carla/ros/
+ 2034  catkin_make
+ 2035  cd ~/catkin_ws/
+ 2036  source activate tensorflow
+ 2037  catkin_make
+ 2038  cd ~/dev/term3/sdc-term3-p4-capstone-carla/ros/
+ 2039  catkin_make
+ 2040  cd ~/catkin_ws/
+ 2041  source deactivate
+ 2042  rospack find roscpp
+ 2043  la -ali ~/.ros
+ 2044  pip install empy
+ 2045  cd ~/dev/term3/sdc-term3-p4-capstone-carla/ros/
+ 2046  catkin_make
+ 2047  source devel/setup.sh 
+ 2048  roslaunch launch/styx.launch 
+ 2049  pip --help
+ 2050  pip list
+ 2051  pip list | grep -i flask
+ 2052  pip list > pip_list.txt
+ 2053  pip list | grep -i attrdict
+ 2054  pip list | grep -i eventlet
+ 2055  pip list | grep -i python-socketio
+ 2056  pip list | grep -i numpy
+ 2057  pip list | grep -i pillow
+ 2058  pip list | grep -i scipy
+ 2059  pip list | grep -i keras
+ 2060  pip list | grep -i tensorflow
+ 2061  pip list | grep -i h5py
+ 2062  pip install Flask
+ 2063  pip install attrdict
+ 2064  pip install eventlet
+ 2065  pip install python-socketio
+ 2066  pip --hep
+ 2067  pip --help
+ 2068  pip show numpy
+ 2069  pip install numpy
+ 2070  pip uninstall numpy
+ 2071  pip install numpy>=1.13.1
+ 2072  pip list | grep -i numpy
+ 2073  pip show Flask
+ 2074  pip show attrdict
+ 2075  pip show eventlet
+ 2076  pip show python-socketio
+ 2077  pip show numpy
+ 2078  pip show Pillow
+ 2079  pip install Pillow
+ 2080  pip show scipy
+ 2081  pip install scipy
+ 2082  pip show tensorflow
+ 2083  pip show keras
+ 2084  pip install keras
+ 2085  pip show h5py
+ 2086  pip install h5py
+ 2087  clear
+ 2088  roslaunch launch/styx.launch 
+ 2089  history > history.txt

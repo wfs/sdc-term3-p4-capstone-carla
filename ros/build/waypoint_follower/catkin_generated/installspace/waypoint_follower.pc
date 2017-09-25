@@ -1,0 +1,8 @@
+prefix=/home/andrew/dev/term3/sdc-term3-p4-capstone-carla/ros/install
+
+Name: waypoint_follower
+Description: Description of waypoint_follower
+Version: 0.0.0
+Cflags: -I/home/andrew/dev/term3/sdc-term3-p4-capstone-carla/ros/install/include
+Libs: -L/home/andrew/dev/term3/sdc-term3-p4-capstone-carla/ros/install/lib -llibwaypoint_follower
+Requires: roscpp std_msgs tf geometry_msgs styx_msgs
