@@ -54,7 +54,17 @@ class DBWNode(object):
                                          BrakeCmd, queue_size=1)
 
         # TODO: Create `TwistController` object
-        # self.controller = TwistController(<Arguments you wish to provide>)
+        # self.controller = TwistController(twist_target_linear_velocity_subscribed,
+        #                                   twist_target_angular_velocity_subscribed,
+        #                                   current_velocity_subscribed,
+        #                                   transition_time_seconds,
+        #                                   cross_track_error,
+        #                                   max_steer_angle,
+        #                                   wheel_base,
+        #                                   steer_ratio,
+        #                                   max_lat_accel,
+        #                                   max_steer_angle
+        # )
 
         # TODO: Subscribe to all the topics you need to
 
