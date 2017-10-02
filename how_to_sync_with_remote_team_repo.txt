@@ -1,0 +1,9 @@
+https://www.atlassian.com/git/tutorials/syncing#git-pull
+
+git fetch --dry-run
+git pull --rebase origin
+git log
+git log --graph --decorate
+git shortlog
+git log --graph --oneline --decorate
+git diff 3e09ccf 7a549b5

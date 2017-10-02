@@ -29,6 +29,9 @@ git clone https://github.com/udacity/CarND-Capstone.git
 cd CarND-Capstone
 pip install -r requirements.txt
 ```
+2.1 OPTIONAL : Install python dependencies for diagnostics tool
+python -m pip install pygame moviepy
+
 3. Make and run styx
 ```bash
 cd ros

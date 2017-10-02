@@ -1,10 +1,15 @@
 #!/usr/bin/env python
 
 import rospy
-from geometry_msgs.msg import PoseStamped
-from styx_msgs.msg import Lane, Waypoint
+from tf import transformations
 
-import math
+from geometry_msgs.msg import PoseStamped
+from styx_msgs.msg import Lane, Waypoint, TrafficLightArray
+
+from math import cos, sin
+from copy import deepcopy
+
+FORWARD_SCAN_WPS = 200
 
 '''
 This node will publish waypoints from the car's current position to some `x` distance ahead.
@@ -21,54 +26,130 @@ as well as to verify your TL classifier.
 TODO (for Yousuf and Aaron): Stopline location for each traffic light.
 '''
 
-LOOKAHEAD_WPS = 200 # Number of waypoints we will publish. You can change this number
-
 
 class WaypointUpdater(object):
     def __init__(self):
         rospy.init_node('waypoint_updater')
 
+        # Subscribers
         rospy.Subscriber('/current_pose', PoseStamped, self.pose_cb)
         rospy.Subscriber('/base_waypoints', Lane, self.waypoints_cb)
 
         # TODO: Add a subscriber for /traffic_waypoint and /obstacle_waypoint below
+        rospy.Subscriber('vehicle/traffic_lights', TrafficLightArray, self.traffic_lights_cb)  # Simulator data
 
-
-        self.final_waypoints_pub = rospy.Publisher('final_waypoints', Lane, queue_size=1)
+        # Publishers
+        self.final_waypoints_pub = rospy.Publisher('/final_waypoints', Lane, queue_size=1)
 
         # TODO: Add other member variables you need below
+        self.current_ego_pose = None  # ego car current position and orientation
+        self.base_waypoints = None
+        self.traffic_lights = None
+        self.frame_id = None
 
-        rospy.spin()
+        self.loop()
 
-    def pose_cb(self, msg):
-        # TODO: Implement
-        pass
+    def loop(self):
+        rate = rospy.Rate(10)
 
-    def waypoints_cb(self, waypoints):
-        # TODO: Implement
-        pass
+        while not rospy.is_shutdown():
+            rate.sleep()
 
-    def traffic_cb(self, msg):
+            if self.base_waypoints is None or self.current_ego_pose is None or self.frame_id is None:
+                continue
+
+            car_index = self.get_closest_waypoint_index(self.current_ego_pose, self.base_waypoints)
+
+            lookahead_waypoints = self.get_next_waypoints(self.base_waypoints, car_index, FORWARD_SCAN_WPS)
+
+            # Publish
+            lane = self.create_lane(self.frame_id, lookahead_waypoints)
+            self.final_waypoints_pub.publish(lane)
+
+    def pose_cb(self, message):
+        self.current_ego_pose = message.pose  # store location (x, y)
+        self.frame_id = message.header.frame_id
+
+    def waypoints_cb(self, message):
+        self.base_waypoints = message.waypoints
+
+    def traffic_lights_cb(self, message):
+        self.traffic_lights = message.lights
+
+    def traffic_cb(self, message):
         # TODO: Callback for /traffic_waypoint message. Implement
         pass
 
-    def obstacle_cb(self, msg):
+    def obstacle_cb(self, message):
         # TODO: Callback for /obstacle_waypoint message. We will implement it later
         pass
 
-    def get_waypoint_velocity(self, waypoint):
-        return waypoint.twist.twist.linear.x
+    def get_next_waypoints(self, waypoints, i, n):
+        """ Returns a list of waypoints ahead of the ego car """
+        m = min(len(waypoints), i + n)
+        return deepcopy(waypoints[i:m])
 
-    def set_waypoint_velocity(self, waypoints, waypoint, velocity):
-        waypoints[waypoint].twist.twist.linear.x = velocity
+    def get_closest_waypoint_index(self, pose, waypoints):
+        """ Returns index of the closest waypoint """
+        best_distance = float('inf')
+        best_waypoint_index = 0
+        my_position = pose.position
 
-    def distance(self, waypoints, wp1, wp2):
-        dist = 0
-        dl = lambda a, b: math.sqrt((a.x-b.x)**2 + (a.y-b.y)**2  + (a.z-b.z)**2)
-        for i in range(wp1, wp2+1):
-            dist += dl(waypoints[wp1].pose.pose.position, waypoints[i].pose.pose.position)
-            wp1 = i
-        return dist
+        for i, waypoint in enumerate(waypoints):
+
+            a_waypoint_position = waypoint.pose.pose.position
+            gap = self.get_distance_between_two_points(my_position, a_waypoint_position)
+
+            if gap < best_distance:
+                best_waypoint_index, best_distance = i, gap
+
+        is_behind = self.is_waypoint_behind_ego_car(pose, waypoints[best_waypoint_index])
+        if is_behind:
+            best_waypoint_index += 1
+        return best_waypoint_index
+
+    def get_distance_between_two_points(self, a, b):
+        """ Returns distance between two points """
+        dx = a.x - b.x
+        dy = a.y - b.y
+        return dx * dx + dy * dy
+
+    def is_waypoint_behind_ego_car(self, pose, waypoint):
+        """ Do transformation that sets origin to the ego car position, oriented along x-axis and
+        return True if the waypoint is behind the ego car,  False if in front
+
+        See Linear transformations and matrices | Essence of linear algebra, chapter 3 - https://youtu.be/P2LTAUO1TdA
+        See Change of basis | Essence of linear algebra, chapter 9 - https://youtu.be/P2LTAUO1TdA
+        or Khan Academy -
+        https://www.khanacademy.org/math/precalculus/precalc-matrices/matrices-as-transformations/v/transforming-position-vector
+        """
+        _, _, yaw = self.get_Euler(pose)
+        origin_x = pose.position.x
+        origin_y = pose.position.y
+
+        shift_x = waypoint.pose.pose.position.x - origin_x
+        shift_y = waypoint.pose.pose.position.y - origin_y
+
+        x = shift_x * cos(0 - yaw) - shift_y * sin(0 - yaw)
+
+        if x > 0:
+            return False
+        return True
+
+    def get_Euler(self, pose):
+        """ Returns roll (float), pitch (float), yaw (float) from a Quaternion.
+
+        See ROS Quaternion Basics for usage - http://wiki.ros.org/Tutorials/Quaternions
+        """
+        return transformations.euler_from_quaternion(
+            [pose.orientation.x, pose.orientation.y, pose.orientation.z, pose.orientation.w])
+
+    def create_lane(self, frame_id, waypoints):
+        new_lane = Lane()
+        new_lane.header.frame_id = frame_id
+        new_lane.waypoints = waypoints
+        new_lane.header.stamp = rospy.Time.now()
+        return new_lane
 
 
 if __name__ == '__main__':
