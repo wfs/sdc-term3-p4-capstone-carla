@@ -5,8 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/lib/liblibwaypoint_follower.so" afterPath="$PROJECT_DIR$/ros/devel/lib/liblibwaypoint_follower.so" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/lib/waypoint_follower/pure_pursuit" afterPath="$PROJECT_DIR$/ros/devel/lib/waypoint_follower/pure_pursuit" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/how_to_override_remote_master_github_repo_with_local_origin.txt" afterPath="$PROJECT_DIR$/how_to_override_remote_master_github_repo_with_local_origin.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/CMakeCache.txt" afterPath="$PROJECT_DIR$/ros/build/CMakeCache.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/CMakeRuleHashes.txt" afterPath="$PROJECT_DIR$/ros/build/CMakeFiles/CMakeRuleHashes.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/Makefile.cmake" afterPath="$PROJECT_DIR$/ros/build/CMakeFiles/Makefile.cmake" />
@@ -61,10 +59,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/share/waypoint_loader/cmake/waypoint_loaderConfig.cmake" afterPath="$PROJECT_DIR$/ros/devel/share/waypoint_loader/cmake/waypoint_loaderConfig.cmake" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/share/waypoint_updater/cmake/waypoint_updaterConfig.cmake" afterPath="$PROJECT_DIR$/ros/devel/share/waypoint_updater/cmake/waypoint_updaterConfig.cmake" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py" afterPath="$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/twist_controller/pid.py" afterPath="$PROJECT_DIR$/ros/src/twist_controller/pid.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py" afterPath="$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py" afterPath="$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/waypoint_updater/launch/waypoint_updater.launch" afterPath="$PROJECT_DIR$/ros/src/waypoint_updater/launch/waypoint_updater.launch" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py" afterPath="$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -86,21 +83,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="dbw_sim.launch" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/launch/dbw_sim.launch">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="9" column="45" lean-forward="false" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="waypoint_updater.launch" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ros/src/waypoint_updater/launch/waypoint_updater.launch">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="54">
-              <caret line="3" column="17" lean-forward="false" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+              <caret line="3" column="67" lean-forward="true" selection-start-line="3" selection-start-column="67" selection-end-line="3" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -109,8 +96,8 @@
       <file leaf-file-name="waypoint_updater.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2106">
-              <caret line="117" column="93" lean-forward="false" selection-start-line="117" selection-start-column="12" selection-end-line="117" selection-end-column="93" />
+            <state relative-caret-position="180">
+              <caret line="46" column="34" lean-forward="true" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
               <folding>
                 <element signature="e#23#35#0" expanded="true" />
               </folding>
@@ -118,11 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dbw_node.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="dbw_node.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="127" column="17" lean-forward="false" selection-start-line="127" selection-start-column="17" selection-end-line="127" selection-end-column="17" />
+            <state relative-caret-position="304">
+              <caret line="105" column="17" lean-forward="false" selection-start-line="105" selection-start-column="17" selection-end-line="105" selection-end-column="17" />
               <folding>
                 <element signature="e#23#35#0" expanded="true" />
               </folding>
@@ -133,11 +120,31 @@
       <file leaf-file-name="twist_controller.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+            <state relative-caret-position="633">
+              <caret line="77" column="30" lean-forward="false" selection-start-line="77" selection-start-column="30" selection-end-line="77" selection-end-column="30" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pid.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/pid.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="yaw_controller.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/yaw_controller.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -152,29 +159,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="yaw_controller.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/yaw_controller.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="17" column="4" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="80" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="-270">
-                <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="waypoint_loader.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -185,7 +169,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="waypoint_loader.py.bkp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="waypoint_loader.py.bkp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py.bkp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="705">
@@ -195,22 +179,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="how_to_sync_with_remote_team_repo.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/how_to_sync_with_remote_team_repo.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>target_velocity</find>
-      <find>target_linear_velocity</find>
-      <find>target_angular_velocity</find>
-      <find>print</find>
-      <find>yaw_steer</find>
-      <find>deepcopy</find>
-      <find>base_waypoints</find>
-      <find>car_index</find>
-      <find>traffic_lights</find>
-      <find>frame_id</find>
-      <find>previous_car_index</find>
-      <find>car_index_pub</find>
       <find>transformations</find>
       <find>traffic_index</find>
       <find>pose_cb</find>
@@ -226,9 +208,21 @@
       <find>FORWARD_SCAN_WPS</find>
       <find>publish</find>
       <find>pose</find>
-      <find>cte</find>
       <find>logwarn</find>
       <find>speed</find>
+      <find>Controller</find>
+      <find>controller</find>
+      <find>YawController</find>
+      <find>yaw_steer</find>
+      <find>self.timestamp</find>
+      <find>cte</find>
+      <find>steer</find>
+      <find>self.steering_correction_pid</find>
+      <find>self.ya</find>
+      <find>self.yaw_controller</find>
+      <find>self.yaw_con</find>
+      <find>GAS_DENSITY</find>
+      <find>target_velo</find>
     </findStrings>
     <replaceStrings>
       <replace>message</replace>
@@ -245,16 +239,16 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py" />
-        <option value="$PROJECT_DIR$/ros/src/twist_controller/pid.py" />
         <option value="$PROJECT_DIR$/ros/src/twist_controller/yaw_controller.py" />
         <option value="$PROJECT_DIR$/how_to_override_remote_master_github_repo_with_local_origin.txt" />
         <option value="$PROJECT_DIR$/how_to_sync_with_remote_team_repo.txt" />
         <option value="$PROJECT_DIR$/ros/src/tools/diagScreen.py" />
         <option value="$PROJECT_DIR$/ros/src/waypoint_updater/launch/waypoint_updater.launch" />
         <option value="$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py" />
-        <option value="$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py" />
-        <option value="$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py" />
         <option value="$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py.bkp" />
+        <option value="$PROJECT_DIR$/ros/src/twist_controller/pid.py" />
+        <option value="$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py" />
+        <option value="$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py" />
       </list>
     </option>
   </component>
@@ -364,15 +358,6 @@
               <item name="ros" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="twist_controller" type="462c0819:PsiDirectoryNode" />
-              <item name="pid.py" type="8704e2dd:PyFileNode" />
-              <item name="PID" type="dd8bbb05:PyElementNode" />
-            </path>
-            <path>
-              <item name="sdc-term3-p4-capstone-carla" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sdc-term3-p4-capstone-carla" type="462c0819:PsiDirectoryNode" />
-              <item name="ros" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="twist_controller" type="462c0819:PsiDirectoryNode" />
               <item name="twist_controller.py" type="8704e2dd:PyFileNode" />
             </path>
             <path>
@@ -468,7 +453,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1985" y="-4" width="1855" height="1084" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -502,21 +486,21 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py</url>
-          <line>174</line>
+          <line>169</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py</url>
-          <line>59</line>
+          <line>71</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py</url>
-          <line>110</line>
-          <option name="timeStamp" value="7" />
+          <line>111</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="11" />
+      <option name="time" value="12" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -861,22 +845,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/pid.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/how_to_sync_with_remote_team_repo.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/how_to_override_remote_master_github_repo_with_local_origin.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="820">
@@ -896,14 +864,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/yaw_controller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="4" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/launch/dbw_sim.launch">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -916,14 +876,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ros/src/waypoint_updater/launch/waypoint_updater.launch">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="17" lean-forward="false" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -946,36 +898,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2106">
-          <caret line="117" column="93" lean-forward="false" selection-start-line="117" selection-start-column="12" selection-end-line="117" selection-end-column="93" />
-          <folding>
-            <element signature="e#23#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="127" column="17" lean-forward="false" selection-start-line="127" selection-start-column="17" selection-end-line="127" selection-end-column="17" />
-          <folding>
-            <element signature="e#23#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="471">
@@ -989,6 +911,68 @@
         <state relative-caret-position="705">
           <caret line="81" column="24" lean-forward="false" selection-start-line="81" selection-start-column="24" selection-end-line="81" selection-end-column="24" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/how_to_sync_with_remote_team_repo.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/yaw_controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/pid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ros/src/waypoint_updater/launch/waypoint_updater.launch">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="67" lean-forward="true" selection-start-line="3" selection-start-column="67" selection-end-line="3" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="46" column="34" lean-forward="true" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
+          <folding>
+            <element signature="e#23#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="633">
+          <caret line="77" column="30" lean-forward="false" selection-start-line="77" selection-start-column="30" selection-end-line="77" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="105" column="17" lean-forward="false" selection-start-line="105" selection-start-column="17" selection-end-line="105" selection-end-column="17" />
+          <folding>
+            <element signature="e#23#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

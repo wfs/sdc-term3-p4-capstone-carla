@@ -8,13 +8,11 @@ from styx_msgs.msg import Lane
 
 from dbw_mkz_msgs.msg import ThrottleCmd, SteeringCmd, BrakeCmd
 
-from math import sqrt, cos, sin
+from math import cos, sin
 import numpy as np
 
 from twist_controller import Controller
-import yaw_controller
 
-PREDICTIVE_STEERING = 1.0  # from 0.0 to 1.0
 POINTS_TO_FIT = 10
 
 '''
@@ -87,9 +85,6 @@ class DBWNode(object):
         self.controller = Controller(self.wheel_base, self.steer_ratio, self.max_lat_accel,
                                      self.max_steer_angle)
 
-        self.yaw_controller = yaw_controller.YawController(self.wheel_base, self.steer_ratio, 0.0,
-                                                           self.max_lat_accel, self.max_steer_angle)
-
         self.loop()
 
     def loop(self):
@@ -107,33 +102,33 @@ class DBWNode(object):
 
             if len(self.waypoints) >= POINTS_TO_FIT:
                 cte = self.cte_calc(self.current_ego_pose, self.waypoints)
-                # print("target_velocity aka self.waypoints[0].twist.twist.linear.x : ", self.waypoints[0].twist.twist.linear.x)  # e.g. 11.1112
+                #print("target_velocity aka self.waypoints[0].twist.twist.linear.x : ", self.waypoints[0].twist.twist.linear.x)  # e.g. 11.1112
                 target_velocity = self.waypoints[0].twist.twist.linear.x
+
                 # print("current_linear_velocity aka self.velocity.linear.x : ", self.velocity.linear.x)  # e.g. 0.267761447712
                 current_linear_velocity = self.velocity.linear.x
 
-                # Get corrected steering using twist_controller
-                steer = self.controller.control(cte, self.dbw_enabled)
-
-                # Get predicted steering angle from waypoints curve
-                yaw_steer = self.yaw_controller.get_steering(self.twist_cmd_linear_velocity,
-                                                             self.twist_cmd_angular_velocity,
-                                                             current_linear_velocity)
+                # Get corrected steering using twist_controller and yaw_controller
+                steer = self.controller.control(cte, self.dbw_enabled, self.twist_cmd_linear_velocity,
+                                                self.twist_cmd_angular_velocity, current_linear_velocity)
 
                 # print("twist_cmd_angular_velocity aka self.twist_cmd.twist.angular.z : ", self.twist_cmd.twist.angular.z)
-                throttle, brake, steer = self.controller.control_speed_based_on_torque(target_velocity,
-                                                                                       self.twist_cmd_angular_velocity,
-                                                                                       current_linear_velocity, 0.5,
-                                                                                       self.vehicle_mass, self.wheel_radius)
+                throttle, brake = self.controller.control_speed_based_on_torque(target_velocity,
+                                                                                current_linear_velocity,
+                                                                                0.5,
+                                                                                self.vehicle_mass,
+                                                                                self.wheel_radius)
             else:
                 # not enough waypoints so publish heavy break
                 rospy.loginfo("Number of waypoint received is : %s", len(self.waypoints))
                 throttle, brake, steer = 0, 200, 0
 
             if self.dbw_enabled:
-                self.publish(throttle, brake, steer + PREDICTIVE_STEERING * yaw_steer)
-                steer_calc = steer + PREDICTIVE_STEERING * yaw_steer
-                rospy.loginfo("published throttle : %s, brake : %s, steer : %s", throttle, brake, steer_calc)
+                self.publish(throttle, brake, steer)
+                rospy.loginfo("published throttle : %s, brake : %s, steer : %s", throttle, brake, steer)
+
+            rospy.logwarn("throttle %s, brake %s, steer %s adjustments to dbw_node",
+                          throttle, brake, steer)
 
             rate.sleep()
 
