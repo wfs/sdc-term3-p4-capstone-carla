@@ -1,3 +1,4 @@
+# comment-out next line when generating api docs
 import rospy
 
 from yaw_controller import YawController
@@ -11,11 +12,7 @@ PREDICTIVE_STEERING = 1.0  # from 0.0 to 1.0
 
 class Controller(object):
     """
-    3. DWB node - Task 2:
-
-    Fill out twist_controller.py, import PID, yaw_controller.
-
-    Taking information from top level DBW to pass to PID and yaw_controller.
+    Adjusts vehicles steering to minimise Cross Track Error and align to predicted path.
     """
 
     def __init__(self, wheel_base_from_ros_param_server, steer_ratio_from_ros_param_server,

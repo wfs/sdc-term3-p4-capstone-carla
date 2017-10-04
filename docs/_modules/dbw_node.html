@@ -1,0 +1,293 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>dbw_node &#8212; RoboFolks 1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+  <body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../index.html">
+          <span>RoboFolks 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>dbw_node</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        <a class="uplink" href="../index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <h1>Source code for dbw_node</h1><div class="highlight"><pre>
+<span class="ch">#!/usr/bin/env python</span>
+
+<span class="c1"># comment-out next lines when generating api docs</span>
+<span class="c1"># *****</span>
+<span class="c1">#import rospy</span>
+<span class="c1">#from tf import transformations</span>
+<span class="c1">#from std_msgs.msg import Bool</span>
+<span class="c1">#from geometry_msgs.msg import TwistStamped, PoseStamped</span>
+<span class="c1">#from styx_msgs.msg import Lane</span>
+<span class="c1">#from dbw_mkz_msgs.msg import ThrottleCmd, SteeringCmd, BrakeCmd</span>
+<span class="c1"># *****</span>
+
+<span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">twist_controller</span> <span class="k">import</span> <span class="n">Controller</span>
+
+<span class="n">POINTS_TO_FIT</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">You can build this node only after you have built (or partially built) the `waypoint_updater` node.</span>
+
+<span class="sd">You will subscribe to `/twist_cmd` message which provides the proposed linear and angular velocities.</span>
+<span class="sd">You can subscribe to any other message that you find important or refer to the document for list</span>
+<span class="sd">of messages subscribed to by the reference implementation of this node.</span>
+
+<span class="sd">One thing to keep in mind while building this node and the `twist_controller` class is the status</span>
+<span class="sd">of `dbw_enabled`. While in the simulator, its enabled all the time, in the real car, that will</span>
+<span class="sd">not be the case. This may cause your PID controller to accumulate error because the car could</span>
+<span class="sd">temporarily be driven by a human instead of your controller.</span>
+
+<span class="sd">We have provided two launch files with this node. Vehicle specific values (like vehicle_mass,</span>
+<span class="sd">wheel_base) etc should not be altered in these files.</span>
+
+<span class="sd">We have also provided some reference implementations for PID controller and other utility classes.</span>
+<span class="sd">You are free to use them or build your own.</span>
+
+<span class="sd">Once you have the proposed throttle, brake, and steer values, publish it on the various publishers</span>
+<span class="sd">that we have created in the `__init__` function.</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+
+<div class="viewcode-block" id="DBWNode"><a class="viewcode-back" href="../index.html#dbw_node.DBWNode">[docs]</a><span class="k">class</span> <span class="nc">DBWNode</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Actuates the throttle steering and brake to successfully navigate the waypoints with the correct target</span>
+<span class="sd">    velocity.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;dbw_node&#39;</span><span class="p">)</span>
+
+        <span class="c1"># variables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_ego_pose</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># ego car current position and orientation</span>
+
+        <span class="c1"># ROS Server Parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vehicle_mass</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;~vehicle_mass&#39;</span><span class="p">,</span> <span class="mf">1736.35</span><span class="p">)</span>
+        <span class="c1"># fuel_capacity = rospy.get_param(&#39;~fuel_capacity&#39;, 13.5)</span>
+        <span class="c1"># brake_deadband = rospy.get_param(&#39;~brake_deadband&#39;, .1)</span>
+        <span class="c1"># decel_limit = rospy.get_param(&#39;~decel_limit&#39;, -5)</span>
+        <span class="c1"># accel_limit = rospy.get_param(&#39;~accel_limit&#39;, 1.)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wheel_radius</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;~wheel_radius&#39;</span><span class="p">,</span> <span class="mf">0.2413</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wheel_base</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;~wheel_base&#39;</span><span class="p">,</span> <span class="mf">2.8498</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">steer_ratio</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;~steer_ratio&#39;</span><span class="p">,</span> <span class="mf">14.8</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_lat_accel</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;~max_lat_accel&#39;</span><span class="p">,</span> <span class="mf">3.</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_steer_angle</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;~max_steer_angle&#39;</span><span class="p">,</span> <span class="mf">8.</span><span class="p">)</span>
+
+        <span class="c1"># Publishers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">steer_pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/vehicle/steering_cmd&#39;</span><span class="p">,</span> <span class="n">SteeringCmd</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">throttle_pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/vehicle/throttle_cmd&#39;</span><span class="p">,</span> <span class="n">ThrottleCmd</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">brake_pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/vehicle/brake_cmd&#39;</span><span class="p">,</span> <span class="n">BrakeCmd</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Subscribers</span>
+        <span class="c1"># TODO: Subscribe to all the topics you need to</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;/twist_cmd&#39;</span><span class="p">,</span> <span class="n">TwistStamped</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">twist_cb</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;/current_velocity&#39;</span><span class="p">,</span> <span class="n">TwistStamped</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">velocity_cb</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;/vehicle/dbw_enabled&#39;</span><span class="p">,</span> <span class="n">Bool</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dbw_enabled_cb</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;/final_waypoints&#39;</span><span class="p">,</span> <span class="n">Lane</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">waypoints_cb</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;/current_pose&#39;</span><span class="p">,</span> <span class="n">PoseStamped</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pose_cb</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Subscribed messages</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">twist_cmd</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">twist_cmd_linear_velocity</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">twist_cmd_angular_velocity</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_linear_velocity</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_angular_velocity</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dbw_enabled</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># TODO: Create `TwistController` object</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">controller</span> <span class="o">=</span> <span class="n">Controller</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wheel_base</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">steer_ratio</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_lat_accel</span><span class="p">,</span>
+                                     <span class="bp">self</span><span class="o">.</span><span class="n">max_steer_angle</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">loop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># TODO: Get predicted throttle, brake, and steering using `twist_controller`</span>
+        <span class="c1"># You should only publish the control commands if dbw is enabled</span>
+        <span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># 10Hz</span>
+
+        <span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
+
+            <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">velocity</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_ego_pose</span><span class="p">]</span>
+            <span class="n">all_available</span> <span class="o">=</span> <span class="nb">all</span><span class="p">([</span><span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">all_available</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">POINTS_TO_FIT</span><span class="p">:</span>
+                <span class="c1"># print(&quot;target_velocity aka self.waypoints[0].twist.twist.linear.x : &quot;, self.waypoints[0].twist.twist.linear.x)  # e.g. 11.1112</span>
+                <span class="n">target_velocity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span>
+
+                <span class="c1"># print(&quot;current_linear_velocity aka self.velocity.linear.x : &quot;, self.velocity.linear.x)  # e.g. 0.267761447712</span>
+                <span class="n">current_linear_velocity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span>
+
+                <span class="c1"># Get corrected steering using twist_controller</span>
+                <span class="n">cte</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cte_calc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_ego_pose</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">)</span>
+                <span class="n">steer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">control</span><span class="p">(</span><span class="n">cte</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dbw_enabled</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">twist_cmd_linear_velocity</span><span class="p">,</span>
+                                                <span class="bp">self</span><span class="o">.</span><span class="n">twist_cmd_angular_velocity</span><span class="p">,</span> <span class="n">current_linear_velocity</span><span class="p">)</span>
+
+                <span class="c1"># print(&quot;twist_cmd_angular_velocity aka self.twist_cmd.twist.angular.z : &quot;, self.twist_cmd.twist.angular.z)</span>
+                <span class="n">throttle</span><span class="p">,</span> <span class="n">brake</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">control_speed_based_on_torque</span><span class="p">(</span><span class="n">target_velocity</span><span class="p">,</span>
+                                                                                <span class="n">current_linear_velocity</span><span class="p">,</span>
+                                                                                <span class="mf">0.5</span><span class="p">,</span>
+                                                                                <span class="bp">self</span><span class="o">.</span><span class="n">vehicle_mass</span><span class="p">,</span>
+                                                                                <span class="bp">self</span><span class="o">.</span><span class="n">wheel_radius</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># not enough waypoints so publish heavy break</span>
+                <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s2">&quot;Number of waypoint received is : </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">))</span>
+                <span class="n">throttle</span><span class="p">,</span> <span class="n">brake</span><span class="p">,</span> <span class="n">steer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">0</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dbw_enabled</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">throttle</span><span class="p">,</span> <span class="n">brake</span><span class="p">,</span> <span class="n">steer</span><span class="p">)</span>
+                <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s2">&quot;published throttle : </span><span class="si">%s</span><span class="s2">, brake : </span><span class="si">%s</span><span class="s2">, steer : </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">throttle</span><span class="p">,</span> <span class="n">brake</span><span class="p">,</span> <span class="n">steer</span><span class="p">)</span>
+
+            <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;throttle </span><span class="si">%s</span><span class="s2">, brake </span><span class="si">%s</span><span class="s2">, steer </span><span class="si">%s</span><span class="s2"> adjustments to dbw_node&quot;</span><span class="p">,</span>
+                          <span class="n">throttle</span><span class="p">,</span> <span class="n">brake</span><span class="p">,</span> <span class="n">steer</span><span class="p">)</span>
+
+            <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">publish</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">throttle</span><span class="p">,</span> <span class="n">brake</span><span class="p">,</span> <span class="n">steer</span><span class="p">):</span>
+        <span class="n">tcmd</span> <span class="o">=</span> <span class="n">ThrottleCmd</span><span class="p">()</span>
+        <span class="n">tcmd</span><span class="o">.</span><span class="n">enable</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">tcmd</span><span class="o">.</span><span class="n">pedal_cmd_type</span> <span class="o">=</span> <span class="n">ThrottleCmd</span><span class="o">.</span><span class="n">CMD_PERCENT</span>
+        <span class="n">tcmd</span><span class="o">.</span><span class="n">pedal_cmd</span> <span class="o">=</span> <span class="n">throttle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">throttle_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">tcmd</span><span class="p">)</span>
+
+        <span class="n">scmd</span> <span class="o">=</span> <span class="n">SteeringCmd</span><span class="p">()</span>
+        <span class="n">scmd</span><span class="o">.</span><span class="n">enable</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">scmd</span><span class="o">.</span><span class="n">steering_wheel_angle_cmd</span> <span class="o">=</span> <span class="n">steer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">steer_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">scmd</span><span class="p">)</span>
+
+        <span class="n">bcmd</span> <span class="o">=</span> <span class="n">BrakeCmd</span><span class="p">()</span>
+        <span class="n">bcmd</span><span class="o">.</span><span class="n">enable</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">bcmd</span><span class="o">.</span><span class="n">pedal_cmd_type</span> <span class="o">=</span> <span class="n">BrakeCmd</span><span class="o">.</span><span class="n">CMD_TORQUE</span>
+        <span class="n">bcmd</span><span class="o">.</span><span class="n">pedal_cmd</span> <span class="o">=</span> <span class="n">brake</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">brake_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">bcmd</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">dbw_enabled_cb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dbw_enabled</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dbw_enabled</span><span class="p">:</span>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;Vehicle is now in Self-Driving mode&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;Vehicle is now in Manual Driving mode&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">pose_cb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_ego_pose</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">pose</span>
+
+    <span class="k">def</span> <span class="nf">twist_cb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">twist_cmd</span> <span class="o">=</span> <span class="n">message</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">twist_cmd_linear_velocity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">twist_cmd</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">twist_cmd_angular_velocity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">twist_cmd</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span>
+
+    <span class="k">def</span> <span class="nf">velocity_cb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">twist</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_linear_velocity</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_angular_velocity</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span>
+
+    <span class="k">def</span> <span class="nf">waypoints_cb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">waypoints</span>
+
+<div class="viewcode-block" id="DBWNode.get_euler"><a class="viewcode-back" href="../index.html#dbw_node.DBWNode.get_euler">[docs]</a>    <span class="k">def</span> <span class="nf">get_euler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Returns roll (x-axis), pitch (y-axis), yaw (z-axis) from a Quaternion.</span>
+
+<span class="sd">        See ROS Quaternion Basics for usage - http://wiki.ros.org/Tutorials/Quaternions</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">transformations</span><span class="o">.</span><span class="n">euler_from_quaternion</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="DBWNode.transform_waypoints"><a class="viewcode-back" href="../index.html#dbw_node.DBWNode.transform_waypoints">[docs]</a>    <span class="k">def</span> <span class="nf">transform_waypoints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">,</span> <span class="n">points_to_use</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Do transformation that sets origin of waypoints to the ego car position, oriented along x-axis and</span>
+<span class="sd">        returns transformed waypoint co-ordinates.</span>
+
+<span class="sd">        See Change of basis | Essence of linear algebra, chapter 9 - https://youtu.be/P2LTAUO1TdA</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x_coords</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># transformed waypoints x co-ordinates to transform</span>
+        <span class="n">y_coords</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># waypoints y co-ordinates to transform</span>
+
+        <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">yaw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_euler</span><span class="p">(</span><span class="n">pose</span><span class="p">)</span>
+        <span class="n">origin_x</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
+        <span class="n">origin_y</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span>
+
+        <span class="k">if</span> <span class="n">points_to_use</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">points_to_use</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">waypoints</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">points_to_use</span><span class="p">):</span>
+            <span class="n">shift_x</span> <span class="o">=</span> <span class="n">waypoints</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">origin_x</span>
+            <span class="n">shift_y</span> <span class="o">=</span> <span class="n">waypoints</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">origin_y</span>
+
+            <span class="n">x</span> <span class="o">=</span> <span class="n">shift_x</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">yaw</span><span class="p">)</span> <span class="o">-</span> <span class="n">shift_y</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">yaw</span><span class="p">)</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">shift_x</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">yaw</span><span class="p">)</span> <span class="o">+</span> <span class="n">shift_y</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">yaw</span><span class="p">)</span>
+
+            <span class="n">x_coords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">y_coords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">x_coords</span><span class="p">,</span> <span class="n">y_coords</span></div>
+
+<div class="viewcode-block" id="DBWNode.cte_calc"><a class="viewcode-back" href="../index.html#dbw_node.DBWNode.cte_calc">[docs]</a>    <span class="k">def</span> <span class="nf">cte_calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates the distance from the ego cars current position to the waypoints path.</span>
+
+<span class="sd">        See Polynomial fitting - http://blog.mmast.net/least-squares-fitting-numpy-scipy</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x_coords</span><span class="p">,</span> <span class="n">y_coords</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_waypoints</span><span class="p">(</span><span class="n">pose</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">,</span> <span class="n">POINTS_TO_FIT</span><span class="p">)</span>
+        <span class="n">coefficients</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x_coords</span><span class="p">,</span> <span class="n">y_coords</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># 3-degree polynomial fit, minimising squared error</span>
+        <span class="n">distance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">coefficients</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>  <span class="c1"># distance between car position and transformed waypoint</span>
+
+        <span class="k">return</span> <span class="n">distance</span></div></div>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">DBWNode</span><span class="p">()</span>
+</pre></div>
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        <a class="uplink" href="../index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, anguyen3@rockets.utoledo.edu, rohts.patil@gmail.com, evotianusx@gmail.com, andrew.d.wilkie@gmail.com, buaaluqiang@hotmail.com.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.4.
+    </div>
+  </body>
+</html>

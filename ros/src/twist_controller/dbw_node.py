@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 
+# comment-out next lines when generating api docs
+# *****
 import rospy
 from tf import transformations
 from std_msgs.msg import Bool
 from geometry_msgs.msg import TwistStamped, PoseStamped
 from styx_msgs.msg import Lane
-
 from dbw_mkz_msgs.msg import ThrottleCmd, SteeringCmd, BrakeCmd
+# *****
 
 from math import cos, sin
 import numpy as np
@@ -40,6 +42,10 @@ that we have created in the `__init__` function.
 
 
 class DBWNode(object):
+    """
+    Actuates the throttle steering and brake to successfully navigate the waypoints with the correct target
+    velocity.
+    """
     def __init__(self):
         rospy.init_node('dbw_node')
 
@@ -101,14 +107,14 @@ class DBWNode(object):
                 continue
 
             if len(self.waypoints) >= POINTS_TO_FIT:
-                cte = self.cte_calc(self.current_ego_pose, self.waypoints)
-                #print("target_velocity aka self.waypoints[0].twist.twist.linear.x : ", self.waypoints[0].twist.twist.linear.x)  # e.g. 11.1112
+                # print("target_velocity aka self.waypoints[0].twist.twist.linear.x : ", self.waypoints[0].twist.twist.linear.x)  # e.g. 11.1112
                 target_velocity = self.waypoints[0].twist.twist.linear.x
 
                 # print("current_linear_velocity aka self.velocity.linear.x : ", self.velocity.linear.x)  # e.g. 0.267761447712
                 current_linear_velocity = self.velocity.linear.x
 
-                # Get corrected steering using twist_controller and yaw_controller
+                # Get corrected steering using twist_controller
+                cte = self.cte_calc(self.current_ego_pose, self.waypoints)
                 steer = self.controller.control(cte, self.dbw_enabled, self.twist_cmd_linear_velocity,
                                                 self.twist_cmd_angular_velocity, current_linear_velocity)
 
@@ -174,7 +180,7 @@ class DBWNode(object):
         self.waypoints = message.waypoints
 
     def get_euler(self, pose):
-        """ Returns roll (float), pitch (float), yaw (float) from a Quaternion.
+        """ Returns roll (x-axis), pitch (y-axis), yaw (z-axis) from a Quaternion.
 
         See ROS Quaternion Basics for usage - http://wiki.ros.org/Tutorials/Quaternions
         """
@@ -186,12 +192,9 @@ class DBWNode(object):
         Do transformation that sets origin of waypoints to the ego car position, oriented along x-axis and
         returns transformed waypoint co-ordinates.
 
-        See Linear transformations and matrices | Essence of linear algebra, chapter 3 - https://youtu.be/P2LTAUO1TdA
         See Change of basis | Essence of linear algebra, chapter 9 - https://youtu.be/P2LTAUO1TdA
-        or Khan Academy -
-        https://www.khanacademy.org/math/precalculus/precalc-matrices/matrices-as-transformations/v/transforming-position-vector
         """
-        x_coords = []  # waypoints x co-ordinates to transform
+        x_coords = []  # transformed waypoints x co-ordinates to transform
         y_coords = []  # waypoints y co-ordinates to transform
 
         _, _, yaw = self.get_euler(pose)
@@ -215,13 +218,13 @@ class DBWNode(object):
 
     def cte_calc(self, pose, waypoints):
         """
-        Calculates the distance from the ego cars position to the waypoints path.
+        Calculates the distance from the ego cars current position to the waypoints path.
 
-        Returns the signed cross track error (cte) as float.
+        See Polynomial fitting - http://blog.mmast.net/least-squares-fitting-numpy-scipy
         """
         x_coords, y_coords = self.transform_waypoints(pose, waypoints, POINTS_TO_FIT)
-        coefficients = np.polyfit(x_coords, y_coords, 3)
-        distance = np.polyval(coefficients, 5.0)
+        coefficients = np.polyfit(x_coords, y_coords, 3)  # 3-degree polynomial fit, minimising squared error
+        distance = np.polyval(coefficients, 5.0)  # distance between car position and transformed waypoint
 
         return distance
 

@@ -42,24 +42,6 @@
         
   <div class="section" id="welcome-to-robofolks-documentation">
 <h1>Welcome to RoboFolks documentation!<a class="headerlink" href="#welcome-to-robofolks-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-</div>
-<span class="target" id="module-twist_controller"></span><dl class="class">
-<dt id="twist_controller.Controller">
-<em class="property">class </em><code class="descclassname">twist_controller.</code><code class="descname">Controller</code><span class="sig-paren">(</span><em>wheel_base_from_ros_param_server</em>, <em>steer_ratio_from_ros_param_server</em>, <em>max_lat_accel_from_ros_param_server</em>, <em>max_steer_angle_from_ros_param_server</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/twist_controller.html#Controller"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#twist_controller.Controller" title="Permalink to this definition">¶</a></dt>
-<dd><ol class="arabic simple" start="3">
-<li>DWB node - Task 2:</li>
-</ol>
-<p>Fill out twist_controller.py, import PID, yaw_controller.</p>
-<p>Taking information from top level DBW to pass to PID and yaw_controller.</p>
-<dl class="method">
-<dt id="twist_controller.Controller.control_speed_based_on_torque">
-<code class="descname">control_speed_based_on_torque</code><span class="sig-paren">(</span><em>target_linear_velocity</em>, <em>current_velocity</em>, <em>transition_time</em>, <em>vehicle_mass</em>, <em>wheel_and_tire_radius</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/twist_controller.html#Controller.control_speed_based_on_torque"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#twist_controller.Controller.control_speed_based_on_torque" title="Permalink to this definition">¶</a></dt>
-<dd><p>Manipulate inputs to return throttle, brake and steering values to dbw_node.</p>
-</dd></dl>
-
-</dd></dl>
-
 </div>
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
@@ -68,6 +50,52 @@
 <li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
 <li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
+</div>
+<div class="section" id="classes-and-functions">
+<h1>Classes and Functions<a class="headerlink" href="#classes-and-functions" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<span class="target" id="module-twist_controller"></span><dl class="class">
+<dt id="twist_controller.Controller">
+<em class="property">class </em><code class="descclassname">twist_controller.</code><code class="descname">Controller</code><span class="sig-paren">(</span><em>wheel_base_from_ros_param_server</em>, <em>steer_ratio_from_ros_param_server</em>, <em>max_lat_accel_from_ros_param_server</em>, <em>max_steer_angle_from_ros_param_server</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/twist_controller.html#Controller"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#twist_controller.Controller" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adjusts vehicles steering to minimise Cross Track Error and align to predicted path.</p>
+<dl class="method">
+<dt id="twist_controller.Controller.control_speed_based_on_torque">
+<code class="descname">control_speed_based_on_torque</code><span class="sig-paren">(</span><em>target_linear_velocity</em>, <em>current_velocity</em>, <em>transition_time</em>, <em>vehicle_mass</em>, <em>wheel_and_tire_radius</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/twist_controller.html#Controller.control_speed_based_on_torque"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#twist_controller.Controller.control_speed_based_on_torque" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manipulate inputs to return throttle, brake and steering values to dbw_node.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-dbw_node"></span><dl class="class">
+<dt id="dbw_node.DBWNode">
+<em class="property">class </em><code class="descclassname">dbw_node.</code><code class="descname">DBWNode</code><a class="reference internal" href="_modules/dbw_node.html#DBWNode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbw_node.DBWNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Actuates the throttle steering and brake to successfully navigate the waypoints with the correct target
+velocity.</p>
+<dl class="method">
+<dt id="dbw_node.DBWNode.cte_calc">
+<code class="descname">cte_calc</code><span class="sig-paren">(</span><em>pose</em>, <em>waypoints</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbw_node.html#DBWNode.cte_calc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbw_node.DBWNode.cte_calc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the distance from the ego cars current position to the waypoints path.</p>
+<p>See Polynomial fitting - <a class="reference external" href="http://blog.mmast.net/least-squares-fitting-numpy-scipy">http://blog.mmast.net/least-squares-fitting-numpy-scipy</a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dbw_node.DBWNode.get_euler">
+<code class="descname">get_euler</code><span class="sig-paren">(</span><em>pose</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbw_node.html#DBWNode.get_euler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbw_node.DBWNode.get_euler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns roll (x-axis), pitch (y-axis), yaw (z-axis) from a Quaternion.</p>
+<p>See ROS Quaternion Basics for usage - <a class="reference external" href="http://wiki.ros.org/Tutorials/Quaternions">http://wiki.ros.org/Tutorials/Quaternions</a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dbw_node.DBWNode.transform_waypoints">
+<code class="descname">transform_waypoints</code><span class="sig-paren">(</span><em>pose</em>, <em>waypoints</em>, <em>points_to_use=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbw_node.html#DBWNode.transform_waypoints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbw_node.DBWNode.transform_waypoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do transformation that sets origin of waypoints to the ego car position, oriented along x-axis and
+returns transformed waypoint co-ordinates.</p>
+<p>See Change of basis | Essence of linear algebra, chapter 9 - <a class="reference external" href="https://youtu.be/P2LTAUO1TdA">https://youtu.be/P2LTAUO1TdA</a></p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

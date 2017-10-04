@@ -6,6 +6,16 @@
 Welcome to RoboFolks documentation!
 =====================================
 
+Indices and tables
+==================
+ 
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
+Classes and Functions
+=====================
+ 
 .. toctree::
    :maxdepth: 4
 
@@ -14,9 +24,8 @@ Welcome to RoboFolks documentation!
 .. autoclass:: Controller
     :members:
 
-Indices and tables
-==================
- 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. module:: dbw_node 
+
+.. autoclass:: DBWNode 
+    :members:
+
