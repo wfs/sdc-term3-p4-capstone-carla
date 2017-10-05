@@ -1,0 +1,224 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>waypoint_updater &#8212; RoboFolks 1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+  <body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../index.html">
+          <span>RoboFolks 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>waypoint_updater</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        <a class="uplink" href="../index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <h1>Source code for waypoint_updater</h1><div class="highlight"><pre>
+<span class="ch">#!/usr/bin/env python</span>
+
+<span class="c1"># comment-out next lines when generating api docs</span>
+<span class="c1"># *****</span>
+<span class="c1">#import rospy</span>
+<span class="c1">#from tf import transformations</span>
+<span class="c1">#from geometry_msgs.msg import PoseStamped</span>
+<span class="c1">#from styx_msgs.msg import Lane, Waypoint, TrafficLightArray</span>
+<span class="c1"># *****</span>
+
+<span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
+
+<span class="n">FORWARD_SCAN_WPS</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">This node will publish waypoints from the car&#39;s current position to some `x` distance ahead.</span>
+
+<span class="sd">As mentioned in the doc, you should ideally first implement a version which does not care</span>
+<span class="sd">about traffic lights or obstacles.</span>
+
+<span class="sd">Once you have created dbw_node, you will update this node to use the status of traffic lights too.</span>
+
+<span class="sd">Please note that our simulator also provides the exact location of traffic lights and their</span>
+<span class="sd">current status in `/vehicle/traffic_lights` message. You can use this message to build this node</span>
+<span class="sd">as well as to verify your TL classifier.</span>
+
+<span class="sd">TODO (for Yousuf and Aaron): Stopline location for each traffic light.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+
+<div class="viewcode-block" id="WaypointUpdater"><a class="viewcode-back" href="../index.html#waypoint_updater.WaypointUpdater">[docs]</a><span class="k">class</span> <span class="nc">WaypointUpdater</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    *** STEP 2 ***</span>
+
+<span class="sd">    This node will publish waypoints from the car&#39;s current position to some `x` distance ahead,</span>
+<span class="sd">    with the correct target velocities, depending on traffic lights and obstacles.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;waypoint_updater&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Subscribers</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;/current_pose&#39;</span><span class="p">,</span> <span class="n">PoseStamped</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pose_cb</span><span class="p">)</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;/base_waypoints&#39;</span><span class="p">,</span> <span class="n">Lane</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">waypoints_cb</span><span class="p">)</span>
+
+        <span class="c1"># TODO: Add a subscriber for /traffic_waypoint and /obstacle_waypoint below</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;vehicle/traffic_lights&#39;</span><span class="p">,</span> <span class="n">TrafficLightArray</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">traffic_lights_cb</span><span class="p">)</span>  <span class="c1"># Simulator data</span>
+
+        <span class="c1"># Publishers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">final_waypoints_pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/final_waypoints&#39;</span><span class="p">,</span> <span class="n">Lane</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># TODO: Add other member variables you need below</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_ego_pose</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># ego car current position and orientation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_waypoints</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">traffic_lights</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">loop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+        <span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
+            <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_waypoints</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_ego_pose</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="n">car_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_closest_waypoint_index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_ego_pose</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_waypoints</span><span class="p">)</span>
+
+            <span class="n">lookahead_waypoints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_next_waypoints</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_waypoints</span><span class="p">,</span> <span class="n">car_index</span><span class="p">,</span> <span class="n">FORWARD_SCAN_WPS</span><span class="p">)</span>
+
+            <span class="c1"># Publish</span>
+            <span class="n">lane</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_lane</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_id</span><span class="p">,</span> <span class="n">lookahead_waypoints</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">final_waypoints_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">lane</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">pose_cb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_ego_pose</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">pose</span>  <span class="c1"># store location (x, y)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span>
+
+    <span class="k">def</span> <span class="nf">waypoints_cb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_waypoints</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">waypoints</span>
+
+    <span class="k">def</span> <span class="nf">traffic_lights_cb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">traffic_lights</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">lights</span>
+
+    <span class="k">def</span> <span class="nf">traffic_cb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="c1"># TODO: Callback for /traffic_waypoint message. Implement</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">obstacle_cb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="c1"># TODO: Callback for /obstacle_waypoint message. We will implement it later</span>
+        <span class="k">pass</span>
+
+<div class="viewcode-block" id="WaypointUpdater.get_next_waypoints"><a class="viewcode-back" href="../index.html#waypoint_updater.WaypointUpdater.get_next_waypoints">[docs]</a>    <span class="k">def</span> <span class="nf">get_next_waypoints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Returns a list of waypoints ahead of the ego car &quot;&quot;&quot;</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">waypoints</span><span class="p">),</span> <span class="n">i</span> <span class="o">+</span> <span class="n">n</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">waypoints</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">m</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="WaypointUpdater.get_closest_waypoint_index"><a class="viewcode-back" href="../index.html#waypoint_updater.WaypointUpdater.get_closest_waypoint_index">[docs]</a>    <span class="k">def</span> <span class="nf">get_closest_waypoint_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Returns index of the closest waypoint &quot;&quot;&quot;</span>
+        <span class="n">best_distance</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+        <span class="n">best_waypoint_index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">my_position</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">waypoint</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">waypoints</span><span class="p">):</span>
+
+            <span class="n">a_waypoint_position</span> <span class="o">=</span> <span class="n">waypoint</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span>
+            <span class="n">gap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_distance_between_two_points</span><span class="p">(</span><span class="n">my_position</span><span class="p">,</span> <span class="n">a_waypoint_position</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">gap</span> <span class="o">&lt;</span> <span class="n">best_distance</span><span class="p">:</span>
+                <span class="n">best_waypoint_index</span><span class="p">,</span> <span class="n">best_distance</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="n">gap</span>
+
+        <span class="n">is_behind</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_waypoint_behind_ego_car</span><span class="p">(</span><span class="n">pose</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">[</span><span class="n">best_waypoint_index</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">is_behind</span><span class="p">:</span>
+            <span class="n">best_waypoint_index</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">best_waypoint_index</span></div>
+
+<div class="viewcode-block" id="WaypointUpdater.get_distance_between_two_points"><a class="viewcode-back" href="../index.html#waypoint_updater.WaypointUpdater.get_distance_between_two_points">[docs]</a>    <span class="k">def</span> <span class="nf">get_distance_between_two_points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Returns distance between two points &quot;&quot;&quot;</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">x</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">y</span>
+        <span class="k">return</span> <span class="n">dx</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">*</span> <span class="n">dy</span></div>
+
+<div class="viewcode-block" id="WaypointUpdater.is_waypoint_behind_ego_car"><a class="viewcode-back" href="../index.html#waypoint_updater.WaypointUpdater.is_waypoint_behind_ego_car">[docs]</a>    <span class="k">def</span> <span class="nf">is_waypoint_behind_ego_car</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">,</span> <span class="n">waypoint</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Do transformation that sets origin to the ego car position, oriented along x-axis and</span>
+<span class="sd">        return True if the waypoint is behind the ego car,  False if in front</span>
+
+<span class="sd">        See Change of basis | Essence of linear algebra, chapter 9 - https://youtu.be/P2LTAUO1TdA</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">yaw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_Euler</span><span class="p">(</span><span class="n">pose</span><span class="p">)</span>
+        <span class="n">origin_x</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
+        <span class="n">origin_y</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span>
+
+        <span class="n">shift_x</span> <span class="o">=</span> <span class="n">waypoint</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">origin_x</span>
+        <span class="n">shift_y</span> <span class="o">=</span> <span class="n">waypoint</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">origin_y</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">shift_x</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">yaw</span><span class="p">)</span> <span class="o">-</span> <span class="n">shift_y</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">yaw</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="WaypointUpdater.get_Euler"><a class="viewcode-back" href="../index.html#waypoint_updater.WaypointUpdater.get_Euler">[docs]</a>    <span class="k">def</span> <span class="nf">get_Euler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Returns roll (x), pitch (y), yaw (z) from a Quaternion.</span>
+
+<span class="sd">        See ROS Quaternion Basics for usage - http://wiki.ros.org/Tutorials/Quaternions</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">transformations</span><span class="o">.</span><span class="n">euler_from_quaternion</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span><span class="p">])</span></div>
+
+    <span class="k">def</span> <span class="nf">create_lane</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_id</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">):</span>
+        <span class="n">new_lane</span> <span class="o">=</span> <span class="n">Lane</span><span class="p">()</span>
+        <span class="n">new_lane</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="n">frame_id</span>
+        <span class="n">new_lane</span><span class="o">.</span><span class="n">waypoints</span> <span class="o">=</span> <span class="n">waypoints</span>
+        <span class="n">new_lane</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">stamp</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">new_lane</span></div>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">WaypointUpdater</span><span class="p">()</span>
+    <span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ROSInterruptException</span><span class="p">:</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">logerr</span><span class="p">(</span><span class="s1">&#39;Could not start waypoint updater node.&#39;</span><span class="p">)</span>
+</pre></div>
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        <a class="uplink" href="../index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, anguyen3@rockets.utoledo.edu, rohts.patil@gmail.com, evotianusx@gmail.com, andrew.d.wilkie@gmail.com, buaaluqiang@hotmail.com.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.4.
+    </div>
+  </body>
+</html>

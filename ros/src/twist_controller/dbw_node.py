@@ -43,6 +43,8 @@ that we have created in the `__init__` function.
 
 class DBWNode(object):
     """
+    *** STEP 3 ***
+
     Actuates the throttle steering and brake to successfully navigate the waypoints with the correct target
     velocity.
     """
@@ -94,7 +96,9 @@ class DBWNode(object):
         self.loop()
 
     def loop(self):
-        # TODO: Get predicted throttle, brake, and steering using `twist_controller`
+        """
+        Gets predicted throttle, brake, and steering using TwistController.
+        """
         # You should only publish the control commands if dbw is enabled
         rate = rospy.Rate(10)  # 10Hz
 

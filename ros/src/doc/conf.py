@@ -22,7 +22,10 @@ import sys
 #print("system path was : ", sys.path)
 #sys.path.insert(0, os.path.abspath('../'))
 sys.path.insert(0, os.path.abspath('../twist_controller'))
-#sys.path.insert(0, os.path.abspath('/home/andrew/dev/term3/sdc-term3-p4-capstone-carla/ros/src'))
+sys.path.insert(0, os.path.abspath('../waypoint_loader'))
+sys.path.insert(0, os.path.abspath('../waypoint_updater'))
+sys.path.insert(0, os.path.abspath('../pid'))
+sys.path.insert(0, os.path.abspath('../yaw_controller'))
 #print("system path now : ", sys.path)
 
 # -- General configuration ------------------------------------------------

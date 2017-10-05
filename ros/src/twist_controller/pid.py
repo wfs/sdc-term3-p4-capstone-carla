@@ -3,6 +3,15 @@ MAX_NUM = float('inf')
 
 
 class PID(object):
+    """
+    *** STEP 5 ***
+
+    Calculates the appropriate steering angle adjustment to smoothly return to the reference trajectory.
+
+    After manually fine-tuning in the Simulator, the PID parameters were kp=0.5, ki=0.004, kd=0.25.
+
+    See Self-Driving Car Engineer ND - Term 2, Lesson 16 PID Implementation Solution
+    """
     def __init__(self, kp, ki, kd, mn=MIN_NUM, mx=MAX_NUM):
         self.kp = kp
         self.ki = ki

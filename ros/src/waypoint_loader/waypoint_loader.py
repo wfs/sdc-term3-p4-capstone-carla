@@ -4,18 +4,30 @@ import os
 import csv
 import math
 
+# comment-out next lines when generating api docs
+# *****
 from geometry_msgs.msg import Quaternion
-
 from styx_msgs.msg import Lane, Waypoint
-
 import tf
 import rospy
+# *****
 
 CSV_HEADER = ['x', 'y', 'z', 'yaw']
 MAX_DECEL = 1.0
 
 
 class WaypointLoader(object):
+    """
+    *** STEP 1 ***
+
+    Loads lane centre waypoints, the 1st item being the closest waypoint to the ego car.
+
+    Waypoints have :
+
+    1. pose (position - x, y, z),
+    2. orientation (quarternion - x, y, z, w) and
+    3. twist (linear, angular velocities - x, y, z)
+    """
 
     def __init__(self):
         rospy.init_node('waypoint_loader', log_level=rospy.DEBUG)

@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 
+# comment-out next lines when generating api docs
+# *****
 import rospy
 from tf import transformations
-
 from geometry_msgs.msg import PoseStamped
 from styx_msgs.msg import Lane, Waypoint, TrafficLightArray
+# *****
 
 from math import cos, sin
 from copy import deepcopy
@@ -28,6 +30,12 @@ TODO (for Yousuf and Aaron): Stopline location for each traffic light.
 
 
 class WaypointUpdater(object):
+    """
+    *** STEP 2 ***
+
+    This node will publish waypoints from the car's current position to some `x` distance ahead,
+    with the correct target velocities, depending on traffic lights and obstacles.
+    """
     def __init__(self):
         rospy.init_node('waypoint_updater')
 
@@ -118,10 +126,7 @@ class WaypointUpdater(object):
         """ Do transformation that sets origin to the ego car position, oriented along x-axis and
         return True if the waypoint is behind the ego car,  False if in front
 
-        See Linear transformations and matrices | Essence of linear algebra, chapter 3 - https://youtu.be/P2LTAUO1TdA
         See Change of basis | Essence of linear algebra, chapter 9 - https://youtu.be/P2LTAUO1TdA
-        or Khan Academy -
-        https://www.khanacademy.org/math/precalculus/precalc-matrices/matrices-as-transformations/v/transforming-position-vector
         """
         _, _, yaw = self.get_Euler(pose)
         origin_x = pose.position.x
@@ -137,7 +142,7 @@ class WaypointUpdater(object):
         return True
 
     def get_Euler(self, pose):
-        """ Returns roll (float), pitch (float), yaw (float) from a Quaternion.
+        """ Returns roll (x), pitch (y), yaw (z) from a Quaternion.
 
         See ROS Quaternion Basics for usage - http://wiki.ros.org/Tutorials/Quaternions
         """

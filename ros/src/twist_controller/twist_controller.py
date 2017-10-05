@@ -1,5 +1,7 @@
-# comment-out next line when generating api docs
+# comment-out next lines when generating api docs
+# *****
 import rospy
+# *****
 
 from yaw_controller import YawController
 import pid
@@ -12,6 +14,8 @@ PREDICTIVE_STEERING = 1.0  # from 0.0 to 1.0
 
 class Controller(object):
     """
+    *** STEP 4 ***
+
     Adjusts vehicles steering to minimise Cross Track Error and align to predicted path.
     """
 

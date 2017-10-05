@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to RoboFolks documentation!
-=====================================
+.. Welcome to RoboFolks documentation!
+.. =====================================
 
 Indices and tables
 ==================
@@ -19,13 +19,33 @@ Classes and Functions
 .. toctree::
    :maxdepth: 4
 
-.. module:: twist_controller
+.. module:: waypoint_loader
 
-.. autoclass:: Controller
+.. autoclass:: WaypointLoader
+    :members:
+
+.. module:: waypoint_updater
+
+.. autoclass:: WaypointUpdater
     :members:
 
 .. module:: dbw_node 
 
 .. autoclass:: DBWNode 
+    :members:
+
+.. module:: twist_controller
+
+.. autoclass:: Controller
+    :members:
+
+.. module:: pid
+
+.. autoclass:: PID
+    :members:
+
+.. module:: yaw_controller
+
+.. autoclass:: YawController
     :members:
 
