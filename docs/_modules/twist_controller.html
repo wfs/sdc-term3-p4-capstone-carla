@@ -41,10 +41,7 @@
         
         
   <h1>Source code for twist_controller</h1><div class="highlight"><pre>
-<span class="c1"># comment-out next lines when generating api docs</span>
-<span class="c1"># *****</span>
-<span class="c1">#import rospy</span>
-<span class="c1"># *****</span>
+<span class="kn">import</span> <span class="nn">rospy</span>
 
 <span class="kn">from</span> <span class="nn">yaw_controller</span> <span class="k">import</span> <span class="n">YawController</span>
 <span class="kn">import</span> <span class="nn">pid</span>
@@ -86,8 +83,11 @@
     <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">steering_correction_pid</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">control</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cte</span><span class="p">,</span> <span class="n">dbw_enabled</span><span class="p">,</span> <span class="n">twist_cmd_linear_velocity</span><span class="p">,</span> <span class="n">twist_cmd_angular_velocity</span><span class="p">,</span>
+<div class="viewcode-block" id="Controller.control"><a class="viewcode-back" href="../index.html#twist_controller.Controller.control">[docs]</a>    <span class="k">def</span> <span class="nf">control</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cte</span><span class="p">,</span> <span class="n">dbw_enabled</span><span class="p">,</span> <span class="n">twist_cmd_linear_velocity</span><span class="p">,</span> <span class="n">twist_cmd_angular_velocity</span><span class="p">,</span>
                 <span class="n">current_linear_velocity</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Combine PID and Yaw controllers to adjust steering for given reference path and and target velocities.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">new_timestamp</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_time</span><span class="p">()</span>
         <span class="n">duration</span> <span class="o">=</span> <span class="n">new_timestamp</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span>
 
@@ -106,12 +106,12 @@
         <span class="k">else</span><span class="p">:</span>  <span class="c1"># aka manual driving</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">steering_correction_pid</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>  <span class="c1"># reset pid</span>
 
-        <span class="k">return</span> <span class="mf">0.0</span>
+        <span class="k">return</span> <span class="mf">0.0</span></div>
 
 <div class="viewcode-block" id="Controller.control_speed_based_on_torque"><a class="viewcode-back" href="../index.html#twist_controller.Controller.control_speed_based_on_torque">[docs]</a>    <span class="k">def</span> <span class="nf">control_speed_based_on_torque</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_linear_velocity</span><span class="p">,</span> <span class="n">current_velocity</span><span class="p">,</span> <span class="n">transition_time</span><span class="p">,</span>
                                       <span class="n">vehicle_mass</span><span class="p">,</span> <span class="n">wheel_and_tire_radius</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Manipulate inputs to return throttle, brake and steering values to dbw_node.</span>
+<span class="sd">        Manipulates throttle, brake based on target linear velocity for given vehicle torque.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">velocity_change_required</span> <span class="o">=</span> <span class="n">target_linear_velocity</span> <span class="o">-</span> <span class="n">current_velocity</span>
         <span class="c1"># adjust acceleration within timebox</span>

@@ -43,13 +43,10 @@
   <h1>Source code for waypoint_updater</h1><div class="highlight"><pre>
 <span class="ch">#!/usr/bin/env python</span>
 
-<span class="c1"># comment-out next lines when generating api docs</span>
-<span class="c1"># *****</span>
-<span class="c1">#import rospy</span>
-<span class="c1">#from tf import transformations</span>
-<span class="c1">#from geometry_msgs.msg import PoseStamped</span>
-<span class="c1">#from styx_msgs.msg import Lane, Waypoint, TrafficLightArray</span>
-<span class="c1"># *****</span>
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">from</span> <span class="nn">tf</span> <span class="k">import</span> <span class="n">transformations</span>
+<span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="k">import</span> <span class="n">PoseStamped</span>
+<span class="kn">from</span> <span class="nn">styx_msgs.msg</span> <span class="k">import</span> <span class="n">Lane</span><span class="p">,</span> <span class="n">Waypoint</span><span class="p">,</span> <span class="n">TrafficLightArray</span>
 
 <span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span>
 <span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
@@ -135,12 +132,12 @@
         <span class="c1"># TODO: Callback for /obstacle_waypoint message. We will implement it later</span>
         <span class="k">pass</span>
 
-<div class="viewcode-block" id="WaypointUpdater.get_next_waypoints"><a class="viewcode-back" href="../index.html#waypoint_updater.WaypointUpdater.get_next_waypoints">[docs]</a>    <span class="k">def</span> <span class="nf">get_next_waypoints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_next_waypoints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Returns a list of waypoints ahead of the ego car &quot;&quot;&quot;</span>
         <span class="n">m</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">waypoints</span><span class="p">),</span> <span class="n">i</span> <span class="o">+</span> <span class="n">n</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">waypoints</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">m</span><span class="p">])</span></div>
+        <span class="k">return</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">waypoints</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">m</span><span class="p">])</span>
 
-<div class="viewcode-block" id="WaypointUpdater.get_closest_waypoint_index"><a class="viewcode-back" href="../index.html#waypoint_updater.WaypointUpdater.get_closest_waypoint_index">[docs]</a>    <span class="k">def</span> <span class="nf">get_closest_waypoint_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_closest_waypoint_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Returns index of the closest waypoint &quot;&quot;&quot;</span>
         <span class="n">best_distance</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
         <span class="n">best_waypoint_index</span> <span class="o">=</span> <span class="mi">0</span>
@@ -157,21 +154,21 @@
         <span class="n">is_behind</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_waypoint_behind_ego_car</span><span class="p">(</span><span class="n">pose</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">[</span><span class="n">best_waypoint_index</span><span class="p">])</span>
         <span class="k">if</span> <span class="n">is_behind</span><span class="p">:</span>
             <span class="n">best_waypoint_index</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">return</span> <span class="n">best_waypoint_index</span></div>
+        <span class="k">return</span> <span class="n">best_waypoint_index</span>
 
-<div class="viewcode-block" id="WaypointUpdater.get_distance_between_two_points"><a class="viewcode-back" href="../index.html#waypoint_updater.WaypointUpdater.get_distance_between_two_points">[docs]</a>    <span class="k">def</span> <span class="nf">get_distance_between_two_points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_distance_between_two_points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Returns distance between two points &quot;&quot;&quot;</span>
         <span class="n">dx</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">x</span>
         <span class="n">dy</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">y</span>
-        <span class="k">return</span> <span class="n">dx</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">*</span> <span class="n">dy</span></div>
+        <span class="k">return</span> <span class="n">dx</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">*</span> <span class="n">dy</span>
 
-<div class="viewcode-block" id="WaypointUpdater.is_waypoint_behind_ego_car"><a class="viewcode-back" href="../index.html#waypoint_updater.WaypointUpdater.is_waypoint_behind_ego_car">[docs]</a>    <span class="k">def</span> <span class="nf">is_waypoint_behind_ego_car</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">,</span> <span class="n">waypoint</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">is_waypoint_behind_ego_car</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">,</span> <span class="n">waypoint</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Do transformation that sets origin to the ego car position, oriented along x-axis and</span>
 <span class="sd">        return True if the waypoint is behind the ego car,  False if in front</span>
 
 <span class="sd">        See Change of basis | Essence of linear algebra, chapter 9 - https://youtu.be/P2LTAUO1TdA</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">yaw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_Euler</span><span class="p">(</span><span class="n">pose</span><span class="p">)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">yaw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_euler</span><span class="p">(</span><span class="n">pose</span><span class="p">)</span>
         <span class="n">origin_x</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
         <span class="n">origin_y</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span>
 
@@ -182,15 +179,15 @@
 
         <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="k">return</span> <span class="kc">True</span>
 
-<div class="viewcode-block" id="WaypointUpdater.get_Euler"><a class="viewcode-back" href="../index.html#waypoint_updater.WaypointUpdater.get_Euler">[docs]</a>    <span class="k">def</span> <span class="nf">get_Euler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_euler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Returns roll (x), pitch (y), yaw (z) from a Quaternion.</span>
 
 <span class="sd">        See ROS Quaternion Basics for usage - http://wiki.ros.org/Tutorials/Quaternions</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">transformations</span><span class="o">.</span><span class="n">euler_from_quaternion</span><span class="p">(</span>
-            <span class="p">[</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span><span class="p">])</span></div>
+            <span class="p">[</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span><span class="p">])</span>
 
     <span class="k">def</span> <span class="nf">create_lane</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_id</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">):</span>
         <span class="n">new_lane</span> <span class="o">=</span> <span class="n">Lane</span><span class="p">()</span>

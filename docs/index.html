@@ -71,39 +71,6 @@
 <dd><p><strong>* STEP 2 *</strong></p>
 <p>This node will publish waypoints from the car’s current position to some <cite>x</cite> distance ahead,
 with the correct target velocities, depending on traffic lights and obstacles.</p>
-<dl class="method">
-<dt id="waypoint_updater.WaypointUpdater.get_Euler">
-<code class="descname">get_Euler</code><span class="sig-paren">(</span><em>pose</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/waypoint_updater.html#WaypointUpdater.get_Euler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#waypoint_updater.WaypointUpdater.get_Euler" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns roll (x), pitch (y), yaw (z) from a Quaternion.</p>
-<p>See ROS Quaternion Basics for usage - <a class="reference external" href="http://wiki.ros.org/Tutorials/Quaternions">http://wiki.ros.org/Tutorials/Quaternions</a></p>
-</dd></dl>
-
-<dl class="method">
-<dt id="waypoint_updater.WaypointUpdater.get_closest_waypoint_index">
-<code class="descname">get_closest_waypoint_index</code><span class="sig-paren">(</span><em>pose</em>, <em>waypoints</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/waypoint_updater.html#WaypointUpdater.get_closest_waypoint_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#waypoint_updater.WaypointUpdater.get_closest_waypoint_index" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns index of the closest waypoint</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="waypoint_updater.WaypointUpdater.get_distance_between_two_points">
-<code class="descname">get_distance_between_two_points</code><span class="sig-paren">(</span><em>a</em>, <em>b</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/waypoint_updater.html#WaypointUpdater.get_distance_between_two_points"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#waypoint_updater.WaypointUpdater.get_distance_between_two_points" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns distance between two points</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="waypoint_updater.WaypointUpdater.get_next_waypoints">
-<code class="descname">get_next_waypoints</code><span class="sig-paren">(</span><em>waypoints</em>, <em>i</em>, <em>n</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/waypoint_updater.html#WaypointUpdater.get_next_waypoints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#waypoint_updater.WaypointUpdater.get_next_waypoints" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a list of waypoints ahead of the ego car</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="waypoint_updater.WaypointUpdater.is_waypoint_behind_ego_car">
-<code class="descname">is_waypoint_behind_ego_car</code><span class="sig-paren">(</span><em>pose</em>, <em>waypoint</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/waypoint_updater.html#WaypointUpdater.is_waypoint_behind_ego_car"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#waypoint_updater.WaypointUpdater.is_waypoint_behind_ego_car" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do transformation that sets origin to the ego car position, oriented along x-axis and
-return True if the waypoint is behind the ego car,  False if in front</p>
-<p>See Change of basis | Essence of linear algebra, chapter 9 - <a class="reference external" href="https://youtu.be/P2LTAUO1TdA">https://youtu.be/P2LTAUO1TdA</a></p>
-</dd></dl>
-
 </dd></dl>
 
 <span class="target" id="module-dbw_node"></span><dl class="class">
@@ -113,23 +80,16 @@ return True if the waypoint is behind the ego car,  False if in front</p>
 <p>Actuates the throttle steering and brake to successfully navigate the waypoints with the correct target
 velocity.</p>
 <dl class="method">
+<dt id="dbw_node.DBWNode.loop">
+<code class="descname">loop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbw_node.html#DBWNode.loop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbw_node.DBWNode.loop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets predicted throttle, brake, and steering using TwistController.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="dbw_node.DBWNode.cte_calc">
 <code class="descname">cte_calc</code><span class="sig-paren">(</span><em>pose</em>, <em>waypoints</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbw_node.html#DBWNode.cte_calc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbw_node.DBWNode.cte_calc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the distance from the ego cars current position to the waypoints path.</p>
 <p>See Polynomial fitting - <a class="reference external" href="http://blog.mmast.net/least-squares-fitting-numpy-scipy">http://blog.mmast.net/least-squares-fitting-numpy-scipy</a></p>
-</dd></dl>
-
-<dl class="method">
-<dt id="dbw_node.DBWNode.get_euler">
-<code class="descname">get_euler</code><span class="sig-paren">(</span><em>pose</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbw_node.html#DBWNode.get_euler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbw_node.DBWNode.get_euler" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns roll (x-axis), pitch (y-axis), yaw (z-axis) from a Quaternion.</p>
-<p>See ROS Quaternion Basics for usage - <a class="reference external" href="http://wiki.ros.org/Tutorials/Quaternions">http://wiki.ros.org/Tutorials/Quaternions</a></p>
-</dd></dl>
-
-<dl class="method">
-<dt id="dbw_node.DBWNode.loop">
-<code class="descname">loop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbw_node.html#DBWNode.loop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbw_node.DBWNode.loop" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets predicted throttle, brake, and steering using TwistController.</p>
 </dd></dl>
 
 <dl class="method">
@@ -140,6 +100,19 @@ returns transformed waypoint co-ordinates.</p>
 <p>See Change of basis | Essence of linear algebra, chapter 9 - <a class="reference external" href="https://youtu.be/P2LTAUO1TdA">https://youtu.be/P2LTAUO1TdA</a></p>
 </dd></dl>
 
+<dl class="method">
+<dt id="dbw_node.DBWNode.get_euler">
+<code class="descname">get_euler</code><span class="sig-paren">(</span><em>pose</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbw_node.html#DBWNode.get_euler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbw_node.DBWNode.get_euler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns roll (x-axis), pitch (y-axis), yaw (z-axis) from a Quaternion.</p>
+<p>See ROS Quaternion Basics for usage - <a class="reference external" href="http://wiki.ros.org/Tutorials/Quaternions">http://wiki.ros.org/Tutorials/Quaternions</a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dbw_node.DBWNode.dbw_enabled_cb">
+<code class="descname">dbw_enabled_cb</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbw_node.html#DBWNode.dbw_enabled_cb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbw_node.DBWNode.dbw_enabled_cb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enabled Self-Driving mode will publish throttle, brake and steer values.</p>
+</dd></dl>
+
 </dd></dl>
 
 <span class="target" id="module-twist_controller"></span><dl class="class">
@@ -148,9 +121,15 @@ returns transformed waypoint co-ordinates.</p>
 <dd><p><strong>* STEP 4 *</strong></p>
 <p>Adjusts vehicles steering to minimise Cross Track Error and align to predicted path.</p>
 <dl class="method">
+<dt id="twist_controller.Controller.control">
+<code class="descname">control</code><span class="sig-paren">(</span><em>cte</em>, <em>dbw_enabled</em>, <em>twist_cmd_linear_velocity</em>, <em>twist_cmd_angular_velocity</em>, <em>current_linear_velocity</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/twist_controller.html#Controller.control"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#twist_controller.Controller.control" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combine PID and Yaw controllers to adjust steering for given reference path and and target velocities.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="twist_controller.Controller.control_speed_based_on_torque">
 <code class="descname">control_speed_based_on_torque</code><span class="sig-paren">(</span><em>target_linear_velocity</em>, <em>current_velocity</em>, <em>transition_time</em>, <em>vehicle_mass</em>, <em>wheel_and_tire_radius</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/twist_controller.html#Controller.control_speed_based_on_torque"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#twist_controller.Controller.control_speed_based_on_torque" title="Permalink to this definition">¶</a></dt>
-<dd><p>Manipulate inputs to return throttle, brake and steering values to dbw_node.</p>
+<dd><p>Manipulates throttle, brake based on target linear velocity for given vehicle torque.</p>
 </dd></dl>
 
 </dd></dl>
