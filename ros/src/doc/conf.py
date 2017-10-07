@@ -18,17 +18,24 @@
 #
 import os
 import sys
+
 # sys.path.insert(0, os.path.abspath('.'))
-#print("system path was : ", sys.path)
-#sys.path.insert(0, os.path.abspath('../'))
+# print("system path was : ", sys.path)
+# sys.path.insert(0, os.path.abspath('../'))
 sys.path.insert(0, os.path.abspath('../twist_controller'))
 sys.path.insert(0, os.path.abspath('../waypoint_loader'))
 sys.path.insert(0, os.path.abspath('../waypoint_updater'))
 sys.path.insert(0, os.path.abspath('../pid'))
 sys.path.insert(0, os.path.abspath('../yaw_controller'))
-#print("system path now : ", sys.path)
+# print("system path now : ", sys.path)
 
 # -- General configuration ------------------------------------------------
+# Exclude auto documenting the following imports :
+autodoc_mock_imports = ['styx_msgs.msg', 'Quaternion', 'Lane', 'Waypoint', 'TrafficLightArray', 'tf', 'rospy',
+                        'PoseStamped', 'ThrottleCmd', 'SteeringCmd', 'BrakeCmd']
+
+# Documented members will appear in same order as listed in *.py source files
+autodoc_member_order = 'bysource'
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #
@@ -38,12 +45,12 @@ sys.path.insert(0, os.path.abspath('../yaw_controller'))
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.autodoc',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.todo',
-    'sphinx.ext.coverage',
-    'sphinx.ext.mathjax',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages']
+              'sphinx.ext.intersphinx',
+              'sphinx.ext.todo',
+              'sphinx.ext.coverage',
+              'sphinx.ext.mathjax',
+              'sphinx.ext.viewcode',
+              'sphinx.ext.githubpages']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -89,16 +96,15 @@ pygments_style = 'sphinx'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 
-
 # -- Options for HTML output ----------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-#html_theme = 'alabaster'
-#html_theme = 'sphinx_rtd_theme'
-#html_theme = 'agogo'
-#html_theme = 'bizstyle'
+# html_theme = 'alabaster'
+# html_theme = 'sphinx_rtd_theme'
+# html_theme = 'agogo'
+# html_theme = 'bizstyle'
 html_theme = 'haiku'
 
 # Theme options are theme-specific and customize the look and feel of a theme
@@ -126,17 +132,16 @@ html_sidebars = {
         'donate.html',
     ]
 }
-#html_sidebars = {
+# html_sidebars = {
 #   '**': ['globaltoc.html', 'sourcelink.html', 'searchbox.html'],
 #   'using/windows': ['windowssidebar.html', 'searchbox.html'],
-#}
+# }
 
 
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'RoboFolksdoc'
-
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -163,9 +168,9 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'RoboFolks.tex', u'RoboFolks Documentation',
-     u'anguyen3@rockets.utoledo.edu, rohts.patil@gmail.com, evotianusx@gmail.com, andrew.d.wilkie@gmail.com, buaaluqiang@hotmail.com', 'manual'),
+     u'anguyen3@rockets.utoledo.edu, rohts.patil@gmail.com, evotianusx@gmail.com, andrew.d.wilkie@gmail.com, buaaluqiang@hotmail.com',
+     'manual'),
 ]
-
 
 # -- Options for manual page output ---------------------------------------
 
@@ -175,7 +180,6 @@ man_pages = [
     (master_doc, 'robofolks', u'RoboFolks Documentation',
      [author], 1)
 ]
-
 
 # -- Options for Texinfo output -------------------------------------------
 
@@ -187,9 +191,6 @@ texinfo_documents = [
      author, 'RoboFolks', 'One line description of project.',
      'Miscellaneous'),
 ]
-
-
-
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'https://docs.python.org/': None}

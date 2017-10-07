@@ -1,12 +1,9 @@
 #!/usr/bin/env python
 
-# comment-out next lines when generating api docs
-# *****
 import rospy
 from tf import transformations
 from geometry_msgs.msg import PoseStamped
 from styx_msgs.msg import Lane, Waypoint, TrafficLightArray
-# *****
 
 from math import cos, sin
 from copy import deepcopy
@@ -128,7 +125,7 @@ class WaypointUpdater(object):
 
         See Change of basis | Essence of linear algebra, chapter 9 - https://youtu.be/P2LTAUO1TdA
         """
-        _, _, yaw = self.get_Euler(pose)
+        _, _, yaw = self.get_euler(pose)
         origin_x = pose.position.x
         origin_y = pose.position.y
 
@@ -141,7 +138,7 @@ class WaypointUpdater(object):
             return False
         return True
 
-    def get_Euler(self, pose):
+    def get_euler(self, pose):
         """ Returns roll (x), pitch (y), yaw (z) from a Quaternion.
 
         See ROS Quaternion Basics for usage - http://wiki.ros.org/Tutorials/Quaternions

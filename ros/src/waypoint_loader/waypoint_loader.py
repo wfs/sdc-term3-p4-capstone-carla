@@ -4,13 +4,10 @@ import os
 import csv
 import math
 
-# comment-out next lines when generating api docs
-# *****
 from geometry_msgs.msg import Quaternion
 from styx_msgs.msg import Lane, Waypoint
 import tf
 import rospy
-# *****
 
 CSV_HEADER = ['x', 'y', 'z', 'yaw']
 MAX_DECEL = 1.0

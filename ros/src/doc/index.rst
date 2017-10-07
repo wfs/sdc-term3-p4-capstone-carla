@@ -17,7 +17,8 @@ Classes and Functions
 =====================
  
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
+   :numbered: 2
 
 .. module:: waypoint_loader
 
@@ -27,12 +28,11 @@ Classes and Functions
 .. module:: waypoint_updater
 
 .. autoclass:: WaypointUpdater
-    :members:
 
 .. module:: dbw_node 
 
 .. autoclass:: DBWNode 
-    :members:
+    :members: loop, cte_calc, transform_waypoints, get_euler, dbw_enabled_cb
 
 .. module:: twist_controller
 

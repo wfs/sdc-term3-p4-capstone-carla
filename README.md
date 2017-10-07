@@ -1,3 +1,41 @@
+---
+
+# Programming a Real Self-Driving Car
+## Capstone Project
+* Project Submission Due : 23/Oct/2017
+* Term 3 End : 6/Nov/2017
+### RoboFolks Team
+1. #### Perception
+    * evotianusx@gmail.com 
+    * rohts.patil@gmail.com
+1. #### Planning
+    * anguyen3@rockets.utoledo.edu
+1. #### Control 
+    * andrew.d.wilkie@gmail.com
+    * buaaluqiang@hotmail.com
+
+---
+
+### Submission Checklist and Requirements
+1. Smoothly follow waypoints in the simulator.
+1. Stop at traffic lights when needed.
+1. Stop and restart PID controllers depending on the state of /vehicle/dbw_enabled.
+1. **Speed Limit**: Be sure to respect the speed limit set by the velocity param (km/h) in waypoint_loader
+
+---
+
+### Simulator Results
+* TODO
+---
+
+### ROS Bags From Test Site Results
+* TODO
+---
+
+### Test Drive Results
+* TODO
+---
+
 This is the project repo for the final project of the Udacity Self-Driving Car Nanodegree: Programming a Real Self-Driving Car. For more information about the project, see the project introduction [here](https://classroom.udacity.com/nanodegrees/nd013/parts/6047fe34-d93c-4f50-8336-b70ef10cb4b2/modules/e1a23b06-329a-4684-a717-ad476f0d8dff/lessons/462c933d-9f24-42d3-8bdc-a08a5fc866e4/concepts/5ab4b122-83e6-436d-850f-9f4d26627fd9).
 
 ### Installation 
@@ -57,3 +95,4 @@ cd CarND-Capstone/ros
 roslaunch launch/site.launch
 ```
 
+---

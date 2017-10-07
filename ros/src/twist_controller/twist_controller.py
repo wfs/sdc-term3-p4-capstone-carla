@@ -1,7 +1,4 @@
-# comment-out next lines when generating api docs
-# *****
 import rospy
-# *****
 
 from yaw_controller import YawController
 import pid
@@ -45,6 +42,9 @@ class Controller(object):
 
     def control(self, cte, dbw_enabled, twist_cmd_linear_velocity, twist_cmd_angular_velocity,
                 current_linear_velocity):
+        """
+        Combine PID and Yaw controllers to adjust steering for given reference path and and target velocities.
+        """
         new_timestamp = rospy.get_time()
         duration = new_timestamp - self.timestamp
 
@@ -68,7 +68,7 @@ class Controller(object):
     def control_speed_based_on_torque(self, target_linear_velocity, current_velocity, transition_time,
                                       vehicle_mass, wheel_and_tire_radius):
         """
-        Manipulate inputs to return throttle, brake and steering values to dbw_node.
+        Manipulates throttle, brake based on target linear velocity for given vehicle torque.
         """
         velocity_change_required = target_linear_velocity - current_velocity
         # adjust acceleration within timebox

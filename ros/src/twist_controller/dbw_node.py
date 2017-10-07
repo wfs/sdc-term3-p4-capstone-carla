@@ -1,14 +1,11 @@
 #!/usr/bin/env python
 
-# comment-out next lines when generating api docs
-# *****
 import rospy
 from tf import transformations
 from std_msgs.msg import Bool
 from geometry_msgs.msg import TwistStamped, PoseStamped
 from styx_msgs.msg import Lane
 from dbw_mkz_msgs.msg import ThrottleCmd, SteeringCmd, BrakeCmd
-# *****
 
 from math import cos, sin
 import numpy as np
@@ -160,13 +157,6 @@ class DBWNode(object):
         bcmd.pedal_cmd = brake
         self.brake_pub.publish(bcmd)
 
-    def dbw_enabled_cb(self, message):
-        self.dbw_enabled = bool(message.data)
-        if self.dbw_enabled:
-            rospy.logwarn("Vehicle is now in Self-Driving mode")
-        else:
-            rospy.logwarn("Vehicle is now in Manual Driving mode")
-
     def pose_cb(self, message):
         self.current_ego_pose = message.pose
 
@@ -183,13 +173,18 @@ class DBWNode(object):
     def waypoints_cb(self, message):
         self.waypoints = message.waypoints
 
-    def get_euler(self, pose):
-        """ Returns roll (x-axis), pitch (y-axis), yaw (z-axis) from a Quaternion.
 
-        See ROS Quaternion Basics for usage - http://wiki.ros.org/Tutorials/Quaternions
+    def cte_calc(self, pose, waypoints):
         """
-        return transformations.euler_from_quaternion(
-            [pose.orientation.x, pose.orientation.y, pose.orientation.z, pose.orientation.w])
+        Calculates the distance from the ego cars current position to the waypoints path.
+
+        See Polynomial fitting - http://blog.mmast.net/least-squares-fitting-numpy-scipy
+        """
+        x_coords, y_coords = self.transform_waypoints(pose, waypoints, POINTS_TO_FIT)
+        coefficients = np.polyfit(x_coords, y_coords, 3)  # 3-degree polynomial fit, minimising squared error
+        distance = np.polyval(coefficients, 5.0)  # distance between car position and transformed waypoint
+
+        return distance
 
     def transform_waypoints(self, pose, waypoints, points_to_use=None):
         """
@@ -220,17 +215,23 @@ class DBWNode(object):
 
         return x_coords, y_coords
 
-    def cte_calc(self, pose, waypoints):
-        """
-        Calculates the distance from the ego cars current position to the waypoints path.
+    def get_euler(self, pose):
+        """ Returns roll (x-axis), pitch (y-axis), yaw (z-axis) from a Quaternion.
 
-        See Polynomial fitting - http://blog.mmast.net/least-squares-fitting-numpy-scipy
+        See ROS Quaternion Basics for usage - http://wiki.ros.org/Tutorials/Quaternions
         """
-        x_coords, y_coords = self.transform_waypoints(pose, waypoints, POINTS_TO_FIT)
-        coefficients = np.polyfit(x_coords, y_coords, 3)  # 3-degree polynomial fit, minimising squared error
-        distance = np.polyval(coefficients, 5.0)  # distance between car position and transformed waypoint
+        return transformations.euler_from_quaternion(
+            [pose.orientation.x, pose.orientation.y, pose.orientation.z, pose.orientation.w])
 
-        return distance
+    def dbw_enabled_cb(self, message):
+        """
+        Enabled Self-Driving mode will publish throttle, brake and steer values.
+        """
+        self.dbw_enabled = bool(message.data)
+        if self.dbw_enabled:
+            rospy.logwarn("Vehicle is now in Self-Driving mode")
+        else:
+            rospy.logwarn("Vehicle is now in Manual Driving mode")
 
 
 if __name__ == '__main__':
