@@ -1,5 +1,3 @@
----
-
 # Programming a Real Self-Driving Car
 ## Capstone Project
 * Project Submission Due : 23/Oct/2017
