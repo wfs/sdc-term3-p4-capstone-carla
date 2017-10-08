@@ -127,9 +127,11 @@ returns transformed waypoint co-ordinates.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="twist_controller.Controller.control_speed_based_on_torque">
-<code class="descname">control_speed_based_on_torque</code><span class="sig-paren">(</span><em>target_linear_velocity</em>, <em>current_velocity</em>, <em>transition_time</em>, <em>vehicle_mass</em>, <em>wheel_and_tire_radius</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/twist_controller.html#Controller.control_speed_based_on_torque"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#twist_controller.Controller.control_speed_based_on_torque" title="Permalink to this definition">¶</a></dt>
-<dd><p>Manipulates throttle, brake based on target linear velocity for given vehicle torque.</p>
+<dt id="twist_controller.Controller.control_speed_based_on_proportional_throttle_brake">
+<code class="descname">control_speed_based_on_proportional_throttle_brake</code><span class="sig-paren">(</span><em>target_linear_velocity</em>, <em>current_velocity</em>, <em>max_throttle_proportional</em>, <em>max_brake_proportional</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/twist_controller.html#Controller.control_speed_based_on_proportional_throttle_brake"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#twist_controller.Controller.control_speed_based_on_proportional_throttle_brake" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manipulates throttle, brake based on difference between target and current linear velocity,
+limited by dbw_node parameters max_throttle_proportion and max_brake_proportional.</p>
+<p>See <a class="reference external" href="https://carnd.slack.com/archives/C6NVDVAQ3/p1506389845000004">https://carnd.slack.com/archives/C6NVDVAQ3/p1506389845000004</a></p>
 </dd></dl>
 
 </dd></dl>

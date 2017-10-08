@@ -37,7 +37,7 @@ Classes and Functions
 .. module:: twist_controller
 
 .. autoclass:: Controller
-    :members:
+    :members: control, control_speed_based_on_proportional_throttle_brake
 
 .. module:: pid
 

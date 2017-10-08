@@ -105,6 +105,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">steer_ratio</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;~steer_ratio&#39;</span><span class="p">,</span> <span class="mf">14.8</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_lat_accel</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;~max_lat_accel&#39;</span><span class="p">,</span> <span class="mf">3.</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_steer_angle</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;~max_steer_angle&#39;</span><span class="p">,</span> <span class="mf">8.</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_throttle</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;~max_throttle_proportional&#39;</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_brake</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;~max_brake_proportional&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span><span class="p">)</span>
+
 
         <span class="c1"># Publishers</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">steer_pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/vehicle/steering_cmd&#39;</span><span class="p">,</span> <span class="n">SteeringCmd</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -163,11 +166,17 @@
                                                 <span class="bp">self</span><span class="o">.</span><span class="n">twist_cmd_angular_velocity</span><span class="p">,</span> <span class="n">current_linear_velocity</span><span class="p">)</span>
 
                 <span class="c1"># print(&quot;twist_cmd_angular_velocity aka self.twist_cmd.twist.angular.z : &quot;, self.twist_cmd.twist.angular.z)</span>
-                <span class="n">throttle</span><span class="p">,</span> <span class="n">brake</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">control_speed_based_on_torque</span><span class="p">(</span><span class="n">target_velocity</span><span class="p">,</span>
+                <span class="c1"># throttle, brake = self.controller.control_speed_based_on_torque(target_velocity,</span>
+                <span class="c1">#                                                                 current_linear_velocity,</span>
+                <span class="c1">#                                                                 0.5,</span>
+                <span class="c1">#                                                                 self.vehicle_mass,</span>
+                <span class="c1">#                                                                 self.wheel_radius)</span>
+
+                <span class="n">throttle</span><span class="p">,</span> <span class="n">brake</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">control_speed_based_on_proportional_throttle_brake</span><span class="p">(</span>
+                                                                                <span class="n">target_velocity</span><span class="p">,</span>
                                                                                 <span class="n">current_linear_velocity</span><span class="p">,</span>
-                                                                                <span class="mf">0.5</span><span class="p">,</span>
-                                                                                <span class="bp">self</span><span class="o">.</span><span class="n">vehicle_mass</span><span class="p">,</span>
-                                                                                <span class="bp">self</span><span class="o">.</span><span class="n">wheel_radius</span><span class="p">)</span>
+                                                                                <span class="bp">self</span><span class="o">.</span><span class="n">max_throttle</span><span class="p">,</span>
+                                                                                <span class="bp">self</span><span class="o">.</span><span class="n">max_brake</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="c1"># not enough waypoints so publish heavy break</span>
                 <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s2">&quot;Number of waypoint received is : </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">))</span>
@@ -177,7 +186,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">throttle</span><span class="p">,</span> <span class="n">brake</span><span class="p">,</span> <span class="n">steer</span><span class="p">)</span>
                 <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s2">&quot;published throttle : </span><span class="si">%s</span><span class="s2">, brake : </span><span class="si">%s</span><span class="s2">, steer : </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">throttle</span><span class="p">,</span> <span class="n">brake</span><span class="p">,</span> <span class="n">steer</span><span class="p">)</span>
 
-            <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;throttle </span><span class="si">%s</span><span class="s2">, brake </span><span class="si">%s</span><span class="s2">, steer </span><span class="si">%s</span><span class="s2"> adjustments to dbw_node&quot;</span><span class="p">,</span>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;dbw_node.py : throttle </span><span class="si">%s</span><span class="s2">, brake </span><span class="si">%s</span><span class="s2">, steer </span><span class="si">%s</span><span class="s2"> adjustments to dbw_node&quot;</span><span class="p">,</span>
                           <span class="n">throttle</span><span class="p">,</span> <span class="n">brake</span><span class="p">,</span> <span class="n">steer</span><span class="p">)</span>
 
             <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span></div>
@@ -272,9 +281,13 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dbw_enabled</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dbw_enabled</span><span class="p">:</span>
-            <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;Vehicle is now in Self-Driving mode&quot;</span><span class="p">)</span>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;*** ============================= ***&quot;</span><span class="p">)</span>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;*** Self-Driving mode activated ! ***&quot;</span><span class="p">)</span>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;*** ============================= ***&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;Vehicle is now in Manual Driving mode&quot;</span><span class="p">)</span></div></div>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;*** =============================== ***&quot;</span><span class="p">)</span>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;*** Manual Driving mode activated ! ***&quot;</span><span class="p">)</span>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;*** =============================== ***&quot;</span><span class="p">)</span></div></div>
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
