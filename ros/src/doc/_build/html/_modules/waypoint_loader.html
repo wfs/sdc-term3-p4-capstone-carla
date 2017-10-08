@@ -47,13 +47,10 @@
 <span class="kn">import</span> <span class="nn">csv</span>
 <span class="kn">import</span> <span class="nn">math</span>
 
-<span class="c1"># comment-out next lines when generating api docs</span>
-<span class="c1"># *****</span>
-<span class="c1">#from geometry_msgs.msg import Quaternion</span>
-<span class="c1">#from styx_msgs.msg import Lane, Waypoint</span>
-<span class="c1">#import tf</span>
-<span class="c1">#import rospy</span>
-<span class="c1"># *****</span>
+<span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="k">import</span> <span class="n">Quaternion</span>
+<span class="kn">from</span> <span class="nn">styx_msgs.msg</span> <span class="k">import</span> <span class="n">Lane</span><span class="p">,</span> <span class="n">Waypoint</span>
+<span class="kn">import</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">rospy</span>
 
 <span class="n">CSV_HEADER</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;yaw&#39;</span><span class="p">]</span>
 <span class="n">MAX_DECEL</span> <span class="o">=</span> <span class="mf">1.0</span>
@@ -126,22 +123,22 @@
             <span class="n">wp</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">vel</span><span class="p">,</span> <span class="n">wp</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">waypoints</span>
 
-    <span class="k">def</span> <span class="nf">publish</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">):</span>
-        <span class="n">lane</span> <span class="o">=</span> <span class="n">Lane</span><span class="p">()</span>
-        <span class="n">lane</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="s1">&#39;/world&#39;</span>
-        <span class="n">lane</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">stamp</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">lane</span><span class="o">.</span><span class="n">waypoints</span> <span class="o">=</span> <span class="n">waypoints</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">lane</span><span class="p">)</span></div>
-
     <span class="c1"># def publish(self, waypoints):</span>
-    <span class="c1">#     rate = rospy.Rate(0.1)</span>
-    <span class="c1">#     while not rospy.is_shutdown():</span>
-    <span class="c1">#         lane = Lane()</span>
-    <span class="c1">#         lane.header.frame_id = &#39;/world&#39;</span>
-    <span class="c1">#         lane.header.stamp = rospy.Time(0)</span>
-    <span class="c1">#         lane.waypoints = waypoints</span>
-    <span class="c1">#         self.pub.publish(lane)</span>
-    <span class="c1">#         rate.sleep()</span>
+    <span class="c1">#     lane = Lane()</span>
+    <span class="c1">#     lane.header.frame_id = &#39;/world&#39;</span>
+    <span class="c1">#     lane.header.stamp = rospy.Time(0)</span>
+    <span class="c1">#     lane.waypoints = waypoints</span>
+    <span class="c1">#     self.pub.publish(lane)</span>
+
+    <span class="k">def</span> <span class="nf">publish</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">):</span>
+        <span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
+            <span class="n">lane</span> <span class="o">=</span> <span class="n">Lane</span><span class="p">()</span>
+            <span class="n">lane</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="s1">&#39;/world&#39;</span>
+            <span class="n">lane</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">stamp</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">lane</span><span class="o">.</span><span class="n">waypoints</span> <span class="o">=</span> <span class="n">waypoints</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">lane</span><span class="p">)</span>
+            <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span></div>
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>

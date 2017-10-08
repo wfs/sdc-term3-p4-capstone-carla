@@ -80,22 +80,22 @@ class WaypointLoader(object):
             wp.twist.twist.linear.x = min(vel, wp.twist.twist.linear.x)
         return waypoints
 
-    def publish(self, waypoints):
-        lane = Lane()
-        lane.header.frame_id = '/world'
-        lane.header.stamp = rospy.Time(0)
-        lane.waypoints = waypoints
-        self.pub.publish(lane)
-
     # def publish(self, waypoints):
-    #     rate = rospy.Rate(0.1)
-    #     while not rospy.is_shutdown():
-    #         lane = Lane()
-    #         lane.header.frame_id = '/world'
-    #         lane.header.stamp = rospy.Time(0)
-    #         lane.waypoints = waypoints
-    #         self.pub.publish(lane)
-    #         rate.sleep()
+    #     lane = Lane()
+    #     lane.header.frame_id = '/world'
+    #     lane.header.stamp = rospy.Time(0)
+    #     lane.waypoints = waypoints
+    #     self.pub.publish(lane)
+
+    def publish(self, waypoints):
+        rate = rospy.Rate(0.1)
+        while not rospy.is_shutdown():
+            lane = Lane()
+            lane.header.frame_id = '/world'
+            lane.header.stamp = rospy.Time(0)
+            lane.waypoints = waypoints
+            self.pub.publish(lane)
+            rate.sleep()
 
 
 if __name__ == '__main__':

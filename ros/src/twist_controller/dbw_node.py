@@ -62,6 +62,9 @@ class DBWNode(object):
         self.steer_ratio = rospy.get_param('~steer_ratio', 14.8)
         self.max_lat_accel = rospy.get_param('~max_lat_accel', 3.)
         self.max_steer_angle = rospy.get_param('~max_steer_angle', 8.)
+        self.max_throttle = rospy.get_param('~max_throttle_proportional', 0.8)
+        self.max_brake = rospy.get_param('~max_brake_proportional', -0.8)
+
 
         # Publishers
         self.steer_pub = rospy.Publisher('/vehicle/steering_cmd', SteeringCmd, queue_size=1)
@@ -120,11 +123,17 @@ class DBWNode(object):
                                                 self.twist_cmd_angular_velocity, current_linear_velocity)
 
                 # print("twist_cmd_angular_velocity aka self.twist_cmd.twist.angular.z : ", self.twist_cmd.twist.angular.z)
-                throttle, brake = self.controller.control_speed_based_on_torque(target_velocity,
+                # throttle, brake = self.controller.control_speed_based_on_torque(target_velocity,
+                #                                                                 current_linear_velocity,
+                #                                                                 0.5,
+                #                                                                 self.vehicle_mass,
+                #                                                                 self.wheel_radius)
+
+                throttle, brake = self.controller.control_speed_based_on_proportional_throttle_brake(
+                                                                                target_velocity,
                                                                                 current_linear_velocity,
-                                                                                0.5,
-                                                                                self.vehicle_mass,
-                                                                                self.wheel_radius)
+                                                                                self.max_throttle,
+                                                                                self.max_brake)
             else:
                 # not enough waypoints so publish heavy break
                 rospy.loginfo("Number of waypoint received is : %s", len(self.waypoints))
@@ -134,7 +143,7 @@ class DBWNode(object):
                 self.publish(throttle, brake, steer)
                 rospy.loginfo("published throttle : %s, brake : %s, steer : %s", throttle, brake, steer)
 
-            rospy.logwarn("throttle %s, brake %s, steer %s adjustments to dbw_node",
+            rospy.logwarn("dbw_node.py : throttle %s, brake %s, steer %s adjustments to dbw_node",
                           throttle, brake, steer)
 
             rate.sleep()
@@ -229,9 +238,13 @@ class DBWNode(object):
         """
         self.dbw_enabled = bool(message.data)
         if self.dbw_enabled:
-            rospy.logwarn("Vehicle is now in Self-Driving mode")
+            rospy.logwarn("*** ============================= ***")
+            rospy.logwarn("*** Self-Driving mode activated ! ***")
+            rospy.logwarn("*** ============================= ***")
         else:
-            rospy.logwarn("Vehicle is now in Manual Driving mode")
+            rospy.logwarn("*** =============================== ***")
+            rospy.logwarn("*** Manual Driving mode activated ! ***")
+            rospy.logwarn("*** =============================== ***")
 
 
 if __name__ == '__main__':

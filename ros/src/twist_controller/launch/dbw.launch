@@ -11,5 +11,7 @@
         <param name="steer_ratio" value="14.8" />
         <param name="max_lat_accel" value="3." />
         <param name="max_steer_angle" value="8." />
+        <param name="max_throttle_proportional" value="0.3333" />
+        <param name="max_brake_proportional" value="-0.3333" />
     </node>
 </launch>
