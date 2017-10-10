@@ -11,6 +11,7 @@ import numpy as np
 import rospkg
 import math
 
+
 class TLPublisher(object):
     def __init__(self):
         rospy.init_node('tl_publisher')
@@ -25,7 +26,7 @@ class TLPublisher(object):
         self.loop()
 
     def loop(self):
-        rate = rospy.Rate(50)
+        rate = rospy.Rate(1)
         while not rospy.is_shutdown():
             self.traffic_light_pubs.publish(self.lights)
             rate.sleep()
@@ -35,7 +36,7 @@ class TLPublisher(object):
 
         light.header = Header()
         light.header.stamp = rospy.Time.now()
-        light.header.frame_id = '/world'
+        light.header.frame_id = 'world'
 
         light.pose = self.create_pose(x, y, z, yaw)
         light.state = state
@@ -47,13 +48,13 @@ class TLPublisher(object):
 
         pose.header = Header()
         pose.header.stamp = rospy.Time.now()
-        pose.header.frame_id = '/world'
+        pose.header.frame_id = 'world'
 
         pose.pose.position.x = x
         pose.pose.position.y = y
         pose.pose.position.z = z
 
-        q = tf.transformations.quaternion_from_euler(0., 0., math.pi * yaw/180.)
+        q = tf.transformations.quaternion_from_euler(0., 0., math.pi * yaw / 180.)
         pose.pose.orientation = Quaternion(*q)
 
         return pose
