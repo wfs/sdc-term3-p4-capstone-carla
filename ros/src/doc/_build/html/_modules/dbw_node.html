@@ -83,6 +83,8 @@
 
 <div class="viewcode-block" id="DBWNode"><a class="viewcode-back" href="../index.html#dbw_node.DBWNode">[docs]</a><span class="k">class</span> <span class="nc">DBWNode</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    CONTROL SUBSYSTEM</span>
+
 <span class="sd">    *** STEP 3 ***</span>
 
 <span class="sd">    Actuates the throttle steering and brake to successfully navigate the waypoints with the correct target</span>
@@ -172,7 +174,7 @@
                 <span class="c1">#                                                                 self.vehicle_mass,</span>
                 <span class="c1">#                                                                 self.wheel_radius)</span>
 
-                <span class="n">throttle</span><span class="p">,</span> <span class="n">brake</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">control_speed_based_on_proportional_throttle_brake</span><span class="p">(</span>
+                <span class="n">throttle</span><span class="p">,</span> <span class="n">brake</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">control_velocity_based_on_proportional_throttle_brake</span><span class="p">(</span>
                                                                                 <span class="n">target_velocity</span><span class="p">,</span>
                                                                                 <span class="n">current_linear_velocity</span><span class="p">,</span>
                                                                                 <span class="bp">self</span><span class="o">.</span><span class="n">max_throttle</span><span class="p">,</span>
@@ -232,9 +234,16 @@
 
 <span class="sd">        See Polynomial fitting - http://blog.mmast.net/least-squares-fitting-numpy-scipy</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">x_coords</span><span class="p">,</span> <span class="n">y_coords</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_waypoints</span><span class="p">(</span><span class="n">pose</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">,</span> <span class="n">POINTS_TO_FIT</span><span class="p">)</span>
+        <span class="c1">#rospy.logwarn(&quot;-----&quot;)</span>
+        <span class="n">x_coords</span><span class="p">,</span> <span class="n">y_coords</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_waypoints</span><span class="p">(</span><span class="n">pose</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">,</span> <span class="n">POINTS_TO_FIT</span><span class="p">)</span>  <span class="c1"># Use 10 waypoints</span>
         <span class="n">coefficients</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x_coords</span><span class="p">,</span> <span class="n">y_coords</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># 3-degree polynomial fit, minimising squared error</span>
+        <span class="c1">#rospy.logwarn(&quot;coefficients : %s&quot;, coefficients)  # Curve fits these 4 points</span>
+                                                            <span class="c1"># See https://en.wikipedia.org/wiki/Curve_fitting</span>
+        <span class="c1">#distance = np.polyval(coefficients, 1.0)  # polynomial evaluation at 1 results in some steering swerve</span>
         <span class="n">distance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">coefficients</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>  <span class="c1"># distance between car position and transformed waypoint</span>
+        <span class="c1">#distance = np.polyval(coefficients, 10.0)  # polynomial evaluation at 10 results in jittery steering</span>
+        <span class="c1">#rospy.logwarn(&quot;distance : %s&quot;, distance)</span>
+        <span class="c1">#rospy.logwarn(&quot;-----&quot;)</span>
 
         <span class="k">return</span> <span class="n">distance</span></div>
 
@@ -245,8 +254,8 @@
 
 <span class="sd">        See Change of basis | Essence of linear algebra, chapter 9 - https://youtu.be/P2LTAUO1TdA</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">x_coords</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># transformed waypoints x co-ordinates to transform</span>
-        <span class="n">y_coords</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># waypoints y co-ordinates to transform</span>
+        <span class="n">x_coords</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># array to hold transformed waypoint x</span>
+        <span class="n">y_coords</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># array to hold transformed waypoint y</span>
 
         <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">yaw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_euler</span><span class="p">(</span><span class="n">pose</span><span class="p">)</span>
         <span class="n">origin_x</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
@@ -261,6 +270,8 @@
 
             <span class="n">x</span> <span class="o">=</span> <span class="n">shift_x</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">yaw</span><span class="p">)</span> <span class="o">-</span> <span class="n">shift_y</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">yaw</span><span class="p">)</span>
             <span class="n">y</span> <span class="o">=</span> <span class="n">shift_x</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">yaw</span><span class="p">)</span> <span class="o">+</span> <span class="n">shift_y</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">yaw</span><span class="p">)</span>
+            <span class="c1">#rospy.logwarn(&quot;i %s - x_coord : %s&quot;, i, x)</span>
+            <span class="c1">#rospy.logwarn(&quot;i %s - y_coord : %s&quot;, i, y)</span>
 
             <span class="n">x_coords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
             <span class="n">y_coords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>

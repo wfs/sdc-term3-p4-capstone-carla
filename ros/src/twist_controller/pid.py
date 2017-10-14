@@ -4,6 +4,8 @@ MAX_NUM = float('inf')
 
 class PID(object):
     """
+    CONTROL SUBSYSTEM
+
     *** STEP 5 ***
 
     Calculates the appropriate steering angle adjustment to smoothly return to the reference trajectory.

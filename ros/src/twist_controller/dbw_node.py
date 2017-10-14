@@ -40,6 +40,8 @@ that we have created in the `__init__` function.
 
 class DBWNode(object):
     """
+    CONTROL SUBSYSTEM
+
     *** STEP 3 ***
 
     Actuates the throttle steering and brake to successfully navigate the waypoints with the correct target
@@ -129,7 +131,7 @@ class DBWNode(object):
                 #                                                                 self.vehicle_mass,
                 #                                                                 self.wheel_radius)
 
-                throttle, brake = self.controller.control_speed_based_on_proportional_throttle_brake(
+                throttle, brake = self.controller.control_velocity_based_on_proportional_throttle_brake(
                                                                                 target_velocity,
                                                                                 current_linear_velocity,
                                                                                 self.max_throttle,
@@ -189,9 +191,16 @@ class DBWNode(object):
 
         See Polynomial fitting - http://blog.mmast.net/least-squares-fitting-numpy-scipy
         """
-        x_coords, y_coords = self.transform_waypoints(pose, waypoints, POINTS_TO_FIT)
+        #rospy.logwarn("-----")
+        x_coords, y_coords = self.transform_waypoints(pose, waypoints, POINTS_TO_FIT)  # Use 10 waypoints
         coefficients = np.polyfit(x_coords, y_coords, 3)  # 3-degree polynomial fit, minimising squared error
+        #rospy.logwarn("coefficients : %s", coefficients)  # Curve fits these 4 points
+                                                            # See https://en.wikipedia.org/wiki/Curve_fitting
+        #distance = np.polyval(coefficients, 1.0)  # polynomial evaluation at 1 results in some steering swerve
         distance = np.polyval(coefficients, 5.0)  # distance between car position and transformed waypoint
+        #distance = np.polyval(coefficients, 10.0)  # polynomial evaluation at 10 results in jittery steering
+        #rospy.logwarn("distance : %s", distance)
+        #rospy.logwarn("-----")
 
         return distance
 
@@ -202,8 +211,8 @@ class DBWNode(object):
 
         See Change of basis | Essence of linear algebra, chapter 9 - https://youtu.be/P2LTAUO1TdA
         """
-        x_coords = []  # transformed waypoints x co-ordinates to transform
-        y_coords = []  # waypoints y co-ordinates to transform
+        x_coords = []  # array to hold transformed waypoint x
+        y_coords = []  # array to hold transformed waypoint y
 
         _, _, yaw = self.get_euler(pose)
         origin_x = pose.position.x
@@ -218,6 +227,8 @@ class DBWNode(object):
 
             x = shift_x * cos(0 - yaw) - shift_y * sin(0 - yaw)
             y = shift_x * sin(0 - yaw) + shift_y * cos(0 - yaw)
+            #rospy.logwarn("i %s - x_coord : %s", i, x)
+            #rospy.logwarn("i %s - y_coord : %s", i, y)
 
             x_coords.append(x)
             y_coords.append(y)

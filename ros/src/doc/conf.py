@@ -22,6 +22,7 @@ import sys
 # sys.path.insert(0, os.path.abspath('.'))
 # print("system path was : ", sys.path)
 # sys.path.insert(0, os.path.abspath('../'))
+sys.path.insert(0, os.path.abspath('../tl_detector'))
 sys.path.insert(0, os.path.abspath('../twist_controller'))
 sys.path.insert(0, os.path.abspath('../waypoint_loader'))
 sys.path.insert(0, os.path.abspath('../waypoint_updater'))

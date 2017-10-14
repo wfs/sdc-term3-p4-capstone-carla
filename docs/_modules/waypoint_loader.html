@@ -48,7 +48,9 @@
 <span class="kn">import</span> <span class="nn">math</span>
 
 <span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="k">import</span> <span class="n">Quaternion</span>
+
 <span class="kn">from</span> <span class="nn">styx_msgs.msg</span> <span class="k">import</span> <span class="n">Lane</span><span class="p">,</span> <span class="n">Waypoint</span>
+
 <span class="kn">import</span> <span class="nn">tf</span>
 <span class="kn">import</span> <span class="nn">rospy</span>
 
@@ -58,6 +60,8 @@
 
 <div class="viewcode-block" id="WaypointLoader"><a class="viewcode-back" href="../index.html#waypoint_loader.WaypointLoader">[docs]</a><span class="k">class</span> <span class="nc">WaypointLoader</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    CONTROL SUBSYSTEM</span>
+
 <span class="sd">    *** STEP 1 ***</span>
 
 <span class="sd">    Loads lane centre waypoints, the 1st item being the closest waypoint to the ego car.</span>
@@ -74,7 +78,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/base_waypoints&#39;</span><span class="p">,</span> <span class="n">Lane</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">latch</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;~velocity&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kmph2mps</span><span class="p">(</span><span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;~velocity&#39;</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">new_waypoint_loader</span><span class="p">(</span><span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;~path&#39;</span><span class="p">))</span>
         <span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
 
@@ -89,8 +93,8 @@
     <span class="k">def</span> <span class="nf">quaternion_from_yaw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">yaw</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">transformations</span><span class="o">.</span><span class="n">quaternion_from_euler</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">yaw</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">get_velocity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">velocity</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">velocity</span><span class="o">/</span><span class="mf">3.6</span>
+    <span class="k">def</span> <span class="nf">kmph2mps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">velocity_kmph</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">velocity_kmph</span> <span class="o">*</span> <span class="mf">1000.</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">60.</span> <span class="o">*</span> <span class="mf">60.</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">load_waypoints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fname</span><span class="p">):</span>
         <span class="n">waypoints</span> <span class="o">=</span> <span class="p">[]</span>
@@ -103,7 +107,7 @@
                 <span class="n">p</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">wp</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">])</span>
                 <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">quaternion_from_yaw</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">wp</span><span class="p">[</span><span class="s1">&#39;yaw&#39;</span><span class="p">]))</span>
                 <span class="n">p</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span> <span class="o">=</span> <span class="n">Quaternion</span><span class="p">(</span><span class="o">*</span><span class="n">q</span><span class="p">)</span>
-                <span class="n">p</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">velocity</span><span class="o">*</span><span class="mf">0.27778</span><span class="p">)</span>
+                <span class="n">p</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">velocity</span><span class="p">)</span>
 
                 <span class="n">waypoints</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">decelerate</span><span class="p">(</span><span class="n">waypoints</span><span class="p">)</span>
@@ -117,7 +121,7 @@
         <span class="n">last</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.</span>
         <span class="k">for</span> <span class="n">wp</span> <span class="ow">in</span> <span class="n">waypoints</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
             <span class="n">dist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">wp</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="n">last</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>
-            <span class="n">vel</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">MAX_DECEL</span> <span class="o">*</span> <span class="n">dist</span><span class="p">)</span> <span class="o">*</span> <span class="mf">3.6</span>
+            <span class="n">vel</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">MAX_DECEL</span> <span class="o">*</span> <span class="n">dist</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">vel</span> <span class="o">&lt;</span> <span class="mf">1.</span><span class="p">:</span>
                 <span class="n">vel</span> <span class="o">=</span> <span class="mf">0.</span>
             <span class="n">wp</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">vel</span><span class="p">,</span> <span class="n">wp</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>

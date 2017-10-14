@@ -28,6 +28,8 @@ TODO (for Yousuf and Aaron): Stopline location for each traffic light.
 
 class WaypointUpdater(object):
     """
+    CONTROL SUBSYSTEM
+
     *** STEP 2 ***
 
     This node will publish waypoints from the car's current position to some `x` distance ahead,

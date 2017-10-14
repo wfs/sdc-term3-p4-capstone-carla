@@ -17,6 +17,18 @@ STATE_COUNT_THRESHOLD = 1
 
 
 class TLDetector(object):
+    """
+    PERCEPTION SUBSYSTEM
+
+    To build and train traffic light detection / classification ...
+
+    1. Get and label training data into Pascal VOC format
+    2. Generate TF record
+    3. Feed record to object detection API TF
+    4. Train
+    5. Freeze weight once suitable error level reached
+    6. Done
+    """
     def __init__(self):
         rospy.init_node('tl_detector')
         p = predictor(modelpath="./FrozenSyam.pb")

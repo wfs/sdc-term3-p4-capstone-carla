@@ -2,6 +2,8 @@ from math import atan
 
 class YawController(object):
     """
+    CONTROL SUBSYSTEM
+
     *** STEP 6 ***
 
     Calculates the appropriate steering angle required by the target velocities for the road curvature.

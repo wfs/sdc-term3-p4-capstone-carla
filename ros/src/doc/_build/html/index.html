@@ -52,10 +52,97 @@
 <h1>Classes and Functions<a class="headerlink" href="#classes-and-functions" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
+<span class="target" id="module-tl_detector"></span><dl class="class">
+<dt id="tl_detector.TLDetector">
+<em class="property">class </em><code class="descclassname">tl_detector.</code><code class="descname">TLDetector</code><a class="reference internal" href="_modules/tl_detector.html#TLDetector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tl_detector.TLDetector" title="Permalink to this definition">¶</a></dt>
+<dd><p>PERCEPTION SUBSYSTEM</p>
+<p>To build and train traffic light detection / classification …</p>
+<ol class="arabic simple">
+<li>Get and label training data into Pascal VOC format</li>
+<li>Generate TF record</li>
+<li>Feed record to object detection API TF</li>
+<li>Train</li>
+<li>Freeze weight once suitable error level reached</li>
+<li>Done</li>
+</ol>
+<dl class="attribute">
+<dt id="tl_detector.TLDetector.sub2">
+<code class="descname">sub2</code><em class="property"> = None</em><a class="headerlink" href="#tl_detector.TLDetector.sub2" title="Permalink to this definition">¶</a></dt>
+<dd><p>/vehicle/traffic_lights helps you acquire an accurate ground truth data source for the traffic light
+classifier, providing the location and current color state of all traffic lights in the
+simulator. This state can be used to generate classified images or subbed into your solution to
+help you work on another single component of the node. This topic won’t be available when
+testing your solution in real life so don’t rely on it in the final submission.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tl_detector.TLDetector.image_cb">
+<code class="descname">image_cb</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tl_detector.html#TLDetector.image_cb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tl_detector.TLDetector.image_cb" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Identifies red lights in the incoming camera image and publishes the index</dt>
+<dd>of the waypoint closest to the red light to /traffic_waypoint</dd>
+<dt>Args:</dt>
+<dd>msg (Image): image from car-mounted camera</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="tl_detector.TLDetector.get_closest_waypoint">
+<code class="descname">get_closest_waypoint</code><span class="sig-paren">(</span><em>pose</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tl_detector.html#TLDetector.get_closest_waypoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tl_detector.TLDetector.get_closest_waypoint" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Identifies the closest path waypoint to the given position</dt>
+<dd><a class="reference external" href="https://en.wikipedia.org/wiki/Closest_pair_of_points_problem">https://en.wikipedia.org/wiki/Closest_pair_of_points_problem</a></dd>
+<dt>Args:</dt>
+<dd>pose (Pose): position to match a waypoint to</dd>
+<dt>Returns:</dt>
+<dd>int: index of the closest waypoint in self.waypoints</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="tl_detector.TLDetector.project_to_image_plane">
+<code class="descname">project_to_image_plane</code><span class="sig-paren">(</span><em>point_in_world</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tl_detector.html#TLDetector.project_to_image_plane"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tl_detector.TLDetector.project_to_image_plane" title="Permalink to this definition">¶</a></dt>
+<dd><p>Project point from 3D world coordinates to 2D camera image location</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>point_in_world (Point): 3D location of a point in the world</dd>
+<dt>Returns:</dt>
+<dd>x (int): x coordinate of target point in image
+y (int): y coordinate of target point in image</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="tl_detector.TLDetector.get_light_state">
+<code class="descname">get_light_state</code><span class="sig-paren">(</span><em>light</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tl_detector.html#TLDetector.get_light_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tl_detector.TLDetector.get_light_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines the current color of the traffic light</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>light (TrafficLight): light to classify</dd>
+<dt>Returns:</dt>
+<dd>int: ID of traffic light color (specified in styx_msgs/TrafficLight)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="tl_detector.TLDetector.process_traffic_lights">
+<code class="descname">process_traffic_lights</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tl_detector.html#TLDetector.process_traffic_lights"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tl_detector.TLDetector.process_traffic_lights" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Finds closest visible traffic light, if one exists, and determines its</dt>
+<dd>location and color</dd>
+<dt>Returns:</dt>
+<dd>int: index of waypoint closes to the upcoming traffic light (-1 if none exists)
+int: ID of traffic light color (specified in styx_msgs/TrafficLight)</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 <span class="target" id="module-waypoint_loader"></span><dl class="class">
 <dt id="waypoint_loader.WaypointLoader">
 <em class="property">class </em><code class="descclassname">waypoint_loader.</code><code class="descname">WaypointLoader</code><a class="reference internal" href="_modules/waypoint_loader.html#WaypointLoader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#waypoint_loader.WaypointLoader" title="Permalink to this definition">¶</a></dt>
-<dd><p><strong>* STEP 1 *</strong></p>
+<dd><p>CONTROL SUBSYSTEM</p>
+<p><strong>* STEP 1 *</strong></p>
 <p>Loads lane centre waypoints, the 1st item being the closest waypoint to the ego car.</p>
 <p>Waypoints have :</p>
 <ol class="arabic simple">
@@ -68,7 +155,8 @@
 <span class="target" id="module-waypoint_updater"></span><dl class="class">
 <dt id="waypoint_updater.WaypointUpdater">
 <em class="property">class </em><code class="descclassname">waypoint_updater.</code><code class="descname">WaypointUpdater</code><a class="reference internal" href="_modules/waypoint_updater.html#WaypointUpdater"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#waypoint_updater.WaypointUpdater" title="Permalink to this definition">¶</a></dt>
-<dd><p><strong>* STEP 2 *</strong></p>
+<dd><p>CONTROL SUBSYSTEM</p>
+<p><strong>* STEP 2 *</strong></p>
 <p>This node will publish waypoints from the car’s current position to some <cite>x</cite> distance ahead,
 with the correct target velocities, depending on traffic lights and obstacles.</p>
 </dd></dl>
@@ -76,7 +164,8 @@ with the correct target velocities, depending on traffic lights and obstacles.</
 <span class="target" id="module-dbw_node"></span><dl class="class">
 <dt id="dbw_node.DBWNode">
 <em class="property">class </em><code class="descclassname">dbw_node.</code><code class="descname">DBWNode</code><a class="reference internal" href="_modules/dbw_node.html#DBWNode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbw_node.DBWNode" title="Permalink to this definition">¶</a></dt>
-<dd><p><strong>* STEP 3 *</strong></p>
+<dd><p>CONTROL SUBSYSTEM</p>
+<p><strong>* STEP 3 *</strong></p>
 <p>Actuates the throttle steering and brake to successfully navigate the waypoints with the correct target
 velocity.</p>
 <dl class="method">
@@ -118,7 +207,8 @@ returns transformed waypoint co-ordinates.</p>
 <span class="target" id="module-twist_controller"></span><dl class="class">
 <dt id="twist_controller.Controller">
 <em class="property">class </em><code class="descclassname">twist_controller.</code><code class="descname">Controller</code><span class="sig-paren">(</span><em>wheel_base_from_ros_param_server</em>, <em>steer_ratio_from_ros_param_server</em>, <em>max_lat_accel_from_ros_param_server</em>, <em>max_steer_angle_from_ros_param_server</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/twist_controller.html#Controller"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#twist_controller.Controller" title="Permalink to this definition">¶</a></dt>
-<dd><p><strong>* STEP 4 *</strong></p>
+<dd><p>CONTROL SUBSYSTEM</p>
+<p><strong>* STEP 4 *</strong></p>
 <p>Adjusts vehicles steering to minimise Cross Track Error and align to predicted path.</p>
 <dl class="method">
 <dt id="twist_controller.Controller.control">
@@ -127,8 +217,8 @@ returns transformed waypoint co-ordinates.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="twist_controller.Controller.control_speed_based_on_proportional_throttle_brake">
-<code class="descname">control_speed_based_on_proportional_throttle_brake</code><span class="sig-paren">(</span><em>target_linear_velocity</em>, <em>current_velocity</em>, <em>max_throttle_proportional</em>, <em>max_brake_proportional</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/twist_controller.html#Controller.control_speed_based_on_proportional_throttle_brake"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#twist_controller.Controller.control_speed_based_on_proportional_throttle_brake" title="Permalink to this definition">¶</a></dt>
+<dt id="twist_controller.Controller.control_velocity_based_on_proportional_throttle_brake">
+<code class="descname">control_velocity_based_on_proportional_throttle_brake</code><span class="sig-paren">(</span><em>target_linear_velocity</em>, <em>current_velocity</em>, <em>max_throttle_proportional</em>, <em>max_brake_proportional</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/twist_controller.html#Controller.control_velocity_based_on_proportional_throttle_brake"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#twist_controller.Controller.control_velocity_based_on_proportional_throttle_brake" title="Permalink to this definition">¶</a></dt>
 <dd><p>Manipulates throttle, brake based on difference between target and current linear velocity,
 limited by dbw_node parameters max_throttle_proportion and max_brake_proportional.</p>
 <p>See <a class="reference external" href="https://carnd.slack.com/archives/C6NVDVAQ3/p1506389845000004">https://carnd.slack.com/archives/C6NVDVAQ3/p1506389845000004</a></p>
@@ -139,7 +229,8 @@ limited by dbw_node parameters max_throttle_proportion and max_brake_proportiona
 <span class="target" id="module-pid"></span><dl class="class">
 <dt id="pid.PID">
 <em class="property">class </em><code class="descclassname">pid.</code><code class="descname">PID</code><span class="sig-paren">(</span><em>kp</em>, <em>ki</em>, <em>kd</em>, <em>mn=-inf</em>, <em>mx=inf</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pid.html#PID"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pid.PID" title="Permalink to this definition">¶</a></dt>
-<dd><p><strong>* STEP 5 *</strong></p>
+<dd><p>CONTROL SUBSYSTEM</p>
+<p><strong>* STEP 5 *</strong></p>
 <p>Calculates the appropriate steering angle adjustment to smoothly return to the reference trajectory.</p>
 <p>After manually fine-tuning in the Simulator, the PID parameters were kp=0.5, ki=0.004, kd=0.25.</p>
 <p>See Self-Driving Car Engineer ND - Term 2, Lesson 16 PID Implementation Solution</p>
@@ -148,7 +239,8 @@ limited by dbw_node parameters max_throttle_proportion and max_brake_proportiona
 <span class="target" id="module-yaw_controller"></span><dl class="class">
 <dt id="yaw_controller.YawController">
 <em class="property">class </em><code class="descclassname">yaw_controller.</code><code class="descname">YawController</code><span class="sig-paren">(</span><em>wheel_base</em>, <em>steer_ratio</em>, <em>min_speed</em>, <em>max_lat_accel</em>, <em>max_steer_angle</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/yaw_controller.html#YawController"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#yaw_controller.YawController" title="Permalink to this definition">¶</a></dt>
-<dd><p><strong>* STEP 6 *</strong></p>
+<dd><p>CONTROL SUBSYSTEM</p>
+<p><strong>* STEP 6 *</strong></p>
 <p>Calculates the appropriate steering angle required by the target velocities for the road curvature.</p>
 </dd></dl>
 

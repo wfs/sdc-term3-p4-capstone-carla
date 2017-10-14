@@ -5,7 +5,9 @@ import csv
 import math
 
 from geometry_msgs.msg import Quaternion
+
 from styx_msgs.msg import Lane, Waypoint
+
 import tf
 import rospy
 
@@ -15,6 +17,8 @@ MAX_DECEL = 1.0
 
 class WaypointLoader(object):
     """
+    CONTROL SUBSYSTEM
+
     *** STEP 1 ***
 
     Loads lane centre waypoints, the 1st item being the closest waypoint to the ego car.

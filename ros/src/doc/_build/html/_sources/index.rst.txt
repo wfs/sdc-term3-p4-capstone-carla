@@ -20,6 +20,11 @@ Classes and Functions
    :maxdepth: 2
    :numbered: 2
 
+.. module:: tl_detector
+
+.. autoclass:: TLDetector
+    :members:
+
 .. module:: waypoint_loader
 
 .. autoclass:: WaypointLoader
@@ -37,7 +42,7 @@ Classes and Functions
 .. module:: twist_controller
 
 .. autoclass:: Controller
-    :members: control, control_speed_based_on_proportional_throttle_brake
+    :members: control, control_velocity_based_on_proportional_throttle_brake
 
 .. module:: pid
 

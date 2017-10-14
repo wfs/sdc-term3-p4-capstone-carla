@@ -54,6 +54,8 @@
 
 <div class="viewcode-block" id="Controller"><a class="viewcode-back" href="../index.html#twist_controller.Controller">[docs]</a><span class="k">class</span> <span class="nc">Controller</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    CONTROL SUBSYSTEM</span>
+
 <span class="sd">    *** STEP 4 ***</span>
 
 <span class="sd">    Adjusts vehicles steering to minimise Cross Track Error and align to predicted path.</span>
@@ -116,14 +118,14 @@
 <span class="sd">        See Torque - https://en.wikipedia.org/wiki/Torque</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">velocity_change_required</span> <span class="o">=</span> <span class="n">target_linear_velocity</span> <span class="o">-</span> <span class="n">current_velocity</span>
-        <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;-----&quot;</span><span class="p">)</span>
-        <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;velocity_change_required </span><span class="si">%s</span><span class="s2"> = target_linear_velocity </span><span class="si">%s</span><span class="s2"> - current_velocity </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">velocity_change_required</span><span class="p">,</span> <span class="n">target_linear_velocity</span><span class="p">,</span> <span class="n">current_velocity</span><span class="p">)</span>
+        <span class="c1">#rospy.logwarn(&quot;-----&quot;)</span>
+        <span class="c1">#rospy.logwarn(&quot;velocity_change_required %s = target_linear_velocity %s - current_velocity %s&quot;, velocity_change_required, target_linear_velocity, current_velocity)</span>
         <span class="c1"># adjust acceleration within timebox</span>
         <span class="n">acceleration</span> <span class="o">=</span> <span class="n">velocity_change_required</span> <span class="o">/</span> <span class="n">transition_time</span>
-        <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;acceleration </span><span class="si">%s</span><span class="s2"> = velocity_change_required </span><span class="si">%s</span><span class="s2"> / transition_time </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">acceleration</span><span class="p">,</span> <span class="n">velocity_change_required</span><span class="p">,</span> <span class="n">transition_time</span><span class="p">)</span>
+        <span class="c1">#rospy.logwarn(&quot;acceleration %s = velocity_change_required %s / transition_time %s&quot;, acceleration, velocity_change_required, transition_time)</span>
         <span class="c1"># check torque, where torque is vehicle mass * acceleration * (wheel radius, includes tire)</span>
         <span class="n">torque</span> <span class="o">=</span> <span class="n">vehicle_mass</span> <span class="o">*</span> <span class="n">acceleration</span> <span class="o">*</span> <span class="n">wheel_and_tire_radius</span>
-        <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;torque </span><span class="si">%s</span><span class="s2"> = vehicle_mass </span><span class="si">%s</span><span class="s2"> * acceleration </span><span class="si">%s</span><span class="s2"> * wheel_and_tire_radius </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">torque</span><span class="p">,</span> <span class="n">vehicle_mass</span><span class="p">,</span> <span class="n">acceleration</span><span class="p">,</span> <span class="n">wheel_and_tire_radius</span><span class="p">)</span>
+        <span class="c1">#rospy.logwarn(&quot;torque %s = vehicle_mass %s * acceleration %s * wheel_and_tire_radius %s&quot;, torque, vehicle_mass, acceleration, wheel_and_tire_radius)</span>
 
         <span class="n">throttle</span><span class="p">,</span> <span class="n">brake</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
         <span class="k">if</span> <span class="n">torque</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -133,8 +135,8 @@
 
         <span class="k">return</span> <span class="n">throttle</span><span class="p">,</span> <span class="n">brake</span>
 
-<div class="viewcode-block" id="Controller.control_speed_based_on_proportional_throttle_brake"><a class="viewcode-back" href="../index.html#twist_controller.Controller.control_speed_based_on_proportional_throttle_brake">[docs]</a>    <span class="k">def</span> <span class="nf">control_speed_based_on_proportional_throttle_brake</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_linear_velocity</span><span class="p">,</span> <span class="n">current_velocity</span><span class="p">,</span>
-                                                           <span class="n">max_throttle_proportional</span><span class="p">,</span> <span class="n">max_brake_proportional</span><span class="p">):</span>
+<div class="viewcode-block" id="Controller.control_velocity_based_on_proportional_throttle_brake"><a class="viewcode-back" href="../index.html#twist_controller.Controller.control_velocity_based_on_proportional_throttle_brake">[docs]</a>    <span class="k">def</span> <span class="nf">control_velocity_based_on_proportional_throttle_brake</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_linear_velocity</span><span class="p">,</span> <span class="n">current_velocity</span><span class="p">,</span>
+                                                              <span class="n">max_throttle_proportional</span><span class="p">,</span> <span class="n">max_brake_proportional</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Manipulates throttle, brake based on difference between target and current linear velocity,</span>
 <span class="sd">        limited by dbw_node parameters max_throttle_proportion and max_brake_proportional.</span>
