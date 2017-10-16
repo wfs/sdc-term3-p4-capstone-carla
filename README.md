@@ -15,10 +15,10 @@
 ---
 
 ### Submission Checklist and Requirements
-1. Smoothly follow waypoints in the simulator.
-1. Stop at traffic lights when needed.
-1. Stop and restart PID controllers depending on the state of /vehicle/dbw_enabled.
-1. **Speed Limit**: Be sure to respect the speed limit set by the velocity param (km/h) in waypoint_loader
+1. - [x] Smoothly follow waypoints in the simulator.
+1. - [ ] Stop at traffic lights when needed.
+1. - [x] Stop and restart PID controllers depending on the state of /vehicle/dbw_enabled.
+1. - [x] **Speed Limit**: Be sure to respect the speed limit set by the velocity param (km/h) in waypoint_loader
 
 ---
 
