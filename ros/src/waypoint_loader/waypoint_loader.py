@@ -71,35 +71,35 @@ class WaypointLoader(object):
 
     def distance(self, p1, p2):
         x, y, z = p1.x - p2.x, p1.y - p2.y, p1.z - p2.z
-        return math.sqrt(x*x + y*y + z*z)
+        return math.sqrt(x * x + y * y + z * z)
 
     def decelerate(self, waypoints):
         last = waypoints[-1]
         last.twist.twist.linear.x = 0.
         for wp in waypoints[:-1][::-1]:
             dist = self.distance(wp.pose.pose.position, last.pose.pose.position)
-            vel = math.sqrt(2 * MAX_DECEL * dist)
+            vel = math.sqrt(2 * MAX_DECEL * dist) * 3.0
             if vel < 1.:
                 vel = 0.
             wp.twist.twist.linear.x = min(vel, wp.twist.twist.linear.x)
         return waypoints
 
     # def publish(self, waypoints):
-    #     lane = Lane()
-    #     lane.header.frame_id = '/world'
-    #     lane.header.stamp = rospy.Time(0)
-    #     lane.waypoints = waypoints
-    #     self.pub.publish(lane)
+    #    rate = rospy.Rate(0.1)
+    #    while not rospy.is_shutdown():
+    #        lane = Lane()
+    #        lane.header.frame_id = '/world'
+    #        lane.header.stamp = rospy.Time(0)
+    #        lane.waypoints = waypoints
+    #        self.pub.publish(lane)
+    #        rate.sleep()
 
     def publish(self, waypoints):
-        rate = rospy.Rate(0.1)
-        while not rospy.is_shutdown():
-            lane = Lane()
-            lane.header.frame_id = '/world'
-            lane.header.stamp = rospy.Time(0)
-            lane.waypoints = waypoints
-            self.pub.publish(lane)
-            rate.sleep()
+        lane = Lane()
+        lane.header.frame_id = '/world'
+        lane.header.stamp = rospy.Time(0)
+        lane.waypoints = waypoints
+        self.pub.publish(lane)
 
 
 if __name__ == '__main__':

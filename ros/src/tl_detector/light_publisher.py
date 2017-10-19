@@ -1,14 +1,11 @@
 #!/usr/bin/env python
 import rospy
+
 import tf
-import cv2
-import time
 from styx_msgs.msg import TrafficLightArray, TrafficLight
 from std_msgs.msg import Header
 from geometry_msgs.msg import PoseStamped, Quaternion, TwistStamped
 
-import numpy as np
-import rospkg
 import math
 
 
@@ -26,6 +23,7 @@ class TLPublisher(object):
         self.loop()
 
     def loop(self):
+        # rate = rospy.Rate(50)  # 50Hz recommended by John Chen
         rate = rospy.Rate(1)
         while not rospy.is_shutdown():
             self.traffic_light_pubs.publish(self.lights)

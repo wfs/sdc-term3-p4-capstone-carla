@@ -68,11 +68,11 @@
 <dl class="attribute">
 <dt id="tl_detector.TLDetector.sub2">
 <code class="descname">sub2</code><em class="property"> = None</em><a class="headerlink" href="#tl_detector.TLDetector.sub2" title="Permalink to this definition">¶</a></dt>
-<dd><p>/vehicle/traffic_lights helps you acquire an accurate ground truth data source for the traffic light
-classifier, providing the location and current color state of all traffic lights in the
-simulator. This state can be used to generate classified images or subbed into your solution to
-help you work on another single component of the node. This topic won’t be available when
-testing your solution in real life so don’t rely on it in the final submission.</p>
+<dd><p>/vehicle/traffic_lights provides you with the location of the traffic light in 3D map space and
+helps you acquire an accurate ground truth data source for the traffic light
+classifier by sending the current color state of all traffic lights in the
+simulator. When testing on the vehicle, the color state will not be available. You’ll need to
+rely on the position of the light and the camera image to predict it.</p>
 </dd></dl>
 
 <dl class="method">
@@ -80,7 +80,7 @@ testing your solution in real life so don’t rely on it in the final submission
 <code class="descname">image_cb</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tl_detector.html#TLDetector.image_cb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tl_detector.TLDetector.image_cb" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Identifies red lights in the incoming camera image and publishes the index</dt>
-<dd>of the waypoint closest to the red light to /traffic_waypoint</dd>
+<dd>of the waypoint closest to the red light’s stop line to /traffic_waypoint</dd>
 <dt>Args:</dt>
 <dd>msg (Image): image from car-mounted camera</dd>
 </dl>
@@ -96,19 +96,6 @@ testing your solution in real life so don’t rely on it in the final submission
 <dd>pose (Pose): position to match a waypoint to</dd>
 <dt>Returns:</dt>
 <dd>int: index of the closest waypoint in self.waypoints</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="tl_detector.TLDetector.project_to_image_plane">
-<code class="descname">project_to_image_plane</code><span class="sig-paren">(</span><em>point_in_world</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tl_detector.html#TLDetector.project_to_image_plane"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tl_detector.TLDetector.project_to_image_plane" title="Permalink to this definition">¶</a></dt>
-<dd><p>Project point from 3D world coordinates to 2D camera image location</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>point_in_world (Point): 3D location of a point in the world</dd>
-<dt>Returns:</dt>
-<dd>x (int): x coordinate of target point in image
-y (int): y coordinate of target point in image</dd>
 </dl>
 </dd></dl>
 
@@ -131,9 +118,48 @@ y (int): y coordinate of target point in image</dd>
 <dt>Finds closest visible traffic light, if one exists, and determines its</dt>
 <dd>location and color</dd>
 <dt>Returns:</dt>
-<dd>int: index of waypoint closes to the upcoming traffic light (-1 if none exists)
+<dd>int: index of waypoint closes to the upcoming stop line for a traffic light (-1 if none exists)
 int: ID of traffic light color (specified in styx_msgs/TrafficLight)</dd>
 </dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="tl_detector.TLDetector.get_closest_waypoint_index">
+<code class="descname">get_closest_waypoint_index</code><span class="sig-paren">(</span><em>pose</em>, <em>waypoints</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tl_detector.html#TLDetector.get_closest_waypoint_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tl_detector.TLDetector.get_closest_waypoint_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns index of the closest waypoint</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tl_detector.TLDetector.get_distance_between_two_points">
+<code class="descname">get_distance_between_two_points</code><span class="sig-paren">(</span><em>a</em>, <em>b</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tl_detector.html#TLDetector.get_distance_between_two_points"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tl_detector.TLDetector.get_distance_between_two_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns distance between two points</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tl_detector.TLDetector.is_waypoint_behind_ego_car">
+<code class="descname">is_waypoint_behind_ego_car</code><span class="sig-paren">(</span><em>pose</em>, <em>waypoint</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tl_detector.html#TLDetector.is_waypoint_behind_ego_car"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tl_detector.TLDetector.is_waypoint_behind_ego_car" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do transformation that sets origin to the ego car position, oriented along x-axis and
+return True if the waypoint is behind the ego car,  False if in front</p>
+<p>See Change of basis | Essence of linear algebra, chapter 9 - <a class="reference external" href="https://youtu.be/P2LTAUO1TdA">https://youtu.be/P2LTAUO1TdA</a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tl_detector.TLDetector.get_state_in_sim">
+<code class="descname">get_state_in_sim</code><span class="sig-paren">(</span><em>stop_wp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tl_detector.html#TLDetector.get_state_in_sim"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tl_detector.TLDetector.get_state_in_sim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use traffic pose and state from simulator to test</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tl_detector.TLDetector.get_euler">
+<code class="descname">get_euler</code><span class="sig-paren">(</span><em>pose</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tl_detector.html#TLDetector.get_euler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tl_detector.TLDetector.get_euler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns roll (x), pitch (y), yaw (z) from a Quaternion.</p>
+<p>See ROS Quaternion Basics for usage - <a class="reference external" href="http://wiki.ros.org/Tutorials/Quaternions">http://wiki.ros.org/Tutorials/Quaternions</a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tl_detector.TLDetector.all_stop_wp">
+<code class="descname">all_stop_wp</code><span class="sig-paren">(</span><em>traffic_light_posts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tl_detector.html#TLDetector.all_stop_wp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tl_detector.TLDetector.all_stop_wp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find all stop line positions from the provided location</p>
 </dd></dl>
 
 </dd></dl>
@@ -172,28 +198,6 @@ velocity.</p>
 <dt id="dbw_node.DBWNode.loop">
 <code class="descname">loop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbw_node.html#DBWNode.loop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbw_node.DBWNode.loop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets predicted throttle, brake, and steering using TwistController.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="dbw_node.DBWNode.cte_calc">
-<code class="descname">cte_calc</code><span class="sig-paren">(</span><em>pose</em>, <em>waypoints</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbw_node.html#DBWNode.cte_calc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbw_node.DBWNode.cte_calc" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculates the distance from the ego cars current position to the waypoints path.</p>
-<p>See Polynomial fitting - <a class="reference external" href="http://blog.mmast.net/least-squares-fitting-numpy-scipy">http://blog.mmast.net/least-squares-fitting-numpy-scipy</a></p>
-</dd></dl>
-
-<dl class="method">
-<dt id="dbw_node.DBWNode.transform_waypoints">
-<code class="descname">transform_waypoints</code><span class="sig-paren">(</span><em>pose</em>, <em>waypoints</em>, <em>points_to_use=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbw_node.html#DBWNode.transform_waypoints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbw_node.DBWNode.transform_waypoints" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do transformation that sets origin of waypoints to the ego car position, oriented along x-axis and
-returns transformed waypoint co-ordinates.</p>
-<p>See Change of basis | Essence of linear algebra, chapter 9 - <a class="reference external" href="https://youtu.be/P2LTAUO1TdA">https://youtu.be/P2LTAUO1TdA</a></p>
-</dd></dl>
-
-<dl class="method">
-<dt id="dbw_node.DBWNode.get_euler">
-<code class="descname">get_euler</code><span class="sig-paren">(</span><em>pose</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbw_node.html#DBWNode.get_euler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbw_node.DBWNode.get_euler" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns roll (x-axis), pitch (y-axis), yaw (z-axis) from a Quaternion.</p>
-<p>See ROS Quaternion Basics for usage - <a class="reference external" href="http://wiki.ros.org/Tutorials/Quaternions">http://wiki.ros.org/Tutorials/Quaternions</a></p>
 </dd></dl>
 
 <dl class="method">

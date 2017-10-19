@@ -37,7 +37,7 @@ Classes and Functions
 .. module:: dbw_node 
 
 .. autoclass:: DBWNode 
-    :members: loop, cte_calc, transform_waypoints, get_euler, dbw_enabled_cb
+    :members: loop, dbw_enabled_cb
 
 .. module:: twist_controller
 

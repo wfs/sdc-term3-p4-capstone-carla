@@ -16,14 +16,15 @@
 
 ### Submission Checklist and Requirements
 1. - [x] Smoothly follow waypoints in the simulator.
-1. - [ ] Stop at traffic lights when needed.
+1. - [x] Stop at traffic lights when needed.
 1. - [x] Stop and restart PID controllers depending on the state of /vehicle/dbw_enabled.
-1. - [x] **Speed Limit**: Be sure to respect the speed limit set by the velocity param (km/h) in waypoint_loader
+1. - [ ] **Speed Limit**: Be sure to respect the speed limit set by the velocity param (km/h) in waypoint_loader
 
 ---
 
 ### Simulator Results
-* TODO
+* TODO insert gif
+* TODO insert youtube
 ---
 
 ### ROS Bags From Test Site Results
@@ -71,10 +72,24 @@ python -m pip install pygame moviepy
 3. Make and run styx
 ```bash
 cd ros
+rm -rf build
+rm -rf devel
 catkin_make
 source devel/setup.sh
 roslaunch launch/styx.launch
 ```
+3.1 OPTIONAL : Generate and view [Sphinx](https://codeandchaos.wordpress.com/2012/07/30/sphinx-autodoc-tutorial-for-dummies/) API /doc workflow
+```bash
+cd <cloned_folder>/ros/src/doc
+vim conf.py
+vim index.rst
+make clean
+make html
+cd _build/html/
+python -m SimpleHTTPServer
+cp -r * <cloned_folder>/docs/
+```
+
 4. Run the simulator
 
 ### Real world testing
