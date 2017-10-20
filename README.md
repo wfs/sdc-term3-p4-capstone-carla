@@ -18,13 +18,13 @@
 1. - [x] Smoothly follow waypoints in the simulator.
 1. - [x] Stop at traffic lights when needed.
 1. - [x] Stop and restart PID controllers depending on the state of /vehicle/dbw_enabled.
-1. - [ ] **Speed Limit**: Be sure to respect the speed limit set by the velocity param (km/h) in waypoint_loader
+1. - [x] **Speed Limit**: Be sure to respect the speed limit set by the velocity param (km/h) in waypoint_loader
 
 ---
 
 ### Simulator Results
-* TODO insert gif
-* TODO insert youtube
+* [Traffic light obedience](./data/robofolks_capstone_simulator_drive_13_sec.gif)
+* [Full lap video](https://youtu.be/FfqRF8RTDv0)
 ---
 
 ### ROS Bags From Test Site Results
@@ -33,6 +33,21 @@
 
 ### Test Drive Results
 * TODO
+---
+
+### RoboFolks Team Repo
+1.0 [Github](https://github.com/ancabilloni/Autonomous_System_Integration)
+1.1 OPTIONAL : How to generate and view [Sphinx](https://codeandchaos.wordpress.com/2012/07/30/sphinx-autodoc-tutorial-for-dummies/) API /doc
+```bash
+cd <cloned_folder>/ros/src/doc
+vim conf.py
+vim index.rst
+make clean
+make html
+cd _build/html/
+python -m SimpleHTTPServer
+cp -r * <cloned_folder>/docs/
+```
 ---
 
 This is the project repo for the final project of the Udacity Self-Driving Car Nanodegree: Programming a Real Self-Driving Car. For more information about the project, see the project introduction [here](https://classroom.udacity.com/nanodegrees/nd013/parts/6047fe34-d93c-4f50-8336-b70ef10cb4b2/modules/e1a23b06-329a-4684-a717-ad476f0d8dff/lessons/462c933d-9f24-42d3-8bdc-a08a5fc866e4/concepts/5ab4b122-83e6-436d-850f-9f4d26627fd9).
@@ -77,17 +92,6 @@ rm -rf devel
 catkin_make
 source devel/setup.sh
 roslaunch launch/styx.launch
-```
-3.1 OPTIONAL : Generate and view [Sphinx](https://codeandchaos.wordpress.com/2012/07/30/sphinx-autodoc-tutorial-for-dummies/) API /doc workflow
-```bash
-cd <cloned_folder>/ros/src/doc
-vim conf.py
-vim index.rst
-make clean
-make html
-cd _build/html/
-python -m SimpleHTTPServer
-cp -r * <cloned_folder>/docs/
 ```
 
 4. Run the simulator

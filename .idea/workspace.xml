@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9ac7fc0-a243-435e-b161-038f08a8839d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control_tasks.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/how_to_run_built_exe_tests_in_terminal_with_params.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/=1.13.1" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/history.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/pip_list.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pure_pursuit.dir/src/pure_pursuit.cpp.o" afterPath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pure_pursuit.dir/src/pure_pursuit.cpp.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/lib/liblibwaypoint_follower.so" afterPath="$PROJECT_DIR$/ros/devel/lib/liblibwaypoint_follower.so" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/lib/waypoint_follower/pure_pursuit" afterPath="$PROJECT_DIR$/ros/devel/lib/waypoint_follower/pure_pursuit" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/doctrees/environment.pickle" afterPath="$PROJECT_DIR$/ros/src/doc/_build/doctrees/environment.pickle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/doctrees/index.doctree" afterPath="$PROJECT_DIR$/ros/src/doc/_build/doctrees/index.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/objects.inv" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/objects.inv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
@@ -63,23 +55,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/share/waypoint_follower/cmake/waypoint_followerConfig.cmake" afterPath="$PROJECT_DIR$/ros/devel/share/waypoint_follower/cmake/waypoint_followerConfig.cmake" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/share/waypoint_loader/cmake/waypoint_loaderConfig.cmake" afterPath="$PROJECT_DIR$/ros/devel/share/waypoint_loader/cmake/waypoint_loaderConfig.cmake" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/share/waypoint_updater/cmake/waypoint_updaterConfig.cmake" afterPath="$PROJECT_DIR$/ros/devel/share/waypoint_updater/cmake/waypoint_updaterConfig.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/dbw_node.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/dbw_node.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/tl_detector.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/tl_detector.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/twist_controller.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/twist_controller.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/waypoint_loader.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/waypoint_loader.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/waypoint_updater.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/waypoint_updater.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/genindex.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/genindex.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/index.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/searchindex.js" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/searchindex.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/tl_detector/light_publisher.py" afterPath="$PROJECT_DIR$/ros/src/tl_detector/light_publisher.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/tl_detector/sim_traffic_light_config.yaml" afterPath="$PROJECT_DIR$/ros/src/tl_detector/sim_traffic_light_config.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/tl_detector/site_traffic_light_config.yaml" afterPath="$PROJECT_DIR$/ros/src/tl_detector/site_traffic_light_config.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/tl_detector/tl_detector.py" afterPath="$PROJECT_DIR$/ros/src/tl_detector/tl_detector.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py" afterPath="$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py" afterPath="$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/waypoint_follower/src/pure_pursuit.cpp" afterPath="$PROJECT_DIR$/ros/src/waypoint_follower/src/pure_pursuit.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py" afterPath="$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py" afterPath="$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -111,8 +86,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="-678">
-                <caret line="20" column="7" lean-forward="false" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+              <first_editor relative-caret-position="18">
+                <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -133,8 +108,8 @@
       <file leaf-file-name="tl_detector.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/tl_detector.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="19" column="25" lean-forward="false" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+            <state relative-caret-position="315">
+              <caret line="296" column="21" lean-forward="true" selection-start-line="296" selection-start-column="21" selection-end-line="296" selection-end-column="21" />
               <folding>
                 <element signature="e#22#34#0" expanded="true" />
               </folding>
@@ -153,8 +128,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>self.ya</find>
-      <find>self.yaw_controller</find>
       <find>self.yaw_con</find>
       <find>GAS_DENSITY</find>
       <find>target_velo</find>
@@ -183,6 +156,8 @@
       <find>data:</find>
       <find>upcoming_red_light_pub</find>
       <find>traffic_index</find>
+      <find>1</find>
+      <find>rate</find>
     </findStrings>
     <replaceStrings>
       <replace>message</replace>
@@ -218,8 +193,8 @@
         <option value="$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py" />
         <option value="$PROJECT_DIR$/ros/src/tl_detector/light_publisher.py" />
         <option value="$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/ros/src/tl_detector/tl_detector.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -705,10 +680,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
-          <folding>
-            <element signature="e#22#34#0" expanded="true" />
-            <marker date="1508403742263" expanded="true" signature="1550:1623" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -725,7 +697,7 @@
         <state relative-caret-position="414">
           <caret line="55" column="36" lean-forward="false" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
           <folding>
-            <element signature="e#23#32#0" expanded="true" />
+            <element signature="e#23#32#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -734,9 +706,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="18" column="9" lean-forward="false" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-          <folding>
-            <element signature="e#23#35#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -773,16 +743,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
           <caret line="160" column="33" lean-forward="false" selection-start-line="160" selection-start-column="33" selection-end-line="160" selection-end-column="33" />
-          <folding>
-            <element signature="e#23#35#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/tl_detector.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="25" lean-forward="false" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+        <state relative-caret-position="315">
+          <caret line="296" column="21" lean-forward="true" selection-start-line="296" selection-start-column="21" selection-end-line="296" selection-end-column="21" />
           <folding>
             <element signature="e#22#34#0" expanded="true" />
           </folding>
@@ -800,8 +768,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-678">
-            <caret line="20" column="7" lean-forward="false" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+          <first_editor relative-caret-position="18">
+            <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
             <folding />
           </first_editor>
           <second_editor />
