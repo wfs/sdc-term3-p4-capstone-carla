@@ -36,7 +36,8 @@
 ---
 
 ### RoboFolks Team Repo
-1.0 [Github](https://github.com/ancabilloni/Autonomous_System_Integration)
+1. [Github](https://github.com/ancabilloni/Autonomous_System_Integration)
+
 1.1 OPTIONAL : How to generate and view [Sphinx](https://codeandchaos.wordpress.com/2012/07/30/sphinx-autodoc-tutorial-for-dummies/) API /doc
 ```bash
 cd <cloned_folder>/ros/src/doc
