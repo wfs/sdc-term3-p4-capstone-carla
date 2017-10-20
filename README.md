@@ -23,7 +23,7 @@
 ---
 
 ### Simulator Results
-* [Traffic light obedience](./data/robofolks_capstone_simulator_drive_13_sec.gif)
+* ![Traffic light obedience](./data/robofolks_capstone_simulator_drive_13_sec.gif)
 * [Full lap video](https://youtu.be/FfqRF8RTDv0)
 ---
 
