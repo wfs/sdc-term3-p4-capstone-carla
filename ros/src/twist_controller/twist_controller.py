@@ -11,9 +11,9 @@ PREDICTIVE_STEERING = 1.0  # from 0.0 to 1.0
 
 class Controller(object):
     """
-    CONTROL SUBSYSTEM
+    *CONTROL SUBSYSTEM*
 
-    *** STEP 4 ***
+    **STEP 4**
 
     Adjusts vehicles steering to minimise Cross Track Error and align to predicted path.
     """

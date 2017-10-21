@@ -79,9 +79,7 @@
 
 <div class="viewcode-block" id="WaypointUpdater"><a class="viewcode-back" href="../index.html#waypoint_updater.WaypointUpdater">[docs]</a><span class="k">class</span> <span class="nc">WaypointUpdater</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    CONTROL SUBSYSTEM</span>
-
-<span class="sd">    *** STEP 2 ***</span>
+<span class="sd">    **Diagram (5) - New target trajectory planned - PLANNING**</span>
 
 <span class="sd">    This node will publish waypoints from the car&#39;s current position to some `x` distance ahead,</span>
 <span class="sd">    with the correct target velocities, depending on traffic lights and obstacles.</span>
@@ -113,7 +111,8 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">loop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="WaypointUpdater.loop"><a class="viewcode-back" href="../index.html#waypoint_updater.WaypointUpdater.loop">[docs]</a>    <span class="k">def</span> <span class="nf">loop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Updates waypoints in front of the cars current position with the new target trajectory. &quot;&quot;&quot;</span>
         <span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
         <span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
@@ -133,12 +132,12 @@
 
                 <span class="c1"># Publish</span>
                 <span class="n">lane</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_lane</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_id</span><span class="p">,</span> <span class="n">lookahead_waypoints</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">final_waypoints_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">lane</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">final_waypoints_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">lane</span><span class="p">)</span></div>
                 <span class="c1"># rospy.logwarn(&quot;action: %s&quot;, self.action)</span>
 
     <span class="c1">######## Planning waypoints  ##############</span>
 
-    <span class="k">def</span> <span class="nf">get_waypoints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current_wp</span><span class="p">):</span>
+<div class="viewcode-block" id="WaypointUpdater.get_waypoints"><a class="viewcode-back" href="../index.html#waypoint_updater.WaypointUpdater.get_waypoints">[docs]</a>    <span class="k">def</span> <span class="nf">get_waypoints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current_wp</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; PREDICTION DECISIONS:</span>
 <span class="sd">        	1) If car is 5 m away from stop line, and velocity is under 1.0, STOP </span>
 <span class="sd">        	2) If car is 100 m away from RED light, SLOW DOWN</span>
@@ -209,7 +208,7 @@
         <span class="c1"># rospy.logwarn(&quot;TL wp: %s&quot;,</span>
         <span class="c1">#                   self.tlwp)</span>
 
-        <span class="k">return</span> <span class="n">waypoints</span>
+        <span class="k">return</span> <span class="n">waypoints</span></div>
 
     <span class="c1">############## HELP Functions ################</span>
     <span class="k">def</span> <span class="nf">set_velocity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>

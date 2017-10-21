@@ -36,9 +36,7 @@ TODO (for Yousuf and Aaron): Stopline location for each traffic light.
 
 class WaypointUpdater(object):
     """
-    CONTROL SUBSYSTEM
-
-    *** STEP 2 ***
+    **Diagram (5) - New target trajectory planned - PLANNING**
 
     This node will publish waypoints from the car's current position to some `x` distance ahead,
     with the correct target velocities, depending on traffic lights and obstacles.
@@ -71,6 +69,7 @@ class WaypointUpdater(object):
         self.loop()
 
     def loop(self):
+        """ Updates waypoints in front of the cars current position with the new target trajectory. """
         rate = rospy.Rate(2)
 
         while not rospy.is_shutdown():

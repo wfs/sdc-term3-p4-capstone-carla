@@ -13,44 +13,34 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
-Classes and Functions
-=====================
+Diagram Classes and Functions
+=============================
  
 .. toctree::
    :maxdepth: 2
    :numbered: 2
-
-.. module:: tl_detector
-
-.. autoclass:: TLDetector
-    :members:
 
 .. module:: waypoint_loader
 
 .. autoclass:: WaypointLoader
     :members:
 
+.. module:: tl_detector
+
+.. autoclass:: TLDetector
+    :members: image_cb
+
+.. module:: tldetect
+
+.. autoclass:: predictor
+
 .. module:: waypoint_updater
 
 .. autoclass:: WaypointUpdater
+    :members: loop, get_waypoints
 
 .. module:: dbw_node 
 
 .. autoclass:: DBWNode 
     :members: loop, dbw_enabled_cb
-
-.. module:: twist_controller
-
-.. autoclass:: Controller
-    :members: control, control_velocity_based_on_proportional_throttle_brake
-
-.. module:: pid
-
-.. autoclass:: PID
-    :members:
-
-.. module:: yaw_controller
-
-.. autoclass:: YawController
-    :members:
 

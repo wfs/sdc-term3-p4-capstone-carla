@@ -40,12 +40,10 @@ that we have created in the `__init__` function.
 
 class DBWNode(object):
     """
-    CONTROL SUBSYSTEM
+    **Diagram (6) - New commands for car actuators - CONTROL**
 
-    *** STEP 3 ***
-
-    Actuates the throttle steering and brake to successfully navigate the waypoints with the correct target
-    velocity.
+    When Self-Driving Mode activated, this node will then actuate throttle, brake and steering to
+    navigate the car towards target trajectory and velocity.
     """
 
     def __init__(self):
@@ -187,64 +185,6 @@ class DBWNode(object):
 
     def waypoints_cb(self, message):
         self.waypoints = message.waypoints
-
-        # def cte_calc(self, pose, waypoints):
-        #    """
-        #    Calculates the distance from the ego cars current position to the waypoints path.
-
-        #    See Polynomial fitting - http://blog.mmast.net/least-squares-fitting-numpy-scipy
-        #    """
-        #    #rospy.logwarn("-----")
-        #    x_coords, y_coords = self.transform_waypoints(pose, waypoints, POINTS_TO_FIT)  # Use 10 waypoints
-        #    coefficients = np.polyfit(x_coords, y_coords, 3)  # 3-degree polynomial fit, minimising squared error
-        # rospy.logwarn("coefficients : %s", coefficients)  # Curve fits these 4 points
-        # See https://en.wikipedia.org/wiki/Curve_fitting
-        # distance = np.polyval(coefficients, 1.0)  # polynomial evaluation at 1 results in some steering swerve
-        # distance = np.polyval(coefficients, 5.0)  # distance between car position and transformed waypoint
-        # distance = np.polyval(coefficients, 10.0)  # polynomial evaluation at 10 results in jittery steering
-        # rospy.logwarn("distance : %s", distance)
-        # rospy.logwarn("-----")
-
-    #    return distance
-
-    # def transform_waypoints(self, pose, waypoints, points_to_use=None):
-    #    """
-    #    Do transformation that sets origin of waypoints to the ego car position, oriented along x-axis and
-    #    returns transformed waypoint co-ordinates.
-
-    #    See Change of basis | Essence of linear algebra, chapter 9 - https://youtu.be/P2LTAUO1TdA
-    #    """
-    #    x_coords = []  # array to hold transformed waypoint x
-    #    y_coords = []  # array to hold transformed waypoint y
-
-    #    _, _, yaw = self.get_euler(pose)
-    #    origin_x = pose.position.x
-    #    origin_y = pose.position.y
-
-    #    if points_to_use is None:
-    #        points_to_use = len(waypoints)
-
-    #    for i in range(points_to_use):
-    #        shift_x = waypoints[i].pose.pose.position.x - origin_x
-    #        shift_y = waypoints[i].pose.pose.position.y - origin_y
-
-    #        x = shift_x * cos(0 - yaw) - shift_y * sin(0 - yaw)
-    #        y = shift_x * sin(0 - yaw) + shift_y * cos(0 - yaw)
-    #        rospy.logwarn("i %s - x_coord : %s", i, x)
-    #        rospy.logwarn("i %s - y_coord : %s", i, y)
-
-    #        x_coords.append(x)
-    #        y_coords.append(y)
-
-    #    return x_coords, y_coords
-
-    # def get_euler(self, pose):
-    #    """ Returns roll (x-axis), pitch (y-axis), yaw (z-axis) from a Quaternion.
-
-    #    See ROS Quaternion Basics for usage - http://wiki.ros.org/Tutorials/Quaternions
-    #    """
-    #    return transformations.euler_from_quaternion(
-    #        [pose.orientation.x, pose.orientation.y, pose.orientation.z, pose.orientation.w])
 
     def dbw_enabled_cb(self, message):
         """

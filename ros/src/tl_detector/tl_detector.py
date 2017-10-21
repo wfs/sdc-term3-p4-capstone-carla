@@ -19,7 +19,7 @@ STATE_COUNT_THRESHOLD = 3
 
 class TLDetector(object):
     """
-    PERCEPTION SUBSYSTEM
+    **Diagram (4) - Traffic light perceived - PERCEPTION**
 
     To build and train traffic light detection / classification ...
 

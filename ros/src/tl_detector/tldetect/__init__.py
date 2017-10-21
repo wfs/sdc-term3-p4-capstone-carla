@@ -1,7 +1,7 @@
 class predictor(object):
 
     def __init__(self,modelpath = "./FrozenSyam.pb"):
-        
+        """ Loads the default model if none specficied. """
         import numpy as np
         import os
         import six.moves.urllib as urllib

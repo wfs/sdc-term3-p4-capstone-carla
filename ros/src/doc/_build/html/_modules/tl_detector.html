@@ -62,7 +62,7 @@
 
 <div class="viewcode-block" id="TLDetector"><a class="viewcode-back" href="../index.html#tl_detector.TLDetector">[docs]</a><span class="k">class</span> <span class="nc">TLDetector</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    PERCEPTION SUBSYSTEM</span>
+<span class="sd">    **Diagram (4) - Traffic light perceived - PERCEPTION**</span>
 
 <span class="sd">    To build and train traffic light detection / classification ...</span>
 
@@ -162,7 +162,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">state_count</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;TL Waypoint, state: </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_wp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="TLDetector.get_closest_waypoint"><a class="viewcode-back" href="../index.html#tl_detector.TLDetector.get_closest_waypoint">[docs]</a>    <span class="k">def</span> <span class="nf">get_closest_waypoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_closest_waypoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Identifies the closest path waypoint to the given position</span>
 <span class="sd">            https://en.wikipedia.org/wiki/Closest_pair_of_points_problem</span>
 <span class="sd">        Args:</span>
@@ -173,9 +173,9 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># TODO implement</span>
-        <span class="k">return</span> <span class="mi">0</span></div>
+        <span class="k">return</span> <span class="mi">0</span>
 
-<div class="viewcode-block" id="TLDetector.get_light_state"><a class="viewcode-back" href="../index.html#tl_detector.TLDetector.get_light_state">[docs]</a>    <span class="k">def</span> <span class="nf">get_light_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">light</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_light_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">light</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Determines the current color of the traffic light</span>
 
 <span class="sd">        Args:</span>
@@ -192,9 +192,9 @@
         <span class="n">cv_image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bridge</span><span class="o">.</span><span class="n">imgmsg_to_cv2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">camera_image</span><span class="p">,</span> <span class="s2">&quot;bgr8&quot;</span><span class="p">)</span>
 
         <span class="c1"># Get classification</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">light_classifier</span><span class="o">.</span><span class="n">get_classification</span><span class="p">(</span><span class="n">cv_image</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">light_classifier</span><span class="o">.</span><span class="n">get_classification</span><span class="p">(</span><span class="n">cv_image</span><span class="p">)</span>
 
-<div class="viewcode-block" id="TLDetector.process_traffic_lights"><a class="viewcode-back" href="../index.html#tl_detector.TLDetector.process_traffic_lights">[docs]</a>    <span class="k">def</span> <span class="nf">process_traffic_lights</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">process_traffic_lights</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Finds closest visible traffic light, if one exists, and determines its</span>
 <span class="sd">            location and color</span>
 
@@ -225,7 +225,7 @@
             <span class="c1"># state = self.lights[0].state</span>
             <span class="k">return</span> <span class="n">stop_wp</span><span class="p">,</span> <span class="n">state</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">TrafficLight</span><span class="o">.</span><span class="n">UNKNOWN</span></div>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">TrafficLight</span><span class="o">.</span><span class="n">UNKNOWN</span>
             <span class="c1"># self.waypoints = None</span>
             <span class="c1"># return -1, TrafficLight.UNKNOWN</span>
 
@@ -250,7 +250,7 @@
             <span class="n">wp1</span> <span class="o">=</span> <span class="n">i</span>
         <span class="k">return</span> <span class="n">dist</span>
 
-<div class="viewcode-block" id="TLDetector.get_closest_waypoint_index"><a class="viewcode-back" href="../index.html#tl_detector.TLDetector.get_closest_waypoint_index">[docs]</a>    <span class="k">def</span> <span class="nf">get_closest_waypoint_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_closest_waypoint_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Returns index of the closest waypoint &quot;&quot;&quot;</span>
         <span class="n">best_distance</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
         <span class="n">best_waypoint_index</span> <span class="o">=</span> <span class="mi">0</span>
@@ -267,15 +267,15 @@
         <span class="n">is_behind</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_waypoint_behind_ego_car</span><span class="p">(</span><span class="n">pose</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">[</span><span class="n">best_waypoint_index</span><span class="p">])</span>
         <span class="k">if</span> <span class="n">is_behind</span><span class="p">:</span>
             <span class="n">best_waypoint_index</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">return</span> <span class="n">best_waypoint_index</span></div>
+        <span class="k">return</span> <span class="n">best_waypoint_index</span>
 
-<div class="viewcode-block" id="TLDetector.get_distance_between_two_points"><a class="viewcode-back" href="../index.html#tl_detector.TLDetector.get_distance_between_two_points">[docs]</a>    <span class="k">def</span> <span class="nf">get_distance_between_two_points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_distance_between_two_points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Returns distance between two points &quot;&quot;&quot;</span>
         <span class="n">dx</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">x</span>
         <span class="n">dy</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">y</span>
-        <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">*</span> <span class="n">dy</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">*</span> <span class="n">dy</span><span class="p">)</span>
 
-<div class="viewcode-block" id="TLDetector.is_waypoint_behind_ego_car"><a class="viewcode-back" href="../index.html#tl_detector.TLDetector.is_waypoint_behind_ego_car">[docs]</a>    <span class="k">def</span> <span class="nf">is_waypoint_behind_ego_car</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">,</span> <span class="n">waypoint</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">is_waypoint_behind_ego_car</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">,</span> <span class="n">waypoint</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Do transformation that sets origin to the ego car position, oriented along x-axis and</span>
 <span class="sd">        return True if the waypoint is behind the ego car,  False if in front</span>
 
@@ -292,9 +292,9 @@
 
         <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="k">return</span> <span class="kc">True</span>
 
-<div class="viewcode-block" id="TLDetector.get_state_in_sim"><a class="viewcode-back" href="../index.html#tl_detector.TLDetector.get_state_in_sim">[docs]</a>    <span class="k">def</span> <span class="nf">get_state_in_sim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stop_wp</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_state_in_sim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stop_wp</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Use traffic pose and state from simulator to test &quot;&quot;&quot;</span>
         <span class="n">light_wp</span> <span class="o">=</span> <span class="n">stop_wp</span>
         <span class="n">light_loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">[</span><span class="n">light_wp</span><span class="p">]</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span>
@@ -307,15 +307,15 @@
                 <span class="n">best_dist</span> <span class="o">=</span> <span class="n">dist</span>
                 <span class="n">current_light_in_sim</span> <span class="o">=</span> <span class="n">i</span>
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lights</span><span class="p">[</span><span class="n">current_light_in_sim</span><span class="p">]</span><span class="o">.</span><span class="n">state</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lights</span><span class="p">[</span><span class="n">current_light_in_sim</span><span class="p">]</span><span class="o">.</span><span class="n">state</span>
 
-<div class="viewcode-block" id="TLDetector.get_euler"><a class="viewcode-back" href="../index.html#tl_detector.TLDetector.get_euler">[docs]</a>    <span class="k">def</span> <span class="nf">get_euler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_euler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Returns roll (x), pitch (y), yaw (z) from a Quaternion.</span>
 
 <span class="sd">        See ROS Quaternion Basics for usage - http://wiki.ros.org/Tutorials/Quaternions</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">transformations</span><span class="o">.</span><span class="n">euler_from_quaternion</span><span class="p">(</span>
-            <span class="p">[</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span><span class="p">])</span></div>
+            <span class="p">[</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span><span class="p">])</span>
 
     <span class="k">def</span> <span class="nf">closest_waypoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">):</span>
         <span class="n">best_distance</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
@@ -342,7 +342,7 @@
         <span class="c1"># print (best_wp_index)</span>
         <span class="k">return</span> <span class="n">best_wp_index</span>
 
-<div class="viewcode-block" id="TLDetector.all_stop_wp"><a class="viewcode-back" href="../index.html#tl_detector.TLDetector.all_stop_wp">[docs]</a>    <span class="k">def</span> <span class="nf">all_stop_wp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">traffic_light_posts</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">all_stop_wp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">traffic_light_posts</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Find all stop line positions from the provided location &quot;&quot;&quot;</span>
         <span class="n">stop_wp</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">stop_wp_index</span> <span class="o">=</span> <span class="p">[]</span>
@@ -354,7 +354,7 @@
 
             <span class="n">stop_wp_index</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">best_index</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">stop_wp</span><span class="p">,</span> <span class="n">stop_wp_index</span></div></div>
+        <span class="k">return</span> <span class="n">stop_wp</span><span class="p">,</span> <span class="n">stop_wp_index</span></div>
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>

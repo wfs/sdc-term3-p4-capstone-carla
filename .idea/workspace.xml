@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py" line="86" mnemonic="1" />
+    <bookmark url="file://$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py" line="85" mnemonic="1" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9ac7fc0-a243-435e-b161-038f08a8839d" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/pid.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/twist_controller.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/yaw_controller.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pure_pursuit.dir/src/pure_pursuit.cpp.o" afterPath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pure_pursuit.dir/src/pure_pursuit.cpp.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/lib/liblibwaypoint_follower.so" afterPath="$PROJECT_DIR$/ros/devel/lib/liblibwaypoint_follower.so" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/lib/waypoint_follower/pure_pursuit" afterPath="$PROJECT_DIR$/ros/devel/lib/waypoint_follower/pure_pursuit" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/doctrees/environment.pickle" afterPath="$PROJECT_DIR$/ros/src/doc/_build/doctrees/environment.pickle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/doctrees/index.doctree" afterPath="$PROJECT_DIR$/ros/src/doc/_build/doctrees/index.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/objects.inv" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/objects.inv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/CMakeCache.txt" afterPath="$PROJECT_DIR$/ros/build/CMakeCache.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/CMakeRuleHashes.txt" afterPath="$PROJECT_DIR$/ros/build/CMakeFiles/CMakeRuleHashes.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/Makefile.cmake" afterPath="$PROJECT_DIR$/ros/build/CMakeFiles/Makefile.cmake" />
@@ -55,6 +60,25 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/share/waypoint_follower/cmake/waypoint_followerConfig.cmake" afterPath="$PROJECT_DIR$/ros/devel/share/waypoint_follower/cmake/waypoint_followerConfig.cmake" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/share/waypoint_loader/cmake/waypoint_loaderConfig.cmake" afterPath="$PROJECT_DIR$/ros/devel/share/waypoint_loader/cmake/waypoint_loaderConfig.cmake" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/share/waypoint_updater/cmake/waypoint_updaterConfig.cmake" afterPath="$PROJECT_DIR$/ros/devel/share/waypoint_updater/cmake/waypoint_updaterConfig.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/dbw_node.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/dbw_node.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/index.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/tl_detector.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/tl_detector.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/waypoint_loader.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/waypoint_loader.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/waypoint_updater.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/waypoint_updater.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_sources/index.rst.txt" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/_sources/index.rst.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/genindex.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/genindex.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/index.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/py-modindex.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/py-modindex.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/searchindex.js" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/searchindex.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/index.rst" afterPath="$PROJECT_DIR$/ros/src/doc/index.rst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/tl_detector/tl_detector.py" afterPath="$PROJECT_DIR$/ros/src/tl_detector/tl_detector.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/tl_detector/tldetect/__init__.py" afterPath="$PROJECT_DIR$/ros/src/tl_detector/tldetect/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py" afterPath="$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/twist_controller/pid.py" afterPath="$PROJECT_DIR$/ros/src/twist_controller/pid.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py" afterPath="$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/twist_controller/yaw_controller.py" afterPath="$PROJECT_DIR$/ros/src/twist_controller/yaw_controller.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py" afterPath="$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py" afterPath="$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -82,12 +106,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="waypoint_loader.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="19" column="38" lean-forward="false" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="18">
-                <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <first_editor relative-caret-position="265">
+                <caret line="33" column="43" lean-forward="false" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -105,14 +139,64 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="waypoint_updater.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="522">
+              <caret line="38" column="43" lean-forward="false" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dbw_node.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2703">
+              <caret line="176" column="32" lean-forward="false" selection-start-line="176" selection-start-column="32" selection-end-line="176" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tl_detector(DL).py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/tl_detector(DL).py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="31" column="75" lean-forward="false" selection-start-line="31" selection-start-column="75" selection-end-line="31" selection-end-column="75" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/tldetect/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="3" column="55" lean-forward="false" selection-start-line="3" selection-start-column="55" selection-end-line="3" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="tl_detector.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/tl_detector.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="296" column="21" lean-forward="true" selection-start-line="296" selection-start-column="21" selection-end-line="296" selection-end-column="21" />
+            <state relative-caret-position="1530">
+              <caret line="85" column="16" lean-forward="false" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="16" />
               <folding>
                 <element signature="e#22#34#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="light_publisher.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/light_publisher.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -128,9 +212,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>self.yaw_con</find>
-      <find>GAS_DENSITY</find>
-      <find>target_velo</find>
       <find>self.twist_cmd_linear_velocity</find>
       <find>get_eu</find>
       <find>self.current_ego_pose</find>
@@ -158,6 +239,9 @@
       <find>traffic_index</find>
       <find>1</find>
       <find>rate</find>
+      <find>PLANNING SUBSYSTEM</find>
+      <find>STEP</find>
+      <find>FrozenSyam.pb</find>
     </findStrings>
     <replaceStrings>
       <replace>message</replace>
@@ -166,6 +250,7 @@
       <replace>best_waypoint_index</replace>
       <replace>current_ego_pose</replace>
       <replace>get_euler</replace>
+      <replace>*** PLANNING SUBSYSTEM ***</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -185,16 +270,17 @@
         <option value="$PROJECT_DIR$/ros/src/doc/index.rst" />
         <option value="$PROJECT_DIR$/graph_waypoints.py" />
         <option value="$PROJECT_DIR$/ros/src/twist_controller/launch/dbw_sim.launch" />
-        <option value="$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py" />
         <option value="$PROJECT_DIR$/ros/src/twist_controller/pid.py" />
         <option value="$PROJECT_DIR$/ros/src/twist_controller/yaw_controller.py" />
         <option value="$PROJECT_DIR$/ros/src/waypoint_updater/launch/waypoint_updater.launch" />
-        <option value="$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py" />
         <option value="$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py" />
         <option value="$PROJECT_DIR$/ros/src/tl_detector/light_publisher.py" />
-        <option value="$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py" />
         <option value="$PROJECT_DIR$/ros/src/tl_detector/tl_detector.py" />
+        <option value="$PROJECT_DIR$/ros/src/tl_detector/tldetect/__init__.py" />
+        <option value="$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py" />
+        <option value="$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py" />
       </list>
     </option>
   </component>
@@ -251,7 +337,7 @@
               <item name="sdc-term3-p4-capstone-carla" type="462c0819:PsiDirectoryNode" />
               <item name="ros" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="tl_detector" type="462c0819:PsiDirectoryNode" />
+              <item name="twist_controller" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -368,39 +454,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py</url>
-          <line>184</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="18" />
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///opt/ros/kinetic/lib/python2.7/dist-packages/rospy/client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="449" column="4" lean-forward="false" selection-start-line="449" selection-start-column="4" selection-end-line="449" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/lowpass.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/carla-driver-master/ros/src/twist_controller/dbw_helper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -642,7 +700,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/tldetect/__init__.py" />
     <entry file="file://$PROJECT_DIR$/graph_waypoints.py" />
     <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/launch/dbw_sim.launch">
       <provider selected="true" editor-type-id="text-editor">
@@ -676,36 +733,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/light_publisher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="529">
           <caret line="103" column="68" lean-forward="false" selection-start-line="103" selection-start-column="68" selection-end-line="103" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="55" column="36" lean-forward="false" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
-          <folding>
-            <element signature="e#23#32#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="9" lean-forward="false" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -726,7 +757,7 @@
         <state relative-caret-position="198">
           <caret line="11" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding>
-            <element signature="e#22#47#0" expanded="true" />
+            <element signature="e#22#47#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -739,21 +770,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py">
+    <entry file="file://$PROJECT_DIR$/ros/src/doc/_build/html/_modules/waypoint_loader.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="160" column="33" lean-forward="false" selection-start-line="160" selection-start-column="33" selection-end-line="160" selection-end-column="33" />
+        <state relative-caret-position="330">
+          <caret line="69" column="0" lean-forward="true" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/tl_detector.py">
+    <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/launch/tl_detector.launch">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="296" column="21" lean-forward="true" selection-start-line="296" selection-start-column="21" selection-end-line="296" selection-end-column="21" />
-          <folding>
-            <element signature="e#22#34#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/light_publisher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/tl_detector(DL).py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="31" column="75" lean-forward="false" selection-start-line="31" selection-start-column="75" selection-end-line="31" selection-end-column="75" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -765,14 +810,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="19" column="38" lean-forward="false" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="38" column="43" lean-forward="false" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/tldetect/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="55" lean-forward="false" selection-start-line="3" selection-start-column="55" selection-end-line="3" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/tl_detector.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="85" column="16" lean-forward="false" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="16" />
+          <folding>
+            <element signature="e#22#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="18">
-            <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <first_editor relative-caret-position="265">
+            <caret line="33" column="43" lean-forward="false" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
             <folding />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2703">
+          <caret line="176" column="32" lean-forward="false" selection-start-line="176" selection-start-column="32" selection-end-line="176" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>

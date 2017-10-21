@@ -2,6 +2,9 @@
 ## Capstone Project
 * Project Submission Due : 23/Oct/2017
 * Term 3 End : 6/Nov/2017
+
+---
+
 ### RoboFolks Team
 1. #### Perception
     * evotianusx@gmail.com 
@@ -11,6 +14,46 @@
 1. #### Control 
     * andrew.d.wilkie@gmail.com
     * buaaluqiang@hotmail.com
+
+---
+
+### RoboFolks Documentation
+0. High level architecture from course lesson
+![high level architecture](./imgs/high_level_architecture.png)
+
+1. ROS Master running
+![ros master running](./imgs/1.png)
+
+1. Simulator running
+![simulator running](./imgs/2.png)
+
+1. Upcoming traffic lights
+![upcoming traffic lights](./imgs/3.png)
+
+1. Red traffic light perceived
+![red traffic light detected](./imgs/4.png)
+
+1. New target trajectory planned
+![new target trajectory](./imgs/5.png)
+
+1. New commands for car actuators
+![new actuator commands](./imgs/6.png)
+
+1. [See API for more details on above diagrams](https://ancabilloni.github.io/Autonomous_System_Integration/#)
+
+    7.1 OPTIONAL : How to generate and view [Sphinx](https://codeandchaos.wordpress.com/2012/07/30/sphinx-autodoc-tutorial-for-dummies/) API
+```bash
+cd <cloned_folder>/ros/src/doc
+vim conf.py
+vim index.rst
+make clean
+make html
+cd _build/html/
+python -m SimpleHTTPServer
+cp -r * <cloned_folder>/docs/
+```
+
+8. [Github](https://github.com/ancabilloni/Autonomous_System_Integration)
 
 ---
 
@@ -27,28 +70,9 @@
 * [Full lap video](https://youtu.be/FfqRF8RTDv0)
 ---
 
-### ROS Bags From Test Site Results
-* TODO
----
-
 ### Test Drive Results
 * TODO
----
 
-### RoboFolks Team Repo
-1. [Github](https://github.com/ancabilloni/Autonomous_System_Integration)
-
-1.1 OPTIONAL : How to generate and view [Sphinx](https://codeandchaos.wordpress.com/2012/07/30/sphinx-autodoc-tutorial-for-dummies/) API /doc
-```bash
-cd <cloned_folder>/ros/src/doc
-vim conf.py
-vim index.rst
-make clean
-make html
-cd _build/html/
-python -m SimpleHTTPServer
-cp -r * <cloned_folder>/docs/
-```
 ---
 
 This is the project repo for the final project of the Udacity Self-Driving Car Nanodegree: Programming a Real Self-Driving Car. For more information about the project, see the project introduction [here](https://classroom.udacity.com/nanodegrees/nd013/parts/6047fe34-d93c-4f50-8336-b70ef10cb4b2/modules/e1a23b06-329a-4684-a717-ad476f0d8dff/lessons/462c933d-9f24-42d3-8bdc-a08a5fc866e4/concepts/5ab4b122-83e6-436d-850f-9f4d26627fd9).

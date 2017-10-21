@@ -17,9 +17,7 @@ MAX_DECEL = 1.0
 
 class WaypointLoader(object):
     """
-    CONTROL SUBSYSTEM
-
-    *** STEP 1 ***
+    **Diagram (1) - ROS Master running**
 
     Loads lane centre waypoints, the 1st item being the closest waypoint to the ego car.
 
