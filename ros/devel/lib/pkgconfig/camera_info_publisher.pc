@@ -1,8 +1,0 @@
-prefix=/home/andrew/dev/term3/sdc-term3-p4-capstone-carla/ros/devel
-
-Name: camera_info_publisher
-Description: Description of camera_info_publisher
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/andrew/dev/term3/sdc-term3-p4-capstone-carla/ros/devel/lib 
-Requires: 

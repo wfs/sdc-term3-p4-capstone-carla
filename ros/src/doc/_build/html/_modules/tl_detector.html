@@ -43,7 +43,6 @@
   <h1>Source code for tl_detector</h1><div class="highlight"><pre>
 <span class="ch">#!/usr/bin/env python</span>
 <span class="kn">import</span> <span class="nn">rospy</span>
-
 <span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="k">import</span> <span class="n">Int32</span>
 <span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="k">import</span> <span class="n">PoseStamped</span><span class="p">,</span> <span class="n">Pose</span>
 <span class="kn">from</span> <span class="nn">styx_msgs.msg</span> <span class="k">import</span> <span class="n">TrafficLightArray</span><span class="p">,</span> <span class="n">TrafficLight</span>
@@ -56,8 +55,11 @@
 <span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">tf</span>
 <span class="kn">import</span> <span class="nn">yaml</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">tldetect</span> <span class="k">import</span> <span class="n">predictor</span>
 
-<span class="n">STATE_COUNT_THRESHOLD</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">STATE_COUNT_THRESHOLD</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">FORWARD_SCAN_WPS</span> <span class="o">=</span> <span class="mi">400</span>
 
 
 <div class="viewcode-block" id="TLDetector"><a class="viewcode-back" href="../index.html#tl_detector.TLDetector">[docs]</a><span class="k">class</span> <span class="nc">TLDetector</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -73,17 +75,17 @@
 <span class="sd">    5. Freeze weight once suitable error level reached</span>
 <span class="sd">    6. Done</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;tl_detector&#39;</span><span class="p">)</span>
-
+        <span class="n">p</span> <span class="o">=</span> <span class="n">predictor</span><span class="p">(</span><span class="n">modelpath</span><span class="o">=</span><span class="s2">&quot;./FrozenSyam.pb&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">predictor</span> <span class="o">=</span> <span class="n">p</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pose</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">camera_image</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lights</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="n">sub1</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;/current_pose&#39;</span><span class="p">,</span> <span class="n">PoseStamped</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pose_cb</span><span class="p">)</span>
-        <span class="n">sub2</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;/base_waypoints&#39;</span><span class="p">,</span> <span class="n">Lane</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">waypoints_cb</span><span class="p">)</span>
+        <span class="n">sub2</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;/base_waypoints&#39;</span><span class="p">,</span> <span class="n">Lane</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">waypoints_cb</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        /vehicle/traffic_lights provides you with the location of the traffic light in 3D map space and</span>
@@ -93,7 +95,7 @@
 <span class="sd">        rely on the position of the light and the camera image to predict it.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">sub3</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;/vehicle/traffic_lights&#39;</span><span class="p">,</span> <span class="n">TrafficLightArray</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">traffic_cb</span><span class="p">)</span>
-        <span class="n">sub6</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;/image_color&#39;</span><span class="p">,</span> <span class="n">Image</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_cb</span><span class="p">)</span>
+        <span class="n">sub6</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;/image_color&#39;</span><span class="p">,</span> <span class="n">Image</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_cb</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
         <span class="n">config_string</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s2">&quot;/traffic_light_config&quot;</span><span class="p">)</span>
 
@@ -110,11 +112,15 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">last_state</span> <span class="o">=</span> <span class="n">TrafficLight</span><span class="o">.</span><span class="n">UNKNOWN</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">last_wp</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">state_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">car_index</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time_image</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time_image_prev</span> <span class="o">=</span> <span class="mf">0.</span>
 
         <span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
 
-    <span class="c1"># def closest_wp_to_stopline(self, stopline_loc, waypoints):</span>
-
+    <span class="c1">### Obtain nodes information &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">pose_cb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pose</span> <span class="o">=</span> <span class="n">msg</span>
 
@@ -122,6 +128,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span> <span class="o">=</span> <span class="n">waypoints</span><span class="o">.</span><span class="n">waypoints</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stop_posts</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_stop_wp</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;stop_line_positions&quot;</span><span class="p">])</span>  <span class="c1"># from find_stop_pos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init</span> <span class="o">=</span> <span class="kc">True</span>
 
     <span class="k">def</span> <span class="nf">traffic_cb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lights</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">lights</span>
@@ -134,8 +141,14 @@
 <span class="sd">            msg (Image): image from car-mounted camera</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time_image</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_image_prev</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time_image_prev</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;Image call back loop: </span><span class="si">%s</span><span class="s2"> secs&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_image</span><span class="p">)</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">has_image</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">camera_image</span> <span class="o">=</span> <span class="n">msg</span>
+
         <span class="n">light_wp</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_traffic_lights</span><span class="p">()</span>
 
         <span class="sd">&#39;&#39;&#39;</span>
@@ -160,22 +173,12 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">upcoming_red_light_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">Int32</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">last_wp</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">state_count</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;TL Waypoint, state: </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_wp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span></div>
+        <span class="c1"># rospy.logwarn(&quot;TL Waypoint, state: %s, %s&quot;, self.last_wp, self.state)</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;Prediction time: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">time</span><span class="p">)</span></div>
+        <span class="c1"># rospy.logwarn(&quot;Prediction: %s, Scores: %s&quot;, pred, skores)</span>
 
-    <span class="k">def</span> <span class="nf">get_closest_waypoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Identifies the closest path waypoint to the given position</span>
-<span class="sd">            https://en.wikipedia.org/wiki/Closest_pair_of_points_problem</span>
-<span class="sd">        Args:</span>
-<span class="sd">            pose (Pose): position to match a waypoint to</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            int: index of the closest waypoint in self.waypoints</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># TODO implement</span>
-        <span class="k">return</span> <span class="mi">0</span>
-
-    <span class="k">def</span> <span class="nf">get_light_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">light</span><span class="p">):</span>
+    <span class="c1"># &quot;&quot;&quot; HELP FUNCTIONS &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">get_light_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Determines the current color of the traffic light</span>
 
 <span class="sd">        Args:</span>
@@ -185,14 +188,25 @@
 <span class="sd">            int: ID of traffic light color (specified in styx_msgs/TrafficLight)</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># RED, YELLOW, GREEN = 1, 2, 3</span>
         <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_image</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">prev_light_loc</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">return</span> <span class="n">TrafficLight</span><span class="o">.</span><span class="n">UNKNOWN</span>
 
-        <span class="n">cv_image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bridge</span><span class="o">.</span><span class="n">imgmsg_to_cv2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">camera_image</span><span class="p">,</span> <span class="s2">&quot;bgr8&quot;</span><span class="p">)</span>
+        <span class="c1"># cv_image = self.bridge.imgmsg_to_cv2(self.camera_image, &quot;bgr8&quot;)</span>
+        <span class="n">cv_image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bridge</span><span class="o">.</span><span class="n">imgmsg_to_cv2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">camera_image</span><span class="p">)</span>
+
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">light</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predictor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">cv_image</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+
+        <span class="c1"># rospy.logwarn(&quot;Prediction: %s, Scores: %s&quot;, pred, skores)</span>
 
         <span class="c1"># Get classification</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">light_classifier</span><span class="o">.</span><span class="n">get_classification</span><span class="p">(</span><span class="n">cv_image</span><span class="p">)</span>
+        <span class="c1"># return self.light_classifier.get_classification(cv_image)</span>
+        <span class="k">return</span> <span class="n">light</span>
 
     <span class="k">def</span> <span class="nf">process_traffic_lights</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Finds closest visible traffic light, if one exists, and determines its</span>
@@ -203,46 +217,54 @@
 <span class="sd">            int: ID of traffic light color (specified in styx_msgs/TrafficLight)</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">light</span> <span class="o">=</span> <span class="kc">None</span>
-
         <span class="c1"># List of positions that correspond to the line to stop in front of for a given intersection</span>
-        <span class="n">stop_line_positions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;stop_line_positions&#39;</span><span class="p">]</span>
         <span class="n">stop_wp</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pose</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">):</span>
             <span class="c1"># car_position = self.get_closest_waypoint(self.pose.pose)</span>
-            <span class="n">stop_wp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_closest_stop_wp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pose</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop_index</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+            <span class="n">stop_wp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_closest_stop_wp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pose</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop_index</span><span class="p">)</span>
 
         <span class="c1"># TODO find the closest visible traffic light (if one exists)</span>
 
-        <span class="c1"># if light:</span>
-        <span class="k">if</span> <span class="n">stop_wp</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="sd">&quot;&quot;&quot; Find state with classifier &quot;&quot;&quot;</span>
-            <span class="c1"># state = self.get_light_state(light)</span>
-            <span class="c1"># return light_wp, state</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">TrafficLight</span><span class="o">.</span><span class="n">UNKNOWN</span>
 
-            <span class="sd">&quot;&quot;&quot; Find state with simulator &quot;&quot;&quot;</span>
-            <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_state_in_sim</span><span class="p">(</span><span class="n">stop_wp</span><span class="p">)</span>
-            <span class="c1"># state = self.lights[0].state</span>
+        <span class="k">if</span> <span class="n">stop_wp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_light_state</span><span class="p">()</span>
             <span class="k">return</span> <span class="n">stop_wp</span><span class="p">,</span> <span class="n">state</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">TrafficLight</span><span class="o">.</span><span class="n">UNKNOWN</span>
-            <span class="c1"># self.waypoints = None</span>
-            <span class="c1"># return -1, TrafficLight.UNKNOWN</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">state</span>
 
-    <span class="c1">#   Find the closest next stopping point </span>
+    <span class="c1">####  FIND THE CLOSET STOPPING POINT BEHIND THE TRAFFIC LIGHT ####</span>
 
-    <span class="k">def</span> <span class="nf">get_closest_stop_wp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current_pose</span><span class="p">,</span> <span class="n">stopping_indices</span><span class="p">,</span> <span class="n">limit_distance</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_closest_stop_wp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current_pose</span><span class="p">,</span> <span class="n">stopping_indices</span><span class="p">):</span>
         <span class="n">stop_wp</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="n">car_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_closest_waypoint_index</span><span class="p">(</span><span class="n">current_pose</span><span class="o">.</span><span class="n">pose</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">indx</span> <span class="ow">in</span> <span class="n">stopping_indices</span><span class="p">:</span>
-            <span class="n">dist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">,</span> <span class="n">car_index</span><span class="p">,</span> <span class="n">indx</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="n">limit_distance</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_waypoint_behind_ego_car</span><span class="p">(</span><span class="n">current_pose</span><span class="o">.</span><span class="n">pose</span><span class="p">,</span>
-                                                                             <span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">[</span><span class="n">indx</span><span class="p">]):</span>
-                <span class="n">stop_wp</span> <span class="o">=</span> <span class="n">indx</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">car_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_closest_waypoint</span><span class="p">(</span><span class="n">current_pose</span><span class="o">.</span><span class="n">pose</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">stop_wp</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stopping_indices</span><span class="p">)):</span>
+            <span class="c1"># dist = self.distance(self.waypoints, self.car_index, indx)</span>
+            <span class="c1"># if dist &lt; limit_distance and not self.is_waypoint_behind_ego_car(current_pose.pose, self.waypoints[indx]):</span>
+            <span class="c1">#     stop_wp = indx</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">car_index</span> <span class="o">&lt;</span> <span class="n">stopping_indices</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="k">return</span> <span class="n">stopping_indices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="c1">#### FIND ALL NEAREST WAYPOINTS BEHIND STOP LINE FROM GIVEN LOCATIONS ###</span>
+    <span class="k">def</span> <span class="nf">all_stop_wp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">traffic_light_posts</span><span class="p">):</span>
+        <span class="n">stop_wp</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">stop_wp_index</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">traffic_light_posts</span><span class="p">:</span>
+            <span class="n">best_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">closest_waypoint</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+            <span class="n">stop_wp</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">[</span><span class="n">best_index</span><span class="p">]</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">[</span><span class="n">best_index</span><span class="p">]</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span><span class="p">])</span>
+
+            <span class="n">stop_wp_index</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">best_index</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">stop_wp</span><span class="p">,</span> <span class="n">stop_wp_index</span>
+
+    <span class="c1">### HELP FUNCTIONS ###</span>
 
     <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">,</span> <span class="n">wp1</span><span class="p">,</span> <span class="n">wp2</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39; Find true distance between two waypoints &#39;&#39;&#39;</span>
         <span class="n">dist</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">dl</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">a</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">z</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">z</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">wp1</span><span class="p">,</span> <span class="n">wp2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
@@ -250,23 +272,37 @@
             <span class="n">wp1</span> <span class="o">=</span> <span class="n">i</span>
         <span class="k">return</span> <span class="n">dist</span>
 
-    <span class="k">def</span> <span class="nf">get_closest_waypoint_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Returns index of the closest waypoint &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">get_closest_waypoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Returns index of the closest waypoint ahead &quot;&quot;&quot;</span>
         <span class="n">best_distance</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
         <span class="n">best_waypoint_index</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">my_position</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span>
 
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">waypoint</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">waypoints</span><span class="p">):</span>
+        <span class="c1"># for i, waypoint in enumerate(waypoints):</span>
 
+        <span class="c1">#     a_waypoint_position = waypoint.pose.pose.position</span>
+        <span class="c1">#     gap = self.get_distance_between_two_points(my_position, a_waypoint_position)</span>
+
+        <span class="c1">#     if gap &lt; best_distance:</span>
+        <span class="c1">#         best_waypoint_index, best_distance = i, gap</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">car_index</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">prev_car_index</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">scan_waypoints</span> <span class="o">=</span> <span class="n">waypoints</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">prev_car_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">car_index</span>
+            <span class="n">scan_waypoints</span> <span class="o">=</span> <span class="n">waypoints</span><span class="p">[</span><span class="n">prev_car_index</span><span class="p">:</span> <span class="p">(</span><span class="n">prev_car_index</span> <span class="o">+</span> <span class="n">FORWARD_SCAN_WPS</span><span class="p">)]</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">waypoint</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">scan_waypoints</span><span class="p">):</span>
             <span class="n">a_waypoint_position</span> <span class="o">=</span> <span class="n">waypoint</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span>
             <span class="n">gap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_distance_between_two_points</span><span class="p">(</span><span class="n">my_position</span><span class="p">,</span> <span class="n">a_waypoint_position</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">gap</span> <span class="o">&lt;</span> <span class="n">best_distance</span><span class="p">:</span>
-                <span class="n">best_waypoint_index</span><span class="p">,</span> <span class="n">best_distance</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="n">gap</span>
+                <span class="n">best_waypoint_index</span><span class="p">,</span> <span class="n">best_distance</span> <span class="o">=</span> <span class="n">prev_car_index</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span> <span class="n">gap</span>
 
         <span class="n">is_behind</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_waypoint_behind_ego_car</span><span class="p">(</span><span class="n">pose</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">[</span><span class="n">best_waypoint_index</span><span class="p">])</span>
         <span class="k">if</span> <span class="n">is_behind</span><span class="p">:</span>
             <span class="n">best_waypoint_index</span> <span class="o">+=</span> <span class="mi">1</span>
+
         <span class="k">return</span> <span class="n">best_waypoint_index</span>
 
     <span class="k">def</span> <span class="nf">get_distance_between_two_points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -294,21 +330,6 @@
             <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="kc">True</span>
 
-    <span class="k">def</span> <span class="nf">get_state_in_sim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stop_wp</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Use traffic pose and state from simulator to test &quot;&quot;&quot;</span>
-        <span class="n">light_wp</span> <span class="o">=</span> <span class="n">stop_wp</span>
-        <span class="n">light_loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">[</span><span class="n">light_wp</span><span class="p">]</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span>
-        <span class="n">best_dist</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
-        <span class="n">current_light_in_sim</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">light</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lights</span><span class="p">):</span>
-            <span class="n">pos</span> <span class="o">=</span> <span class="n">light</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span>
-            <span class="n">dist</span> <span class="o">=</span> <span class="p">((</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">light_loc</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">pos</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">light_loc</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
-            <span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="n">best_dist</span><span class="p">:</span>
-                <span class="n">best_dist</span> <span class="o">=</span> <span class="n">dist</span>
-                <span class="n">current_light_in_sim</span> <span class="o">=</span> <span class="n">i</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lights</span><span class="p">[</span><span class="n">current_light_in_sim</span><span class="p">]</span><span class="o">.</span><span class="n">state</span>
-
     <span class="k">def</span> <span class="nf">get_euler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Returns roll (x), pitch (y), yaw (z) from a Quaternion.</span>
 
@@ -318,6 +339,7 @@
             <span class="p">[</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span><span class="p">])</span>
 
     <span class="k">def</span> <span class="nf">closest_waypoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Find closet waypoint behind with given X, Y coordinate &quot;&quot;&quot;</span>
         <span class="n">best_distance</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
         <span class="n">best_wp_index</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">best_wp</span> <span class="o">=</span> <span class="kc">None</span>
@@ -340,21 +362,7 @@
         <span class="k">if</span> <span class="n">ahead</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">best_wp_index</span> <span class="o">-=</span> <span class="mi">1</span>
         <span class="c1"># print (best_wp_index)</span>
-        <span class="k">return</span> <span class="n">best_wp_index</span>
-
-    <span class="k">def</span> <span class="nf">all_stop_wp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">traffic_light_posts</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Find all stop line positions from the provided location &quot;&quot;&quot;</span>
-        <span class="n">stop_wp</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">stop_wp_index</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">traffic_light_posts</span><span class="p">:</span>
-            <span class="n">best_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">closest_waypoint</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
-            <span class="c1"># print (best_index)</span>
-            <span class="n">stop_wp</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">[</span><span class="n">best_index</span><span class="p">]</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
-                            <span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">[</span><span class="n">best_index</span><span class="p">]</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span><span class="p">])</span>
-
-            <span class="n">stop_wp_index</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">best_index</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">stop_wp</span><span class="p">,</span> <span class="n">stop_wp_index</span></div>
+        <span class="k">return</span> <span class="n">best_wp_index</span></div>
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>

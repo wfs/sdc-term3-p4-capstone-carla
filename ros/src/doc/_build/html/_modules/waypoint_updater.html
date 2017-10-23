@@ -56,7 +56,7 @@
 
 <span class="n">FORWARD_SCAN_WPS</span> <span class="o">=</span> <span class="mi">200</span>  <span class="c1"># aka publish this number of waypoints</span>
 <span class="n">MPS</span> <span class="o">=</span> <span class="mf">0.44704</span>  <span class="c1"># is 1 MPH</span>
-<span class="n">MIN_VEL</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.2</span>
+<span class="n">MIN_VEL</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.1</span>
 <span class="n">STOP</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">GO</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">DECEL</span> <span class="o">=</span> <span class="mi">2</span>
@@ -113,7 +113,8 @@
 
 <div class="viewcode-block" id="WaypointUpdater.loop"><a class="viewcode-back" href="../index.html#waypoint_updater.WaypointUpdater.loop">[docs]</a>    <span class="k">def</span> <span class="nf">loop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Updates waypoints in front of the cars current position with the new target trajectory. &quot;&quot;&quot;</span>
-        <span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="c1">#rate = rospy.Rate(2)</span>
+	<span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 
         <span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
             <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
@@ -121,11 +122,11 @@
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_waypoints</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_ego_pose</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">continue</span>
 
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_waypoints</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">FORWARD_SCAN_WPS</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
-                <span class="n">car_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_closest_waypoint_index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_ego_pose</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_waypoints</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_waypoints</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">FORWARD_SCAN_WPS</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">car_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_closest_waypoint_index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_ego_pose</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_waypoints</span><span class="p">)</span>
 
                 <span class="c1"># lookahead_waypoints = self.get_next_waypoints(self.base_waypoints, car_index, FORWARD_SCAN_WPS)</span>
-                <span class="n">lookahead_waypoints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_waypoints</span><span class="p">(</span><span class="n">car_index</span><span class="p">)</span>
+                <span class="n">lookahead_waypoints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_waypoints</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">car_index</span><span class="p">)</span>
 
                 <span class="c1"># rospy.logwarn(&quot;Velocity 1: %s&quot;, lookahead_waypoints[0].twist.twist.linear.x)</span>
                 <span class="c1"># rospy.logwarn(&quot;Angular  1: %s&quot;, lookahead_waypoints[0].twist.twist.angular.z)</span>
@@ -162,6 +163,8 @@
             <span class="n">cte_tl</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_waypoints</span><span class="p">,</span> <span class="n">current_wp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tlwp</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
             <span class="k">if</span> <span class="n">cte_tl</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mf">16.0</span><span class="p">:</span>  <span class="c1"># if within 16 meters from GREEN light, go full speed</span>
                 <span class="n">cte_tl</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cte_tl</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
 
         <span class="sd">&quot;&quot;&quot; PREDICTION DECISIONS &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">cte_tl</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">cte_tl</span> <span class="o">&lt;</span> <span class="mf">5.0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_linear_velocity</span> <span class="o">&lt;</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">MPS</span><span class="p">):</span>
@@ -170,10 +173,11 @@
         <span class="k">elif</span> <span class="p">(</span><span class="n">cte_tl</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">cte_tl</span> <span class="o">&lt;</span> <span class="mf">100.0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">cte_tl</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">DECEL</span>
 
-        <span class="k">elif</span> <span class="p">(</span><span class="n">cte_tl</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">cte_tl</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span>
-                    <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_linear_velocity</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">cte_tl</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">DECEL</span>
-            <span class="n">cte_tl</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="c1">### Consider using this if having a confident classification for far Green detection</span>
+        <span class="c1"># elif (cte_tl is not None) and (cte_tl &lt; 0.0) and (</span>
+        <span class="c1">#             (self.current_linear_velocity * 2 + 2.0) &lt; cte_tl * (-1)):</span>
+        <span class="c1">#     self.action = DECEL</span>
+        <span class="c1">#     cte_tl *= -1</span>
 
         <span class="k">else</span><span class="p">:</span>  <span class="c1"># no within stopping range or current green light and can pass</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">GO</span>
@@ -188,10 +192,9 @@
                 <span class="n">car_to_TL</span> <span class="o">=</span> <span class="p">(</span><span class="n">cte_tl</span> <span class="o">-</span> <span class="n">wp_to_tl</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">car_to_TL</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="c1"># rospy.logwarn(&quot;Distance: %s&quot;, car_to_TL)</span>
+
             <span class="n">_velocity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_velocity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">,</span> <span class="n">car_to_TL</span><span class="p">)</span>
-            <span class="c1"># if(self.current_linear_velocity &gt; (_velocity + 1.0)):</span>
-            <span class="c1"># 	_velocity *= 0.25</span>
+
             <span class="n">wp</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">_velocity</span>
             <span class="n">wp</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
             <span class="n">wp</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -203,7 +206,7 @@
 
             <span class="n">wp_to_tl</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_waypoints</span><span class="p">,</span> <span class="n">current_wp</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span> <span class="n">current_wp</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 
-        <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;===================TL distance: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;======================TL distance: </span><span class="si">%s</span><span class="s2"> m&quot;</span><span class="p">,</span>
                       <span class="n">cte_tl</span><span class="p">)</span>
         <span class="c1"># rospy.logwarn(&quot;TL wp: %s&quot;,</span>
         <span class="c1">#                   self.tlwp)</span>
@@ -225,43 +228,70 @@
         <span class="c1"># Setting points to find deceleration curve</span>
         <span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># distance axis</span>
         <span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># velocity axis</span>
-        <span class="c1"># Max point @20 s away</span>
-        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="o">-</span><span class="n">max_vel</span> <span class="o">*</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">200</span><span class="p">))</span>
+        <span class="c1"># # Max point @20 s away</span>
+        <span class="c1"># x.append(min(-max_vel * 20, -200))</span>
+        <span class="c1"># y.append(max_vel)</span>
+
+        <span class="c1"># x.append(min(-max_vel * 10, -100))</span>
+        <span class="c1"># y.append(max_vel)</span>
+
+        <span class="c1"># # @14 s away</span>
+        <span class="c1"># x.append(min(-max_vel * 0.5 * 14, 75))</span>
+        <span class="c1"># y.append(max_vel * 0.5)</span>
+
+        <span class="c1"># # @13 s away</span>
+        <span class="c1"># x.append(min(-max_vel * 0.4 * 13, -55))</span>
+        <span class="c1"># y.append(max_vel * 0.4)</span>
+
+        <span class="c1"># # @9 s away</span>
+        <span class="c1"># x.append(min(-max_vel * 0.3 * 9, -30))</span>
+        <span class="c1"># y.append(max_vel * 0.2)</span>
+
+        <span class="c1"># # @16m away</span>
+        <span class="c1"># x.append(-16)</span>
+        <span class="c1"># y.append(MPS * 2)</span>
+
+        <span class="c1"># # @10 m away</span>
+        <span class="c1"># x.append(-10)</span>
+        <span class="c1"># y.append(MPS)</span>
+
+        <span class="c1"># # @5 m away</span>
+        <span class="c1"># x.append(-5)</span>
+        <span class="c1"># y.append(MPS * 0.5)</span>
+
+        <span class="c1"># # @0 m away</span>
+        <span class="c1"># x.append(0.)</span>
+        <span class="c1"># y.append(MIN_VEL)</span>
+
+        <span class="c1"># # @ after traffic light, all points are zeros</span>
+        <span class="c1"># x.append(max(max_vel * 20, 200))</span>
+        <span class="c1"># y.append(MIN_VEL)</span>
+        <span class="c1">############ NEW CURVE ##########</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="n">max_vel</span> <span class="o">*</span> <span class="mi">20</span><span class="p">))</span>
         <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">max_vel</span><span class="p">)</span>
 
-        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="o">-</span><span class="n">max_vel</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">))</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="n">max_vel</span> <span class="o">*</span> <span class="mi">10</span><span class="p">))</span>
         <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">max_vel</span><span class="p">)</span>
 
-        <span class="c1"># @14 s away</span>
-        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="o">-</span><span class="n">max_vel</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">75</span><span class="p">))</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="o">-</span><span class="mi">75</span><span class="p">,</span> <span class="o">-</span><span class="n">max_vel</span> <span class="o">*</span> <span class="mi">7</span><span class="p">))</span>
         <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">max_vel</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
 
-        <span class="c1"># @13 s away</span>
-        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="o">-</span><span class="n">max_vel</span> <span class="o">*</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="mi">13</span><span class="p">,</span> <span class="o">-</span><span class="mi">55</span><span class="p">))</span>
-        <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">max_vel</span> <span class="o">*</span> <span class="mf">0.4</span><span class="p">)</span>
-
-        <span class="c1"># @9 s away</span>
-        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="o">-</span><span class="n">max_vel</span> <span class="o">*</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">))</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="o">-</span><span class="mi">45</span><span class="p">,</span> <span class="o">-</span><span class="n">max_vel</span> <span class="o">*</span> <span class="mi">4</span><span class="p">))</span>
         <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">max_vel</span> <span class="o">*</span> <span class="mf">0.2</span><span class="p">)</span>
 
-        <span class="c1"># @16m away</span>
-        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mi">16</span><span class="p">)</span>
-        <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MPS</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="o">-</span><span class="n">max_vel</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">))</span>
+        <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">MPS</span><span class="p">)</span>
 
-        <span class="c1"># @10 m away</span>
-        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
-        <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MPS</span><span class="p">)</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="n">max_vel</span> <span class="o">*</span> <span class="mf">1.0</span><span class="p">))</span>
+        <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">MPS</span><span class="p">)</span>
 
-        <span class="c1"># @5 m away</span>
-        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
-        <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MPS</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="n">max_vel</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">))</span>
+        <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">MPS</span><span class="p">)</span>
 
-        <span class="c1"># @0 m away</span>
-        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.</span><span class="p">)</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
         <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MIN_VEL</span><span class="p">)</span>
 
-        <span class="c1"># @ after traffic light, all points are zeros</span>
-        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">max_vel</span> <span class="o">*</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">max_vel</span> <span class="o">*</span> <span class="mi">20</span><span class="p">))</span>
         <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MIN_VEL</span><span class="p">)</span>
 
         <span class="n">decel_curve</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -304,10 +334,10 @@
             <span class="n">shift_x</span> <span class="o">=</span> <span class="n">waypoints</span><span class="p">[</span><span class="n">car_index</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">origin_x</span>
             <span class="n">shift_y</span> <span class="o">=</span> <span class="n">waypoints</span><span class="p">[</span><span class="n">car_index</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">origin_y</span>
 
-            <span class="n">x</span> <span class="o">=</span> <span class="n">shift_x</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">yaw</span><span class="p">)</span> <span class="o">-</span> <span class="n">shift_y</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">yaw</span><span class="p">)</span>
-            <span class="n">y</span> <span class="o">=</span> <span class="n">shift_x</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">yaw</span><span class="p">)</span> <span class="o">+</span> <span class="n">shift_y</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">yaw</span><span class="p">)</span>
-            <span class="c1"># x = shift_x * cos(yaw) - shift_y * sin(yaw)</span>
-            <span class="c1"># y = shift_x * sin(yaw) + shift_y * cos(yaw)</span>
+            <span class="c1"># x = shift_x * cos(0 - yaw) - shift_y * sin(0 - yaw)</span>
+            <span class="c1"># y = shift_x * sin(0 - yaw) + shift_y * cos(0 - yaw)</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">shift_x</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">yaw</span><span class="p">)</span> <span class="o">-</span> <span class="n">shift_y</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">yaw</span><span class="p">)</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">shift_x</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">yaw</span><span class="p">)</span> <span class="o">+</span> <span class="n">shift_y</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">yaw</span><span class="p">)</span>
             <span class="c1"># rospy.logwarn(&quot;i %s - x_coord : %s&quot;, i, x)</span>
             <span class="c1"># rospy.logwarn(&quot;i %s - y_coord : %s&quot;, i, y)</span>
 
@@ -315,10 +345,6 @@
             <span class="n">y_coords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">x_coords</span><span class="p">,</span> <span class="n">y_coords</span>
-
-    <span class="k">def</span> <span class="nf">get_single_wp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
-        <span class="n">wp</span> <span class="o">=</span> <span class="n">waypoints</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">wp</span>
 
     <span class="k">def</span> <span class="nf">get_next_waypoints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Returns a list of waypoints ahead of the ego car &quot;&quot;&quot;</span>

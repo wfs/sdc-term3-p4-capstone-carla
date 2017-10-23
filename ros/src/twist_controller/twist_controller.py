@@ -108,12 +108,16 @@ class Controller(object):
         throttle, brake = 0, 0
         if velocity_change_required > 0.1:
             # limit increase in throttle
-            throttle, brake = min(velocity_change_required / target_linear_velocity,
+            #throttle, brake = min(2.0 * velocity_change_required / target_linear_velocity,
+            #                      max_throttle_proportional), 0.0
+            throttle, brake = min(3.0 * velocity_change_required / target_linear_velocity,
                                   max_throttle_proportional), 0.0
             # rospy.logwarn("increase throttle : %s", throttle)
         elif velocity_change_required < -0.1:
             # limit increase in brake
-            throttle, brake = 0.0, min(velocity_change_required / target_linear_velocity,
+            #throttle, brake = 0.0, min(2.5 * velocity_change_required / target_linear_velocity,
+            #                           max_brake_proportional)
+            throttle, brake = 0.0, min(3.0 * velocity_change_required / target_linear_velocity,
                                        max_brake_proportional)
             # rospy.logwarn("increase brake : %s", brake)
 

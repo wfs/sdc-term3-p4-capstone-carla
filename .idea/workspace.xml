@@ -1,83 +1,752 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py" line="85" mnemonic="1" />
+    <bookmark url="file://$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py" line="87" mnemonic="1" />
+    <bookmark url="file://$PROJECT_DIR$/ros/src/tl_detector/tl_detector.py" line="180" mnemonic="A" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9ac7fc0-a243-435e-b161-038f08a8839d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/pid.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/twist_controller.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/yaw_controller.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pure_pursuit.dir/src/pure_pursuit.cpp.o" afterPath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pure_pursuit.dir/src/pure_pursuit.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/lib/liblibwaypoint_follower.so" afterPath="$PROJECT_DIR$/ros/devel/lib/liblibwaypoint_follower.so" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/lib/waypoint_follower/pure_pursuit" afterPath="$PROJECT_DIR$/ros/devel/lib/waypoint_follower/pure_pursuit" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/.built_by" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CATKIN_IGNORE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeCache.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/3.5.1/CMakeCCompiler.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/3.5.1/CMakeCXXCompiler.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/3.5.1/CMakeDetermineCompilerABI_C.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/3.5.1/CMakeDetermineCompilerABI_CXX.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/3.5.1/CMakeSystem.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/3.5.1/CompilerIdC/a.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/3.5.1/CompilerIdCXX/a.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/CMakeDirectoryInformation.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/CMakeError.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/CMakeOutput.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/CMakeRuleHashes.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/Makefile.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/Makefile2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/TargetDirectories.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/clean_test_results.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/clean_test_results.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/clean_test_results.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/clean_test_results.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/cmake.check_cache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/download_extra_data.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/download_extra_data.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/download_extra_data.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/download_extra_data.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/doxygen.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/doxygen.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/doxygen.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/doxygen.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/feature_tests.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/feature_tests.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/feature_tests.cxx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/progress.marks" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/run_tests.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/run_tests.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/run_tests.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/run_tests.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/tests.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/tests.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/tests.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/tests.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/CTestTestfile.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/Makefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/CMakeDirectoryInformation.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/progress.marks" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/roscpp_generate_messages_cpp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/roscpp_generate_messages_cpp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/roscpp_generate_messages_cpp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/roscpp_generate_messages_eus.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/roscpp_generate_messages_eus.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/roscpp_generate_messages_eus.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/roscpp_generate_messages_eus.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/roscpp_generate_messages_lisp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/roscpp_generate_messages_lisp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/roscpp_generate_messages_lisp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/roscpp_generate_messages_nodejs.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/roscpp_generate_messages_nodejs.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/roscpp_generate_messages_nodejs.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/roscpp_generate_messages_py.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/roscpp_generate_messages_py.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/roscpp_generate_messages_py.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/roscpp_generate_messages_py.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_cpp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_cpp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_cpp.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_cpp.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_cpp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_eus.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_eus.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_eus.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_eus.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_eus.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_lisp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_lisp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_lisp.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_lisp.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_lisp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_nodejs.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_nodejs.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_nodejs.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_nodejs.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_nodejs.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_py.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_py.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_py.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_py.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_py.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CMakeFiles/std_msgs_generate_messages_py.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/CTestTestfile.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/Makefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/catkin_generated/installspace/camera_info_publisher.pc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/catkin_generated/installspace/camera_info_publisherConfig-version.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/catkin_generated/installspace/camera_info_publisherConfig.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/catkin_generated/ordered_paths.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/catkin_generated/package.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/catkin_generated/pkg.develspace.context.pc.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/catkin_generated/pkg.installspace.context.pc.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/catkin_generated/stamps/camera_info_publisher/package.xml.stamp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/catkin_generated/stamps/camera_info_publisher/pkg.pc.em.stamp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/cmake_install.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/catkin/catkin_generated/version/package.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/catkin_generated/env_cached.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/catkin_generated/generate_cached_setup.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/catkin_generated/installspace/.rosinstall" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/catkin_generated/installspace/_setup_util.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/catkin_generated/installspace/env.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/catkin_generated/installspace/setup.bash" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/catkin_generated/installspace/setup.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/catkin_generated/installspace/setup.zsh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/catkin_generated/order_packages.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/catkin_generated/order_packages.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/catkin_generated/setup_cached.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/catkin_generated/stamps/Project/_setup_util.py.stamp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/catkin_generated/stamps/Project/interrogate_setup_dot_py.py.stamp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/catkin_generated/stamps/Project/order_packages.cmake.em.stamp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/catkin_generated/stamps/Project/package.xml.stamp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/catkin_make.cache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/cmake_install.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/gtest/CMakeFiles/CMakeDirectoryInformation.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/gtest/CMakeFiles/gtest.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/gtest/CMakeFiles/gtest.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/gtest/CMakeFiles/gtest.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/gtest/CMakeFiles/gtest.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/gtest/CMakeFiles/gtest.dir/flags.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/gtest/CMakeFiles/gtest.dir/link.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/gtest/CMakeFiles/gtest.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/gtest/CMakeFiles/gtest_main.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/gtest/CMakeFiles/gtest_main.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/gtest/CMakeFiles/gtest_main.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/gtest/CMakeFiles/gtest_main.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/gtest/CMakeFiles/gtest_main.dir/flags.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/gtest/CMakeFiles/gtest_main.dir/link.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/gtest/CMakeFiles/gtest_main.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/gtest/CMakeFiles/progress.marks" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/gtest/CTestTestfile.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/gtest/Makefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/gtest/cmake_install.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/CMakeDirectoryInformation.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/dbw_mkz_msgs_generate_messages_cpp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/dbw_mkz_msgs_generate_messages_cpp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/dbw_mkz_msgs_generate_messages_cpp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/dbw_mkz_msgs_generate_messages_cpp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/dbw_mkz_msgs_generate_messages_eus.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/dbw_mkz_msgs_generate_messages_eus.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/dbw_mkz_msgs_generate_messages_eus.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/dbw_mkz_msgs_generate_messages_eus.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/dbw_mkz_msgs_generate_messages_lisp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/dbw_mkz_msgs_generate_messages_lisp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/dbw_mkz_msgs_generate_messages_lisp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/dbw_mkz_msgs_generate_messages_lisp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/dbw_mkz_msgs_generate_messages_nodejs.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/dbw_mkz_msgs_generate_messages_nodejs.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/dbw_mkz_msgs_generate_messages_nodejs.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/dbw_mkz_msgs_generate_messages_nodejs.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/dbw_mkz_msgs_generate_messages_py.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/dbw_mkz_msgs_generate_messages_py.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/dbw_mkz_msgs_generate_messages_py.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/dbw_mkz_msgs_generate_messages_py.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_eus.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_eus.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_eus.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_eus.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_eus.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_py.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_py.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_py.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_py.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/geometry_msgs_generate_messages_py.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/progress.marks" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_eus.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_eus.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_eus.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_eus.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_eus.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_py.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_py.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_py.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_py.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CMakeFiles/sensor_msgs_generate_messages_py.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/CTestTestfile.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/Makefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/catkin_generated/installspace/styx.pc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/catkin_generated/installspace/styxConfig-version.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/catkin_generated/installspace/styxConfig.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/catkin_generated/ordered_paths.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/catkin_generated/package.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/catkin_generated/pkg.develspace.context.pc.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/catkin_generated/pkg.installspace.context.pc.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/catkin_generated/stamps/styx/package.xml.stamp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/catkin_generated/stamps/styx/pkg.pc.em.stamp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx/cmake_install.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/CMakeDirectoryInformation.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_catkin_empty_exported_target.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_catkin_empty_exported_target.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_catkin_empty_exported_target.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_Lane.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_Lane.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_Lane.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_Lane.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_Lane.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_Lane.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLightArray.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLightArray.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLightArray.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLightArray.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLightArray.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLightArray.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_Waypoint.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_Waypoint.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_Waypoint.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_Waypoint.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_Waypoint.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_Waypoint.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/progress.marks" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_gencpp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_gencpp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_gencpp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_gencpp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_cpp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_cpp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_cpp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_cpp.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_cpp.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_cpp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_lisp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_lisp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_lisp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_lisp.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_lisp.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_lisp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_py.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_py.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_py.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_py.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_py.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_py.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_geneus.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_geneus.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_geneus.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_geneus.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_genlisp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_genlisp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_genlisp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_genlisp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_gennodejs.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_gennodejs.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_gennodejs.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_gennodejs.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_genpy.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_genpy.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_genpy.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_genpy.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CTestTestfile.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/Makefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/catkin_generated/installspace/styx_msgs-msg-extras.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/catkin_generated/installspace/styx_msgs-msg-paths.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/catkin_generated/installspace/styx_msgs.pc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/catkin_generated/installspace/styx_msgsConfig-version.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/catkin_generated/installspace/styx_msgsConfig.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/catkin_generated/ordered_paths.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/catkin_generated/package.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/catkin_generated/pkg.develspace.context.pc.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/catkin_generated/pkg.installspace.context.pc.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/catkin_generated/stamps/styx_msgs/package.xml.stamp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/catkin_generated/stamps/styx_msgs/pkg-genmsg.cmake.em.stamp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/catkin_generated/stamps/styx_msgs/pkg.pc.em.stamp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/catkin_generated/styx_msgs-msg-extras.cmake.develspace.in" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/catkin_generated/styx_msgs-msg-extras.cmake.installspace.in" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/cmake/styx_msgs-genmsg-context.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/cmake/styx_msgs-genmsg.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/cmake_install.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/tl_detector/CMakeFiles/CMakeDirectoryInformation.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/tl_detector/CMakeFiles/progress.marks" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/tl_detector/CTestTestfile.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/tl_detector/Makefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/tl_detector/catkin_generated/installspace/tl_detector.pc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/tl_detector/catkin_generated/installspace/tl_detectorConfig-version.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/tl_detector/catkin_generated/installspace/tl_detectorConfig.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/tl_detector/catkin_generated/ordered_paths.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/tl_detector/catkin_generated/package.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/tl_detector/catkin_generated/pkg.develspace.context.pc.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/tl_detector/catkin_generated/pkg.installspace.context.pc.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/tl_detector/catkin_generated/stamps/tl_detector/package.xml.stamp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/tl_detector/catkin_generated/stamps/tl_detector/pkg.pc.em.stamp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/tl_detector/cmake_install.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/twist_controller/CMakeFiles/CMakeDirectoryInformation.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/twist_controller/CMakeFiles/progress.marks" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/twist_controller/CTestTestfile.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/twist_controller/Makefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/twist_controller/catkin_generated/installspace/twist_controller.pc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/twist_controller/catkin_generated/installspace/twist_controllerConfig-version.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/twist_controller/catkin_generated/installspace/twist_controllerConfig.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/twist_controller/catkin_generated/ordered_paths.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/twist_controller/catkin_generated/package.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/twist_controller/catkin_generated/pkg.develspace.context.pc.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/twist_controller/catkin_generated/pkg.installspace.context.pc.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/twist_controller/catkin_generated/stamps/twist_controller/package.xml.stamp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/twist_controller/catkin_generated/stamps/twist_controller/pkg.pc.em.stamp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/twist_controller/cmake_install.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/CMakeDirectoryInformation.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_generate_messages_cpp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_generate_messages_cpp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_generate_messages_cpp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_generate_messages_cpp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_generate_messages_eus.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_generate_messages_eus.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_generate_messages_eus.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_generate_messages_eus.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_generate_messages_lisp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_generate_messages_lisp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_generate_messages_lisp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_generate_messages_nodejs.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_generate_messages_nodejs.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_generate_messages_nodejs.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_generate_messages_nodejs.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_generate_messages_py.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_generate_messages_py.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_generate_messages_py.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_generate_messages_py.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_py.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_py.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_py.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/bond_generate_messages_cpp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/bond_generate_messages_cpp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/bond_generate_messages_cpp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/bond_generate_messages_cpp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/bond_generate_messages_eus.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/bond_generate_messages_eus.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/bond_generate_messages_eus.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/bond_generate_messages_eus.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/bond_generate_messages_lisp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/bond_generate_messages_lisp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/bond_generate_messages_lisp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/bond_generate_messages_lisp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/bond_generate_messages_nodejs.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/bond_generate_messages_nodejs.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/bond_generate_messages_nodejs.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/bond_generate_messages_nodejs.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/bond_generate_messages_py.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/bond_generate_messages_py.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/bond_generate_messages_py.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/bond_generate_messages_py.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_gencfg.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_gencfg.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_gencfg.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_gencfg.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/libwaypoint_follower.dir/CXX.includecache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/libwaypoint_follower.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/libwaypoint_follower.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/libwaypoint_follower.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/libwaypoint_follower.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/libwaypoint_follower.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/libwaypoint_follower.dir/flags.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/libwaypoint_follower.dir/lib/libwaypoint_follower.cpp.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/libwaypoint_follower.dir/link.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/libwaypoint_follower.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/nodelet_generate_messages_cpp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/nodelet_generate_messages_cpp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/nodelet_generate_messages_cpp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/nodelet_generate_messages_cpp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/nodelet_generate_messages_eus.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/nodelet_generate_messages_eus.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/nodelet_generate_messages_eus.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/nodelet_generate_messages_eus.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/nodelet_generate_messages_lisp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/nodelet_generate_messages_lisp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/nodelet_generate_messages_lisp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/nodelet_generate_messages_lisp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/nodelet_generate_messages_nodejs.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/nodelet_generate_messages_nodejs.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/nodelet_generate_messages_nodejs.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/nodelet_generate_messages_nodejs.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/nodelet_generate_messages_py.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/nodelet_generate_messages_py.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/nodelet_generate_messages_py.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/nodelet_generate_messages_py.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_msgs_generate_messages_eus.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_msgs_generate_messages_eus.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_msgs_generate_messages_eus.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_msgs_generate_messages_eus.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_msgs_generate_messages_nodejs.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_msgs_generate_messages_nodejs.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_msgs_generate_messages_nodejs.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_msgs_generate_messages_nodejs.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_msgs_generate_messages_py.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_msgs_generate_messages_py.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_msgs_generate_messages_py.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_msgs_generate_messages_py.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_ros_gencfg.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_ros_gencfg.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_ros_gencfg.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pcl_ros_gencfg.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/progress.marks" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pure_pursuit.dir/CXX.includecache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pure_pursuit.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pure_pursuit.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pure_pursuit.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pure_pursuit.dir/depend.internal" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pure_pursuit.dir/depend.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pure_pursuit.dir/flags.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pure_pursuit.dir/link.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pure_pursuit.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pure_pursuit.dir/src/pure_pursuit.cpp.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pure_pursuit.dir/src/pure_pursuit_core.cpp.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/std_srvs_generate_messages_cpp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/std_srvs_generate_messages_cpp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/std_srvs_generate_messages_cpp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/std_srvs_generate_messages_cpp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/std_srvs_generate_messages_eus.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/std_srvs_generate_messages_eus.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/std_srvs_generate_messages_eus.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/std_srvs_generate_messages_eus.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/std_srvs_generate_messages_lisp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/std_srvs_generate_messages_lisp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/std_srvs_generate_messages_lisp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/std_srvs_generate_messages_lisp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/std_srvs_generate_messages_nodejs.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/std_srvs_generate_messages_nodejs.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/std_srvs_generate_messages_nodejs.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/std_srvs_generate_messages_py.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/std_srvs_generate_messages_py.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/std_srvs_generate_messages_py.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/std_srvs_generate_messages_py.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf2_msgs_generate_messages_eus.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf2_msgs_generate_messages_eus.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf2_msgs_generate_messages_eus.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf2_msgs_generate_messages_eus.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf2_msgs_generate_messages_py.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf2_msgs_generate_messages_py.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf2_msgs_generate_messages_py.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf2_msgs_generate_messages_py.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf_generate_messages_cpp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf_generate_messages_cpp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf_generate_messages_cpp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf_generate_messages_cpp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf_generate_messages_eus.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf_generate_messages_eus.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf_generate_messages_eus.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf_generate_messages_eus.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf_generate_messages_lisp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf_generate_messages_lisp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf_generate_messages_lisp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf_generate_messages_lisp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf_generate_messages_nodejs.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf_generate_messages_nodejs.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf_generate_messages_nodejs.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf_generate_messages_nodejs.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf_generate_messages_py.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf_generate_messages_py.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf_generate_messages_py.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/tf_generate_messages_py.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/topic_tools_generate_messages_cpp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/topic_tools_generate_messages_cpp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/topic_tools_generate_messages_cpp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/topic_tools_generate_messages_cpp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/topic_tools_generate_messages_eus.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/topic_tools_generate_messages_eus.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/topic_tools_generate_messages_eus.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/topic_tools_generate_messages_eus.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/topic_tools_generate_messages_lisp.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/topic_tools_generate_messages_lisp.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/topic_tools_generate_messages_lisp.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/topic_tools_generate_messages_lisp.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/topic_tools_generate_messages_nodejs.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/topic_tools_generate_messages_nodejs.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/topic_tools_generate_messages_nodejs.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/topic_tools_generate_messages_nodejs.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/topic_tools_generate_messages_py.dir/DependInfo.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/topic_tools_generate_messages_py.dir/build.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/topic_tools_generate_messages_py.dir/cmake_clean.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/topic_tools_generate_messages_py.dir/progress.make" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CTestTestfile.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/Makefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/catkin_generated/installspace/waypoint_follower.pc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/catkin_generated/installspace/waypoint_followerConfig-version.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/catkin_generated/installspace/waypoint_followerConfig.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/catkin_generated/ordered_paths.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/catkin_generated/package.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/catkin_generated/pkg.develspace.context.pc.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/catkin_generated/pkg.installspace.context.pc.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/catkin_generated/stamps/waypoint_follower/package.xml.stamp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/catkin_generated/stamps/waypoint_follower/pkg.pc.em.stamp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/cmake_install.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_loader/CMakeFiles/CMakeDirectoryInformation.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_loader/CMakeFiles/progress.marks" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_loader/CTestTestfile.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_loader/Makefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_loader/catkin_generated/installspace/waypoint_loader.pc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_loader/catkin_generated/installspace/waypoint_loaderConfig-version.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_loader/catkin_generated/installspace/waypoint_loaderConfig.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_loader/catkin_generated/ordered_paths.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_loader/catkin_generated/package.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_loader/catkin_generated/pkg.develspace.context.pc.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_loader/catkin_generated/pkg.installspace.context.pc.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_loader/catkin_generated/stamps/waypoint_loader/package.xml.stamp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_loader/catkin_generated/stamps/waypoint_loader/pkg.pc.em.stamp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_loader/cmake_install.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_updater/CMakeFiles/CMakeDirectoryInformation.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_updater/CMakeFiles/progress.marks" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_updater/CTestTestfile.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_updater/Makefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_updater/catkin_generated/installspace/waypoint_updater.pc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_updater/catkin_generated/installspace/waypoint_updaterConfig-version.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_updater/catkin_generated/installspace/waypoint_updaterConfig.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_updater/catkin_generated/ordered_paths.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_updater/catkin_generated/package.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_updater/catkin_generated/pkg.develspace.context.pc.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_updater/catkin_generated/pkg.installspace.context.pc.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_updater/catkin_generated/stamps/waypoint_updater/package.xml.stamp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_updater/catkin_generated/stamps/waypoint_updater/pkg.pc.em.stamp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/build/waypoint_updater/cmake_install.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/.built_by" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/.catkin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/.rosinstall" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/_setup_util.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/env.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/include/styx_msgs/Lane.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/include/styx_msgs/TrafficLight.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/include/styx_msgs/TrafficLightArray.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/include/styx_msgs/Waypoint.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/lib/liblibwaypoint_follower.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/lib/pkgconfig/camera_info_publisher.pc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/lib/pkgconfig/styx.pc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/lib/pkgconfig/styx_msgs.pc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/lib/pkgconfig/tl_detector.pc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/lib/pkgconfig/twist_controller.pc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/lib/pkgconfig/waypoint_follower.pc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/lib/pkgconfig/waypoint_loader.pc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/lib/pkgconfig/waypoint_updater.pc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/lib/python3/dist-packages/styx_msgs/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/lib/python3/dist-packages/styx_msgs/msg/_Lane.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/lib/python3/dist-packages/styx_msgs/msg/_TrafficLight.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/lib/python3/dist-packages/styx_msgs/msg/_TrafficLightArray.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/lib/python3/dist-packages/styx_msgs/msg/_Waypoint.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/lib/python3/dist-packages/styx_msgs/msg/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/lib/waypoint_follower/pure_pursuit" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/setup.bash" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/setup.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/setup.zsh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/camera_info_publisher/cmake/camera_info_publisherConfig-version.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/camera_info_publisher/cmake/camera_info_publisherConfig.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/common-lisp/ros/styx_msgs/msg/Lane.lisp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/common-lisp/ros/styx_msgs/msg/TrafficLight.lisp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/common-lisp/ros/styx_msgs/msg/TrafficLightArray.lisp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/common-lisp/ros/styx_msgs/msg/Waypoint.lisp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/common-lisp/ros/styx_msgs/msg/_package.lisp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/common-lisp/ros/styx_msgs/msg/_package_Lane.lisp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/common-lisp/ros/styx_msgs/msg/_package_TrafficLight.lisp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/common-lisp/ros/styx_msgs/msg/_package_TrafficLightArray.lisp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/common-lisp/ros/styx_msgs/msg/_package_Waypoint.lisp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/common-lisp/ros/styx_msgs/msg/styx_msgs-msg.asd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/gennodejs/ros/styx_msgs/_index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLight.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLightArray.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/gennodejs/ros/styx_msgs/msg/_index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/roseus/ros/styx_msgs/manifest.l" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLight.l" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/styx/cmake/styxConfig-version.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/styx/cmake/styxConfig.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/styx_msgs/cmake/styx_msgs-msg-extras.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/styx_msgs/cmake/styx_msgs-msg-paths.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/styx_msgs/cmake/styx_msgsConfig-version.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/styx_msgs/cmake/styx_msgsConfig.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/tl_detector/cmake/tl_detectorConfig-version.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/tl_detector/cmake/tl_detectorConfig.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/twist_controller/cmake/twist_controllerConfig-version.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/twist_controller/cmake/twist_controllerConfig.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/waypoint_follower/cmake/waypoint_followerConfig-version.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/waypoint_follower/cmake/waypoint_followerConfig.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/waypoint_loader/cmake/waypoint_loaderConfig-version.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/waypoint_loader/cmake/waypoint_loaderConfig.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/waypoint_updater/cmake/waypoint_updaterConfig-version.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ros/devel/share/waypoint_updater/cmake/waypoint_updaterConfig.cmake" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/doctrees/environment.pickle" afterPath="$PROJECT_DIR$/ros/src/doc/_build/doctrees/environment.pickle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/doctrees/index.doctree" afterPath="$PROJECT_DIR$/ros/src/doc/_build/doctrees/index.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/objects.inv" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/objects.inv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/CMakeCache.txt" afterPath="$PROJECT_DIR$/ros/build/CMakeCache.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/CMakeRuleHashes.txt" afterPath="$PROJECT_DIR$/ros/build/CMakeFiles/CMakeRuleHashes.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/CMakeFiles/Makefile.cmake" afterPath="$PROJECT_DIR$/ros/build/CMakeFiles/Makefile.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/camera_info_publisher/catkin_generated/installspace/camera_info_publisherConfig.cmake" afterPath="$PROJECT_DIR$/ros/build/camera_info_publisher/catkin_generated/installspace/camera_info_publisherConfig.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/catkin_generated/generate_cached_setup.py" afterPath="$PROJECT_DIR$/ros/build/catkin_generated/generate_cached_setup.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/catkin_generated/installspace/_setup_util.py" afterPath="$PROJECT_DIR$/ros/build/catkin_generated/installspace/_setup_util.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/catkin_generated/order_packages.py" afterPath="$PROJECT_DIR$/ros/build/catkin_generated/order_packages.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/catkin_generated/setup_cached.sh" afterPath="$PROJECT_DIR$/ros/build/catkin_generated/setup_cached.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/catkin_generated/stamps/Project/_setup_util.py.stamp" afterPath="$PROJECT_DIR$/ros/build/catkin_generated/stamps/Project/_setup_util.py.stamp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/styx/catkin_generated/installspace/styxConfig.cmake" afterPath="$PROJECT_DIR$/ros/build/styx/catkin_generated/installspace/styxConfig.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_Lane.dir/build.make" afterPath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_Lane.dir/build.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight.dir/build.make" afterPath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight.dir/build.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLightArray.dir/build.make" afterPath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLightArray.dir/build.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_Waypoint.dir/build.make" afterPath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_Waypoint.dir/build.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_cpp.dir/build.make" afterPath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_cpp.dir/build.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_cpp.dir/cmake_clean.cmake" afterPath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_cpp.dir/cmake_clean.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus.dir/build.make" afterPath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus.dir/build.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus.dir/cmake_clean.cmake" afterPath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus.dir/cmake_clean.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_lisp.dir/build.make" afterPath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_lisp.dir/build.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_lisp.dir/cmake_clean.cmake" afterPath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_lisp.dir/cmake_clean.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs.dir/build.make" afterPath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs.dir/build.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs.dir/cmake_clean.cmake" afterPath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs.dir/cmake_clean.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_py.dir/build.make" afterPath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_py.dir/build.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_py.dir/cmake_clean.cmake" afterPath="$PROJECT_DIR$/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_py.dir/cmake_clean.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/catkin_generated/installspace/styx_msgsConfig.cmake" afterPath="$PROJECT_DIR$/ros/build/styx_msgs/catkin_generated/installspace/styx_msgsConfig.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/styx_msgs/cmake/styx_msgs-genmsg.cmake" afterPath="$PROJECT_DIR$/ros/build/styx_msgs/cmake/styx_msgs-genmsg.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/tl_detector/catkin_generated/installspace/tl_detectorConfig.cmake" afterPath="$PROJECT_DIR$/ros/build/tl_detector/catkin_generated/installspace/tl_detectorConfig.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/twist_controller/catkin_generated/installspace/twist_controllerConfig.cmake" afterPath="$PROJECT_DIR$/ros/build/twist_controller/catkin_generated/installspace/twist_controllerConfig.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/libwaypoint_follower.dir/build.make" afterPath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/libwaypoint_follower.dir/build.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/libwaypoint_follower.dir/link.txt" afterPath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/libwaypoint_follower.dir/link.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pure_pursuit.dir/build.make" afterPath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pure_pursuit.dir/build.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pure_pursuit.dir/link.txt" afterPath="$PROJECT_DIR$/ros/build/waypoint_follower/CMakeFiles/pure_pursuit.dir/link.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/waypoint_follower/catkin_generated/installspace/waypoint_followerConfig.cmake" afterPath="$PROJECT_DIR$/ros/build/waypoint_follower/catkin_generated/installspace/waypoint_followerConfig.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/waypoint_loader/catkin_generated/installspace/waypoint_loaderConfig.cmake" afterPath="$PROJECT_DIR$/ros/build/waypoint_loader/catkin_generated/installspace/waypoint_loaderConfig.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/build/waypoint_updater/catkin_generated/installspace/waypoint_updaterConfig.cmake" afterPath="$PROJECT_DIR$/ros/build/waypoint_updater/catkin_generated/installspace/waypoint_updaterConfig.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/_setup_util.py" afterPath="$PROJECT_DIR$/ros/devel/_setup_util.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/share/camera_info_publisher/cmake/camera_info_publisherConfig.cmake" afterPath="$PROJECT_DIR$/ros/devel/share/camera_info_publisher/cmake/camera_info_publisherConfig.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/share/styx/cmake/styxConfig.cmake" afterPath="$PROJECT_DIR$/ros/devel/share/styx/cmake/styxConfig.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/share/styx_msgs/cmake/styx_msgsConfig.cmake" afterPath="$PROJECT_DIR$/ros/devel/share/styx_msgs/cmake/styx_msgsConfig.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/share/tl_detector/cmake/tl_detectorConfig.cmake" afterPath="$PROJECT_DIR$/ros/devel/share/tl_detector/cmake/tl_detectorConfig.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/share/twist_controller/cmake/twist_controllerConfig.cmake" afterPath="$PROJECT_DIR$/ros/devel/share/twist_controller/cmake/twist_controllerConfig.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/share/waypoint_follower/cmake/waypoint_followerConfig.cmake" afterPath="$PROJECT_DIR$/ros/devel/share/waypoint_follower/cmake/waypoint_followerConfig.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/share/waypoint_loader/cmake/waypoint_loaderConfig.cmake" afterPath="$PROJECT_DIR$/ros/devel/share/waypoint_loader/cmake/waypoint_loaderConfig.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/devel/share/waypoint_updater/cmake/waypoint_updaterConfig.cmake" afterPath="$PROJECT_DIR$/ros/devel/share/waypoint_updater/cmake/waypoint_updaterConfig.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/dbw_node.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/dbw_node.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/index.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/tl_detector.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/tl_detector.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/waypoint_loader.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/waypoint_loader.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/tldetect.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/tldetect.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/waypoint_updater.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/_modules/waypoint_updater.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/_sources/index.rst.txt" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/_sources/index.rst.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/genindex.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/genindex.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/index.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/py-modindex.html" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/py-modindex.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/_build/html/searchindex.js" afterPath="$PROJECT_DIR$/ros/src/doc/_build/html/searchindex.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/doc/index.rst" afterPath="$PROJECT_DIR$/ros/src/doc/index.rst" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/tl_detector/tl_detector.py" afterPath="$PROJECT_DIR$/ros/src/tl_detector/tl_detector.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/tl_detector/tldetect/__init__.py" afterPath="$PROJECT_DIR$/ros/src/tl_detector/tldetect/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py" afterPath="$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/twist_controller/pid.py" afterPath="$PROJECT_DIR$/ros/src/twist_controller/pid.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py" afterPath="$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/twist_controller/yaw_controller.py" afterPath="$PROJECT_DIR$/ros/src/twist_controller/yaw_controller.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py" afterPath="$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py" afterPath="$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -106,25 +775,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="waypoint_loader.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="19" column="38" lean-forward="false" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="265">
-                <caret line="33" column="43" lean-forward="false" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
+              <first_editor relative-caret-position="260">
+                <caret line="120" column="3" lean-forward="false" selection-start-line="120" selection-start-column="3" selection-end-line="120" selection-end-column="3" />
                 <folding />
               </first_editor>
               <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/tldetect/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="18" column="45" lean-forward="false" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -142,48 +813,18 @@
       <file leaf-file-name="waypoint_updater.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="38" column="43" lean-forward="false" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
+            <state relative-caret-position="5328">
+              <caret line="306" column="64" lean-forward="false" selection-start-line="306" selection-start-column="64" selection-end-line="306" selection-end-column="64" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dbw_node.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2703">
-              <caret line="176" column="32" lean-forward="false" selection-start-line="176" selection-start-column="32" selection-end-line="176" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tl_detector(DL).py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/tl_detector(DL).py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="31" column="75" lean-forward="false" selection-start-line="31" selection-start-column="75" selection-end-line="31" selection-end-column="75" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/tldetect/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="55" lean-forward="false" selection-start-line="3" selection-start-column="55" selection-end-line="3" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tl_detector.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="tl_detector.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/tl_detector.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1530">
-              <caret line="85" column="16" lean-forward="false" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="16" />
+            <state relative-caret-position="270">
+              <caret line="27" column="4" lean-forward="false" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
               <folding>
                 <element signature="e#22#34#0" expanded="true" />
               </folding>
@@ -191,11 +832,43 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="twist_controller.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="709">
+              <caret line="116" column="37" lean-forward="false" selection-start-line="116" selection-start-column="37" selection-end-line="116" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="diagScreenRosbag.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ros/src/tools/diagScreenRosbag.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3528">
+              <caret line="212" column="31" lean-forward="false" selection-start-line="212" selection-start-column="31" selection-end-line="212" selection-end-column="31" />
+              <folding>
+                <element signature="e#23#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dbw_node.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="453">
+              <caret line="135" column="90" lean-forward="false" selection-start-line="135" selection-start-column="50" selection-end-line="135" selection-end-column="103" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="light_publisher.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/light_publisher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
+            <state relative-caret-position="252">
+              <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -212,11 +885,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>self.twist_cmd_linear_velocity</find>
-      <find>get_eu</find>
-      <find>self.current_ego_pose</find>
-      <find>fname</find>
-      <find>corrected_steering_angle</find>
       <find>path</find>
       <find>get_Euler</find>
       <find>impor</find>
@@ -238,10 +906,15 @@
       <find>upcoming_red_light_pub</find>
       <find>traffic_index</find>
       <find>1</find>
-      <find>rate</find>
       <find>PLANNING SUBSYSTEM</find>
-      <find>STEP</find>
       <find>FrozenSyam.pb</find>
+      <find>STEP</find>
+      <find>rate</find>
+      <find>light_positions</find>
+      <find>John Chen</find>
+      <find>rospy.Rate(</find>
+      <find>50</find>
+      <find>image_cb</find>
     </findStrings>
     <replaceStrings>
       <replace>message</replace>
@@ -252,6 +925,10 @@
       <replace>get_euler</replace>
       <replace>*** PLANNING SUBSYSTEM ***</replace>
     </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/ros/src</dir>
+      <dir>$PROJECT_DIR$</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -273,14 +950,15 @@
         <option value="$PROJECT_DIR$/ros/src/twist_controller/pid.py" />
         <option value="$PROJECT_DIR$/ros/src/twist_controller/yaw_controller.py" />
         <option value="$PROJECT_DIR$/ros/src/waypoint_updater/launch/waypoint_updater.launch" />
-        <option value="$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py" />
-        <option value="$PROJECT_DIR$/ros/src/tl_detector/light_publisher.py" />
-        <option value="$PROJECT_DIR$/ros/src/tl_detector/tl_detector.py" />
-        <option value="$PROJECT_DIR$/ros/src/tl_detector/tldetect/__init__.py" />
         <option value="$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py" />
+        <option value="$PROJECT_DIR$/ros/src/tools/diagScreenRosbag.py" />
         <option value="$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/ros/src/tl_detector/tldetect/__init__.py" />
+        <option value="$PROJECT_DIR$/ros/src/tl_detector/light_publisher.py" />
+        <option value="$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py" />
+        <option value="$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py" />
+        <option value="$PROJECT_DIR$/ros/src/tl_detector/tl_detector.py" />
       </list>
     </option>
   </component>
@@ -291,10 +969,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1985" />
-    <option name="y" value="-4" />
-    <option name="width" value="1855" />
-    <option name="height" value="1084" />
+    <option name="x" value="1987" />
+    <option name="y" value="106" />
+    <option name="width" value="1853" />
+    <option name="height" value="1076" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -337,19 +1015,27 @@
               <item name="sdc-term3-p4-capstone-carla" type="462c0819:PsiDirectoryNode" />
               <item name="ros" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="twist_controller" type="462c0819:PsiDirectoryNode" />
+              <item name="tl_detector" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sdc-term3-p4-capstone-carla" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sdc-term3-p4-capstone-carla" type="462c0819:PsiDirectoryNode" />
+              <item name="ros" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="tl_detector" type="462c0819:PsiDirectoryNode" />
+              <item name="tldetect" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/ateam-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ros/src" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.splitter.proportion" value="0.21175765" />
   </component>
@@ -431,7 +1117,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36335078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1708126" sideWeight="0.6816754" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17247097" sideWeight="0.6816754" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946378" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32879582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25262576" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -454,32 +1140,18 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="19" />
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ros/src/tl_detector/tl_detector.py</url>
+          <line>180</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="20" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Downloads/carla-driver-master/ros/src/twist_controller/dbw_helper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/denisejames/CarND-Capstone-master/ros/src/twist_controller/speed_controller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="28" column="30" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/carla-driver-master/ros/src/twist_controller/speed_controller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="49" column="67" lean-forward="false" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/Autonomous_System_Integration-master/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -705,7 +1377,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -729,29 +1400,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="103" column="68" lean-forward="false" selection-start-line="103" selection-start-column="68" selection-end-line="103" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README_instruction.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/README_instruction.md" />
     <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/find_stop_pos.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -766,7 +1418,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -774,7 +1425,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="69" column="0" lean-forward="true" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -782,23 +1432,58 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/light_publisher.py">
+    <entry file="file://$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="19" column="38" lean-forward="false" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/tl_detector.py.bkp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/tl_detector(DL).py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="31" column="75" lean-forward="false" selection-start-line="31" selection-start-column="75" selection-end-line="31" selection-end-column="75" />
+        <state relative-caret-position="918">
+          <caret line="66" column="9" lean-forward="false" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="31" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ros/src/tools/viewFrontCamera.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="94" column="8" lean-forward="false" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ros/src/tools/diagScreenRosbag.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3528">
+          <caret line="212" column="31" lean-forward="false" selection-start-line="212" selection-start-column="31" selection-end-line="212" selection-end-column="31" />
+          <folding>
+            <element signature="e#23#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="260">
+            <caret line="120" column="3" lean-forward="false" selection-start-line="120" selection-start-column="3" selection-end-line="120" selection-end-column="3" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
@@ -810,56 +1495,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ros/src/waypoint_loader/waypoint_loader.py">
+    <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/tldetect/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="19" column="38" lean-forward="false" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+        <state relative-caret-position="324">
+          <caret line="18" column="45" lean-forward="false" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/light_publisher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ros/src/waypoint_updater/waypoint_updater.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="38" column="43" lean-forward="false" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
+        <state relative-caret-position="5328">
+          <caret line="306" column="64" lean-forward="false" selection-start-line="306" selection-start-column="64" selection-end-line="306" selection-end-column="64" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/tldetect/__init__.py">
+    <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="55" lean-forward="false" selection-start-line="3" selection-start-column="55" selection-end-line="3" selection-end-column="55" />
+        <state relative-caret-position="453">
+          <caret line="135" column="90" lean-forward="false" selection-start-line="135" selection-start-column="50" selection-end-line="135" selection-end-column="103" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/twist_controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="709">
+          <caret line="116" column="37" lean-forward="false" selection-start-line="116" selection-start-column="37" selection-end-line="116" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ros/src/tl_detector/tl_detector.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="85" column="16" lean-forward="false" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="16" />
+        <state relative-caret-position="270">
+          <caret line="27" column="4" lean-forward="false" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
           <folding>
             <element signature="e#22#34#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="265">
-            <caret line="33" column="43" lean-forward="false" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ros/src/twist_controller/dbw_node.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2703">
-          <caret line="176" column="32" lean-forward="false" selection-start-line="176" selection-start-column="32" selection-end-line="176" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
